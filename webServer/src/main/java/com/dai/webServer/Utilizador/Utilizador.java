@@ -3,6 +3,7 @@ package com.dai.webServer.Utilizador;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.Email;
 
 @Entity
 public class Utilizador {

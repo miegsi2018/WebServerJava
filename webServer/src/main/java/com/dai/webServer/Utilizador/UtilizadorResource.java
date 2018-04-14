@@ -41,14 +41,25 @@ public class UtilizadorResource {
 
 	public String verifyUser(@RequestBody Utilizador utilizador) {
 		
-	String a = utilizador.getEmail();
-	
-		
-		return a;
+	String email = utilizador.getEmail();
+	String password = utilizador.getPassword();	
 	
 	
+		return email;
 	
 	
+	
+	
+	
+	}
+	
+public Utilizador findByEmail(long email) {
+		Optional<Utilizador> utilizador = utilizadorRepository.findById(email);
+
+		if (!utilizador.isPresent())
+			throw new UtilizadorNotFoundException("email-" + email);
+
+		return utilizador.get();
 	}
 	@DeleteMapping("/utilizador/{id}")
 	public void deleteUser(@PathVariable long id) {
