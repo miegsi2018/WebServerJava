@@ -36,7 +36,13 @@ public class UtilizadorResource {
 
 		return utilizador.get();
 	}
-
+	//IDK tho
+	@PostMapping("/login")
+	public List<Utilizador> retrieveAllUsers2(){
+		return utilizadorRepository.findAll();
+		
+		
+	}
 	@DeleteMapping("/utilizador/{id}")
 	public void deleteUser(@PathVariable long id) {
 		utilizadorRepository.deleteById(id);
