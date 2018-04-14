@@ -38,10 +38,17 @@ public class UtilizadorResource {
 	}
 	//IDK tho
 	@PostMapping("/login")
-	public List<Utilizador> retrieveAllUsers2(){
-		return utilizadorRepository.findAll();
+
+	public String verifyUser(@RequestBody Utilizador utilizador) {
 		
+	String a = utilizador.getEmail();
+	
 		
+		return a;
+	
+	
+	
+	
 	}
 	@DeleteMapping("/utilizador/{id}")
 	public void deleteUser(@PathVariable long id) {
