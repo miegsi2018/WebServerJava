@@ -45,7 +45,11 @@ public class UtilizadorResource {
 	String password = utilizador.getPassword();	
 	
 	
-		return email;
+	Utilizador returned = findUserByEmail(email);
+	String shit = returned.getContacto();
+	
+	
+		return shit;
 	
 	
 	
@@ -53,14 +57,18 @@ public class UtilizadorResource {
 	
 	}
 	
-public Utilizador findByEmail(long email) {
-		Optional<Utilizador> utilizador = utilizadorRepository.findById(email);
+public Utilizador findUserByEmail(String email) {
+		
+		Optional<Utilizador> utilizador = utilizadorRepository.findByEmail(email);
 
 		if (!utilizador.isPresent())
-			throw new UtilizadorNotFoundException("email-" + email);
+			throw new UtilizadorNotFoundException("id-" + email);
 
 		return utilizador.get();
-	}
+	
+
+
+}
 	@DeleteMapping("/utilizador/{id}")
 	public void deleteUser(@PathVariable long id) {
 		utilizadorRepository.deleteById(id);

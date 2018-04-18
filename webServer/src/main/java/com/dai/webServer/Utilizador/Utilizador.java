@@ -3,11 +3,17 @@ package com.dai.webServer.Utilizador;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
 @Entity
+
+
+@NamedQuery(name = "Utilizador.findByEmail", query = "SELECT p FROM Utilizador p WHERE LOWER(p.email) = LOWER(?1)")
+@Table(name = "utilizador")
 public class Utilizador {
-	
+	@Email
 	@Id
 	@GeneratedValue
 	private Long id_utilizador;
