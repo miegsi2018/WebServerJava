@@ -1,4 +1,4 @@
-package com.dai.webServer.Utilizador;
+package com.dai.webServer.Resources;
 
 import java.net.URI;
 import java.util.List;
@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
+import com.dai.webServer.Objects.Utilizador;
+import com.dai.webServer.Repos.UtilizadorRepository;
 
 import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.dai.webServer.Utilizador;
+package com.dai.webServer.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

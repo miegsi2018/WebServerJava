@@ -1,4 +1,4 @@
-package com.dai.webServer.View;
+package com.dai.webServer.Objects;
 
 
 
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
 @Entity
-@NamedQuery(name = "View.findThem", query = "SELECT DISTINCT p FROM View p WHERE LOWER(p.email) = LOWER(?1)")
+@NamedQuery(name = "View.findThem", query = "SELECT DISTINCT p FROM View p WHERE p.email = ?1")
 @Table(name = "contas_v")
 public class View {
 	

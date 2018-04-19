@@ -1,4 +1,4 @@
-package com.dai.webServer.Utilizador;
+package com.dai.webServer.Exceptions;
 
 public class UtilizadorNotFoundException extends RuntimeException {
 

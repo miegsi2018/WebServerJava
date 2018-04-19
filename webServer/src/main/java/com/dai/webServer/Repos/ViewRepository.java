@@ -1,9 +1,11 @@
-package com.dai.webServer.View;
+package com.dai.webServer.Repos;
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
+
+import com.dai.webServer.Objects.View;
 
 import java.util.List;
 import java.util.Optional;
