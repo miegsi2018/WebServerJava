@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
 @Entity
-@NamedQuery(name = "View.findThem", query = "SELECT p FROM View p WHERE LOWER(p.email) = LOWER(?1)")
+@NamedQuery(name = "View.findThem", query = "SELECT DISTINCT p FROM View p WHERE LOWER(p.email) = LOWER(?1)")
 @Table(name = "contas_v")
 public class View {
 	
@@ -21,11 +21,11 @@ public class View {
 private int id_casa;
 private int id_utilizador;
 private String email;
-private String main;
+private int main;
 private String casa;
 private int id_divisao;
 private String divisao;
-private String sensor;
+private Long sensor;
 
 
 public View() {
@@ -33,8 +33,8 @@ public View() {
 }
 
 
-public View(int id_casa, int id_utilizador, String email, String main, String casa, int id_divisao, String divisao,
-		String sensor) {
+public View(int id_casa, int id_utilizador, String email, int main, String casa, int id_divisao, String divisao,
+		Long sensor) {
 	super();
 	this.id_casa = id_casa;
 	this.id_utilizador = id_utilizador;
@@ -77,12 +77,12 @@ public void setEmail(String email) {
 }
 
 
-public String getMain() {
+public int getMain() {
 	return main;
 }
 
 
-public void setMain(String main) {
+public void setMain(int main) {
 	this.main = main;
 }
 
@@ -117,12 +117,12 @@ public void setDivisao(String divisao) {
 }
 
 
-public String getSensor() {
+public Long getSensor() {
 	return sensor;
 }
 
 
-public void setSensor(String sensor) {
+public void setSensor(Long sensor) {
 	this.sensor = sensor;
 }
 	
