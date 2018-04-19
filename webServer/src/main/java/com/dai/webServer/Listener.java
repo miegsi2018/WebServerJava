@@ -37,7 +37,7 @@ public class Listener implements MqttCallback {
     private static final String clientId = "JavaSample";
 
     /** The topic. */
-    private static final String topic = "#";
+    public static final String topic = "#";
 
     /**
      * The main method.
