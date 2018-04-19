@@ -10,6 +10,7 @@ import javax.validation.constraints.Email;
 @Entity
 
 
+
 @NamedQuery(name = "Utilizador.findByEmail", query = "SELECT p FROM Utilizador p WHERE LOWER(p.email) = LOWER(?1)")
 @Table(name = "utilizador")
 public class Utilizador {
