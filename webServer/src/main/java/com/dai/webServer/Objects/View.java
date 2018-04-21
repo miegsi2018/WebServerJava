@@ -19,9 +19,10 @@ public class View {
 @GeneratedValue	
 	
 private int id_casa;
+private int a_user;
+private int a_casa;
 private int id_utilizador;
 private String email;
-private int main;
 private String casa;
 private int id_divisao;
 private String divisao;
@@ -33,18 +34,21 @@ public View() {
 }
 
 
-public View(int id_casa, int id_utilizador, String email, int main, String casa, int id_divisao, String divisao,
-		Long sensor) {
+
+public View(@Email int id_casa, int a_user, int a_casa, int id_utilizador, String email, String casa, int id_divisao,
+		String divisao, Long sensor) {
 	super();
 	this.id_casa = id_casa;
+	this.a_user = a_user;
+	this.a_casa = a_casa;
 	this.id_utilizador = id_utilizador;
 	this.email = email;
-	this.main = main;
 	this.casa = casa;
 	this.id_divisao = id_divisao;
 	this.divisao = divisao;
 	this.sensor = sensor;
 }
+
 
 
 public int getId_casa() {
@@ -52,9 +56,35 @@ public int getId_casa() {
 }
 
 
+
 public void setId_casa(int id_casa) {
 	this.id_casa = id_casa;
 }
+
+
+
+public int getA_user() {
+	return a_user;
+}
+
+
+
+public void setA_user(int a_user) {
+	this.a_user = a_user;
+}
+
+
+
+public int getA_casa() {
+	return a_casa;
+}
+
+
+
+public void setA_casa(int a_casa) {
+	this.a_casa = a_casa;
+}
+
 
 
 public int getId_utilizador() {
@@ -62,9 +92,11 @@ public int getId_utilizador() {
 }
 
 
+
 public void setId_utilizador(int id_utilizador) {
 	this.id_utilizador = id_utilizador;
 }
+
 
 
 public String getEmail() {
@@ -72,19 +104,11 @@ public String getEmail() {
 }
 
 
+
 public void setEmail(String email) {
 	this.email = email;
 }
 
-
-public int getMain() {
-	return main;
-}
-
-
-public void setMain(int main) {
-	this.main = main;
-}
 
 
 public String getCasa() {
@@ -92,9 +116,11 @@ public String getCasa() {
 }
 
 
+
 public void setCasa(String casa) {
 	this.casa = casa;
 }
+
 
 
 public int getId_divisao() {
@@ -102,9 +128,11 @@ public int getId_divisao() {
 }
 
 
+
 public void setId_divisao(int id_divisao) {
 	this.id_divisao = id_divisao;
 }
+
 
 
 public String getDivisao() {
@@ -112,9 +140,11 @@ public String getDivisao() {
 }
 
 
+
 public void setDivisao(String divisao) {
 	this.divisao = divisao;
 }
+
 
 
 public Long getSensor() {
@@ -122,10 +152,12 @@ public Long getSensor() {
 }
 
 
+
 public void setSensor(Long sensor) {
 	this.sensor = sensor;
 }
-	
+
+
 	
 	
 	
