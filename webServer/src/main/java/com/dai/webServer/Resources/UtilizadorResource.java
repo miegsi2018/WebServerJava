@@ -100,13 +100,14 @@ public Utilizador findUserByEmail(String email) {
 
 	@PostMapping("/utilizador")
 	public ResponseEntity<Object> createUser(@RequestBody Utilizador utilizador) {
+		
 		Utilizador savedUser = utilizadorRepository.save(utilizador);
-
+		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedUser.getId_utilizador()).toUri();
-
+		
 		return ResponseEntity.created(location).build();
-
+		
 	}
 	
 	@PutMapping("/utilizador/{id}")
