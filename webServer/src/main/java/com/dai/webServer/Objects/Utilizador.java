@@ -14,7 +14,7 @@ import javax.validation.constraints.Email;
 @NamedQuery(name = "Utilizador.findByEmail", query = "SELECT p FROM Utilizador p WHERE LOWER(p.email) = LOWER(?1)")
 @Table(name = "utilizador")
 public class Utilizador {
-	@Email
+
 	@Id
 	@GeneratedValue
 	private Long id_utilizador;

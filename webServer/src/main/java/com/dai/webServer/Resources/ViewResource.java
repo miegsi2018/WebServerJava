@@ -38,9 +38,9 @@ public class ViewResource {
 		return ViewRepository.findThem(email);
 	}
 	
-}
+	/*
 	//IDK tho
-/*	@PostMapping("/login")
+	@PostMapping("/login")
 
 	public Utilizador verifyUser(@RequestBody Utilizador utilizador) {
 		
@@ -85,7 +85,7 @@ public Utilizador findUserByEmail(String email) {
 	
 
 
-}
+} 
 	@DeleteMapping("/utilizador/{id}")
 	public void deleteUser(@PathVariable long id) {
 		utilizadorRepository.deleteById(id);
@@ -115,8 +115,6 @@ public Utilizador findUserByEmail(String email) {
 		utilizadorRepository.save(utilizador);
 
 		return ResponseEntity.noContent().build();
-	}
+	}*/
 
 }
-
-*/
