@@ -1,4 +1,4 @@
-package com.dai.webServer;
+package com.dai.Mqtt;
 
 /*******************************************************************************
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,10 +45,7 @@ public class Listener implements MqttCallback {
      * @param args
      *            the arguments
      */
-    public static void main(String[] args) {
-
-        new Listener().subscribe(topic);
-    }
+ 
 
     /**
      * Subscribe.
