@@ -16,7 +16,4 @@ public class WebServerApplication extends Listener {
 		
 	}
 
-	public static void main(String[] args) {
-		SpringApplication.run(WebServerApplication.class, args);
-	}
 }	
