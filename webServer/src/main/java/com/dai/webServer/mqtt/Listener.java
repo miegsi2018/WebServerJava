@@ -1,4 +1,13 @@
-package com.dai.webServer.mqtt;
+package com.dai.webServer.Mqtt;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.dai.webServer.Objects.Readings;
+import com.dai.webServer.Repos.ReadingsRepository;
+import com.dai.webServer.Resources.ReadingsResouces;
+import javax.sql.DataSource;
 
 /*******************************************************************************
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,6 +47,12 @@ public class Listener implements MqttCallback {
 
     /** The topic. */
     public static final String topic = "#";
+    
+    private DataSource dataSource;
+    
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 
     /**
      * The main method.
@@ -45,10 +60,7 @@ public class Listener implements MqttCallback {
      * @param args
      *            the arguments
      */
-    public static void main(String[] args) {
-
-        new Listener().subscribe(topic);
-    }
+ 
 
     /**
      * Subscribe.
@@ -121,10 +133,17 @@ public class Listener implements MqttCallback {
      * org.eclipse.paho.client.mqttv3.MqttCallback#messageArrived(java.lang.
      * String, org.eclipse.paho.client.mqttv3.MqttMessage)
      */
-    public void messageArrived(String topic, MqttMessage message) throws Exception {
+    public void messageArrived(String topic, MqttMessage message) throws Exception  {
+    	
+    	
 
         System.out.println("Mqtt topic : " + topic);
         System.out.println("Mqtt msg : " + message.toString());
+        
+        //ReadingsResouces.createLeitura(message);
+        
+        
+		
     }
 
 }
