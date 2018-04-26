@@ -21,8 +21,6 @@ import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
 import com.dai.webServer.Objects.Utilizador;
 import com.dai.webServer.Repos.UtilizadorRepository;
 
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 @CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
 @RequestMapping("/")
