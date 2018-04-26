@@ -1,5 +1,6 @@
 package com.dai.webServer.Mqtt;
 
+import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -31,6 +32,9 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 /**
  * The Class Listner.
@@ -38,6 +42,9 @@ import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
  * @author Yasith Lokuge
  */
 public class Listener implements MqttCallback {
+	
+	@Autowired
+	private ReadingsRepository leituraRepository;
 
     /** The broker url. */
     private static final String brokerUrl = "tcp://alvesvitor.ddns.net:80";
@@ -140,9 +147,13 @@ public class Listener implements MqttCallback {
         System.out.println("Mqtt topic : " + topic);
         System.out.println("Mqtt msg : " + message.toString());
         
-        //ReadingsResouces.createLeitura(message);
+      // ReadingsResouces.createLeitura(message);
         
         
+      leituraRepository.save(message);
+		
+
+		
 		
     }
 
