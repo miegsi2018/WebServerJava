@@ -11,22 +11,22 @@ import javax.validation.constraints.Email;
 
 @Entity
 @NamedQuery(name = "View.findThem", query = "SELECT DISTINCT p FROM View p WHERE p.email = ?1")
-@Table(name = "contas_v")
+@Table(name = "v_contas")
 public class View {
 	
 @Email
 @Id
 @GeneratedValue	
 	
-private int id_casa;
-private int a_user;
-private int a_casa;
-private int id_utilizador;
+private int id_division;
+private int id_house;
+private String username;
 private String email;
-private String casa;
-private int id_divisao;
-private String divisao;
-private Long sensor;
+private  String type;
+private int main;
+private String house;
+private String division;
+private Long sensor_id;
 
 
 public View() {
@@ -34,69 +34,49 @@ public View() {
 }
 
 
-
-public View(@Email int id_casa, int a_user, int a_casa, int id_utilizador, String email, String casa, int id_divisao,
-		String divisao, Long sensor) {
+public View(@Email int id_division, int id_house, String username, String email, String type, int main, String house,
+		String division, Long sensor_id) {
 	super();
-	this.id_casa = id_casa;
-	this.a_user = a_user;
-	this.a_casa = a_casa;
-	this.id_utilizador = id_utilizador;
+	this.id_division = id_division;
+	this.id_house = id_house;
+	this.username = username;
 	this.email = email;
-	this.casa = casa;
-	this.id_divisao = id_divisao;
-	this.divisao = divisao;
-	this.sensor = sensor;
+	this.type = type;
+	this.main = main;
+	this.house = house;
+	this.division = division;
+	this.sensor_id = sensor_id;
 }
 
 
-
-public int getId_casa() {
-	return id_casa;
+public int getId_division() {
+	return id_division;
 }
 
 
-
-public void setId_casa(int id_casa) {
-	this.id_casa = id_casa;
+public void setId_division(int id_division) {
+	this.id_division = id_division;
 }
 
 
-
-public int getA_user() {
-	return a_user;
+public int getId_house() {
+	return id_house;
 }
 
 
-
-public void setA_user(int a_user) {
-	this.a_user = a_user;
+public void setId_house(int id_house) {
+	this.id_house = id_house;
 }
 
 
-
-public int getA_casa() {
-	return a_casa;
+public String getUsername() {
+	return username;
 }
 
 
-
-public void setA_casa(int a_casa) {
-	this.a_casa = a_casa;
+public void setUsername(String username) {
+	this.username = username;
 }
-
-
-
-public int getId_utilizador() {
-	return id_utilizador;
-}
-
-
-
-public void setId_utilizador(int id_utilizador) {
-	this.id_utilizador = id_utilizador;
-}
-
 
 
 public String getEmail() {
@@ -104,61 +84,59 @@ public String getEmail() {
 }
 
 
-
 public void setEmail(String email) {
 	this.email = email;
 }
 
 
-
-public String getCasa() {
-	return casa;
+public String getType() {
+	return type;
 }
 
 
-
-public void setCasa(String casa) {
-	this.casa = casa;
+public void setType(String type) {
+	this.type = type;
 }
 
 
-
-public int getId_divisao() {
-	return id_divisao;
+public int getMain() {
+	return main;
 }
 
 
-
-public void setId_divisao(int id_divisao) {
-	this.id_divisao = id_divisao;
+public void setMain(int main) {
+	this.main = main;
 }
 
 
-
-public String getDivisao() {
-	return divisao;
+public String getHouse() {
+	return house;
 }
 
 
-
-public void setDivisao(String divisao) {
-	this.divisao = divisao;
+public void setHouse(String house) {
+	this.house = house;
 }
 
 
-
-public Long getSensor() {
-	return sensor;
+public String getDivision() {
+	return division;
 }
 
 
-
-public void setSensor(Long sensor) {
-	this.sensor = sensor;
+public void setDivision(String division) {
+	this.division = division;
 }
 
 
-	
-	
-	
+public Long getSensor_id() {
+	return sensor_id;
+}
+
+
+public void setSensor_id(Long sensor_id) {
+	this.sensor_id = sensor_id;
+}
+
+
 }

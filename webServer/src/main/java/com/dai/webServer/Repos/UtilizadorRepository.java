@@ -5,16 +5,16 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.dai.webServer.Objects.Utilizador;
+import com.dai.webServer.Objects.User;
 
 import java.util.Optional;
 
 @Repository
 
-public interface UtilizadorRepository extends JpaRepository<Utilizador, Long>{
+public interface UtilizadorRepository extends JpaRepository<User, Long>{
 
 
-	public Optional<Utilizador> findByEmail(String email);
+	public Optional<User> findByEmail(String email);
 	
 	
 }

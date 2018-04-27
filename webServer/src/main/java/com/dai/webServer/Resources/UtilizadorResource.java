@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
-import com.dai.webServer.Objects.Utilizador;
+import com.dai.webServer.Objects.User;
 import com.dai.webServer.Repos.UtilizadorRepository;
 
 
@@ -31,13 +31,13 @@ public class UtilizadorResource {
 	private UtilizadorRepository utilizadorRepository;
 
 	@GetMapping("/utilizador")
-	public List<Utilizador> retrieveAllUsers() {
+	public List<User> retrieveAllUsers() {
 		return utilizadorRepository.findAll();
 	}
 
 	@GetMapping("/utilizador/{id}")
-	public Utilizador retrieveUser(@PathVariable long id) {
-		Optional<Utilizador> utilizador = utilizadorRepository.findById(id);
+	public User retrieveUser(@PathVariable long id) {
+		Optional<User> utilizador = utilizadorRepository.findById(id);
 
 		if (!utilizador.isPresent())
 			throw new UtilizadorNotFoundException("id-" + id);
@@ -47,13 +47,13 @@ public class UtilizadorResource {
 	//IDK tho
 	@PostMapping("/login")
 
-	public Utilizador verifyUser(@RequestBody Utilizador utilizador) {
+	public User verifyUser(@RequestBody User utilizador) {
 		
 	String email = utilizador.getEmail();
 	String password = utilizador.getPassword();	
 	
 	
-	Utilizador returned = findUserByEmail(email);
+	User returned = findUserByEmail(email);
 	String passBase = returned.getPassword();
 	
 return returned;	
@@ -64,12 +64,12 @@ return returned;
 	
 	@PostMapping("/mail")
 
-	public Utilizador getUser(@RequestBody Utilizador utilizador) {
+	public User getUser(@RequestBody User utilizador) {
 		
 	String email = utilizador.getEmail();
 	
 	
-	Utilizador returned = findUserByEmail(email);
+	User returned = findUserByEmail(email);
 	
 		return returned;	
 	
@@ -79,9 +79,9 @@ return returned;
 	
 	
 	
-public Utilizador findUserByEmail(String email) {
+public User findUserByEmail(String email) {
 		
-		Optional<Utilizador> utilizador = utilizadorRepository.findByEmail(email);
+		Optional<User> utilizador = utilizadorRepository.findByEmail(email);
 
 		if (!utilizador.isPresent())
 			throw new UtilizadorNotFoundException("id-" + email);
@@ -97,9 +97,9 @@ public Utilizador findUserByEmail(String email) {
 	}
 
 	@PostMapping("/utilizador")
-	public ResponseEntity<Object> createUser(@RequestBody Utilizador utilizador) {
+	public ResponseEntity<Object> createUser(@RequestBody User utilizador) {
 		
-		Utilizador savedUser = utilizadorRepository.save(utilizador);
+		User savedUser = utilizadorRepository.save(utilizador);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedUser.getId_utilizador()).toUri();
@@ -109,9 +109,9 @@ public Utilizador findUserByEmail(String email) {
 	}
 	
 	@PutMapping("/utilizador/{id}")
-	public ResponseEntity<Object> updateUser(@RequestBody Utilizador utilizador, @PathVariable long id) {
+	public ResponseEntity<Object> updateUser(@RequestBody User utilizador, @PathVariable long id) {
 
-		Optional<Utilizador> userOptional = utilizadorRepository.findById(id);
+		Optional<User> userOptional = utilizadorRepository.findById(id);
 
 		if (!userOptional.isPresent())
 			return ResponseEntity.notFound().build();

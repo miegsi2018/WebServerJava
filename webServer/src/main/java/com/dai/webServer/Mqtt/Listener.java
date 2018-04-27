@@ -146,9 +146,7 @@ public class Listener implements MqttCallback {
 
         System.out.println("Mqtt topic : " + topic);
         System.out.println("Mqtt msg : " + message.toString());
-        
-      // ReadingsResouces.createLeitura(message);
-        
+      
         
 		
 
