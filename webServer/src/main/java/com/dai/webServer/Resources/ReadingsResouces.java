@@ -3,7 +3,7 @@ package com.dai.webServer.Resources;
 import java.net.URI;
 import java.util.List;
 
-
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,5 +40,35 @@ public class ReadingsResouces {
 		return ResponseEntity.created(location).build();
 		
 	}
+	
+	
+public static String criarNaoEstatico(ReadingsResouces o, Readings nova) {
 
+	o.createLeitura(nova);
+	
+	
+	System.exit(0);	
+	
+	
+return "shit";	
+	
 }
+	
+	
+	
+	
+    public   ResponseEntity<Object> novaLeitura(JSONObject leitura) {
+    	
+    	
+    		Readings savedLeitura = leituraRepository.save(leitura);
+		
+		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
+				.buildAndExpand(savedLeitura.getId()).toUri();
+		return ResponseEntity.created(location).build();
+		
+		
+
+    	
+    	
+    }
+	}
