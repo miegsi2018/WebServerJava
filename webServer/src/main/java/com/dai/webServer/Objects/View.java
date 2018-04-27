@@ -2,6 +2,7 @@ package com.dai.webServer.Objects;
 
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,10 +21,12 @@ public class View {
 	
 private int id_division;
 private int id_house;
-private String username;
 private String email;
 private  String type;
-private int main;
+
+@Column(nullable = true)
+private Integer main;
+
 private String house;
 private String division;
 private Long sensor_id;
@@ -34,12 +37,11 @@ public View() {
 }
 
 
-public View(@Email int id_division, int id_house, String username, String email, String type, int main, String house,
+public View(@Email int id_division, int id_house, String email, String type, int main, String house,
 		String division, Long sensor_id) {
 	super();
 	this.id_division = id_division;
 	this.id_house = id_house;
-	this.username = username;
 	this.email = email;
 	this.type = type;
 	this.main = main;
@@ -66,16 +68,6 @@ public int getId_house() {
 
 public void setId_house(int id_house) {
 	this.id_house = id_house;
-}
-
-
-public String getUsername() {
-	return username;
-}
-
-
-public void setUsername(String username) {
-	this.username = username;
 }
 
 
