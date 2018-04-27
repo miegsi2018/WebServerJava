@@ -26,7 +26,7 @@ import net.minidev.json.JSONObject;
 @CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
 @RequestMapping("/")
 @RestController
-public class ViewResource {
+public class ViewResources {
 	
 	@Autowired
 	private ViewRepository ViewRepository;

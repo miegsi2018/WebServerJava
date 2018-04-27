@@ -25,7 +25,7 @@ import com.dai.webServer.Repos.UtilizadorRepository;
 @CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
 @RequestMapping("/")
 @RestController
-public class UtilizadorResource {
+public class UserResources {
 	
 	@Autowired
 	private UtilizadorRepository utilizadorRepository;
@@ -102,7 +102,7 @@ public User findUserByEmail(String email) {
 		User savedUser = utilizadorRepository.save(utilizador);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-				.buildAndExpand(savedUser.getId_utilizador()).toUri();
+				.buildAndExpand(savedUser.getId_user()).toUri();
 		
 		return ResponseEntity.created(location).build();
 		
@@ -116,7 +116,7 @@ public User findUserByEmail(String email) {
 		if (!userOptional.isPresent())
 			return ResponseEntity.notFound().build();
 
-		utilizador.setId_utilizador(id);
+		utilizador.setId_user(id);
 		
 		utilizadorRepository.save(utilizador);
 

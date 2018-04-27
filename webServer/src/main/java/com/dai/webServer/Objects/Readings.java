@@ -23,7 +23,9 @@ public class Readings {
 	
 	private Timestamp data;
 	
-	public Readings(){}
+	public Readings() {
+		super();
+			}
 
 	public Readings(int id, String attr, Timestamp data) {
 		super();
