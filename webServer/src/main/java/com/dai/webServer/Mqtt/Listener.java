@@ -150,7 +150,6 @@ public class Listener implements MqttCallback {
       // ReadingsResouces.createLeitura(message);
         
         
-      leituraRepository.save(message);
 		
 
 		
