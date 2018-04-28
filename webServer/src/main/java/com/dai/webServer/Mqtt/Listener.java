@@ -51,7 +51,7 @@ public class Listener implements MqttCallback {
 	@Autowired
 	private ReadingsRepository leituraRepository;
 
-	private ReadingsResouces o ;
+	private ReadingsResouces o = new ReadingsResouces();
     /** The broker url. */
     private static final String brokerUrl = "tcp://alvesvitor.ddns.net:80";
 
@@ -156,7 +156,6 @@ public class Listener implements MqttCallback {
         System.out.println("Mqtt topic : " + topic);
         System.out.println("Mqtt msg : " + message.toString());
         
-	System.exit();	
         Object e = insert(message.toString());   
     }
     
@@ -168,13 +167,8 @@ public class Listener implements MqttCallback {
 	        System.out.println( "shit");
 			JSONObject obj = new JSONObject();
             obj.put("attr", "{\n\t\"content-spec\":\"urn:spec://eclipse.org/unide/measurement-message#v2\",\n\t\"device\":\n\t{\n\t\t\"deviceID\":\"1883957\"\n\t},\n\t\"sensor\":\n\t{\n\t\"humidity\":\"52.00\",\n\t\"motion\":\"motion detected\",\n\t\"ldr\":\"390\",\n\t\"temperature\":\"29.00\"\n\t},\n\t\"alarm\":\n\t{\n\t\"state\":\"ON\"\n\t},\n\t\"color\":\n\t{\"r\":255,\"g\":0}\n}");
-
-            Readings nova = new Readings( obj);
-            
-			ReadingsResouces.criarNaoEstatico(o, nova);
-            
-            
-	        return "shit";	
+            Object a = ReadingsResouces.criarNaoEstatico(o, obj);
+            return "shit";	
 	 
  }
  

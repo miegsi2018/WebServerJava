@@ -39,11 +39,6 @@ public class Readings {
 		this.data = data;
 	}
 
-	public Readings(JSONObject attr) {
-		
-	}
-
-
 	public int getId() {
 		return id;
 	}

@@ -42,12 +42,10 @@ public class ReadingsResouces {
 	}
 	
 	
-public static String criarNaoEstatico(ReadingsResouces o, Readings nova) {
+public static String criarNaoEstatico(ReadingsResouces o, JSONObject nova) {
 
-	o.createLeitura(nova);
+	o.novaLeitura(nova);
 	
-	
-	System.exit(0);	
 	
 	
 return "shit";	

@@ -8,7 +8,8 @@ public class Main extends Listener{
 	
 	
 	public static void main(String[] args) {
-		 new WebServerApplication().startServer();
+		WebServerApplication webServer = new WebServerApplication();
+		webServer.startServer();
 		new Listener().subscribe(topic);
 	}
 }
