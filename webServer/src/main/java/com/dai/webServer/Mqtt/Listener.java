@@ -3,6 +3,7 @@ import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 
 import com.dai.webServer.Objects.Readings;
 import com.dai.webServer.Repos.ReadingsRepository;
@@ -156,18 +157,20 @@ public class Listener implements MqttCallback {
         System.out.println("Mqtt topic : " + topic);
         System.out.println("Mqtt msg : " + message.toString());
         
-        Object e = insert(message.toString());   
+        insert(message.toString());   
     }
     
     
     
    
- public Object insert(String message)  {
+ public String insert(String message)  {
 	 
 	        System.out.println( "shit");
 			JSONObject obj = new JSONObject();
             obj.put("attr", "{\n\t\"content-spec\":\"urn:spec://eclipse.org/unide/measurement-message#v2\",\n\t\"device\":\n\t{\n\t\t\"deviceID\":\"1883957\"\n\t},\n\t\"sensor\":\n\t{\n\t\"humidity\":\"52.00\",\n\t\"motion\":\"motion detected\",\n\t\"ldr\":\"390\",\n\t\"temperature\":\"29.00\"\n\t},\n\t\"alarm\":\n\t{\n\t\"state\":\"ON\"\n\t},\n\t\"color\":\n\t{\"r\":255,\"g\":0}\n}");
-            Object a = ReadingsResouces.criarNaoEstatico(o, obj);
+            Timestamp d = new Timestamp(System.currentTimeMillis());
+	        Readings b = new Readings(101, "faksdfj", d);
+	        o.criarNaoEstatico(o, b);
             return "shit";	
 	 
  }
