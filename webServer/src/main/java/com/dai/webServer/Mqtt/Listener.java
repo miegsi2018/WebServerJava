@@ -17,6 +17,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.json.*;
+import org.apache.commons.text.RandomStringGenerator;
 /*******************************************************************************
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -42,11 +43,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.json.simple.JSONObject;
+import java.util.Random;
+import static org.apache.commons.text.CharacterPredicates.DIGITS;
+import static org.apache.commons.text.CharacterPredicates.LETTERS;
 /**
  * The Class Listner.
  * 
  * @author Yasith Lokuge
  */
+
+
+
 public class Listener  implements MqttCallback {
 	
 	
@@ -57,19 +64,15 @@ public class Listener  implements MqttCallback {
 
     /** The client id. */
     private static final String clientId = "JavaSample";
+    Random rand = new Random();
 
+    private int  n = rand.nextInt(8000) + 5;
     /** The topic. */
     public static final String topic = "#";
     private Database db = new Database();
-    private DataSource dataSource;
-    private MemoryPersistence hey = new MemoryPersistence() ; 
-    
 
     
-    
-	public void setDataSource(DataSource dataSource) {
-		this.dataSource = dataSource;
-	}
+   
 
     /**
      * The main method.
@@ -85,12 +88,21 @@ public class Listener  implements MqttCallback {
      * @param topic
      *            the topic
      */
-    public void subscribe(String topic) {
+    
+    public String random() {
+    RandomStringGenerator generator = new RandomStringGenerator.Builder()
+    		.withinRange('0', 'z')
+    		.filteredBy(LETTERS)
+    		.build();
+    String a = generator.toString();
+	return a;
+    }
+    public void subscribe(String clientId ) {
 	 
 
         try {
-
-            MqttClient sampleClient = new MqttClient(brokerUrl, clientId);
+        	String a = random();
+            MqttClient sampleClient = new MqttClient(brokerUrl, a);
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
     	    connOpts.setUserName("dai");
@@ -132,6 +144,12 @@ public class Listener  implements MqttCallback {
      * Throwable)
      */
     public void connectionLost(Throwable arg0) {
+    	try {
+			wait(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
       this.subscribe(topic);
     }
 
