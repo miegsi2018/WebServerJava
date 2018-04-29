@@ -160,6 +160,8 @@ public class Listener  implements MqttCallback {
     	
 
         System.out.println("Mqtt topic : " + topic);
+        System.out.println(db.getCurrentTimeStamp());
+ 
         System.out.println("Mqtt msg : " + message.toString());
 
         insert(message.toString());   
@@ -168,13 +170,12 @@ public class Listener  implements MqttCallback {
     
     
    
- public String insert(String message) throws ParseException, SQLException  {
+ public void insert(String message) throws ParseException, SQLException  {
 	 		String messageFormatted = StringEscapeUtils.escapeJava(message);
 	 		System.out.println(messageFormatted);
 	 		db.insert(messageFormatted);
 	 		
-            return "shit";	
-	 
+       
  }
  
  
