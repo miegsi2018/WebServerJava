@@ -18,12 +18,11 @@ public class Database {
 
     
     
-	public static void insert(String passed) {
-
+	public void main(String passed) {
 
 		try {
 
-			insertRecordIntoTable(passed);
+			insert( passed);
 
 		} catch (SQLException e) {
 
@@ -33,7 +32,7 @@ public class Database {
 
 	}
 
-	private static void insertRecordIntoTable(String passed) throws SQLException {
+	public static void insert(String passed) throws SQLException {
 
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;

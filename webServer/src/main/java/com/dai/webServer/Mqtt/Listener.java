@@ -30,8 +30,7 @@ import org.json.*;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-
-
+import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -162,17 +161,18 @@ public class Listener  implements MqttCallback {
 
         System.out.println("Mqtt topic : " + topic);
         System.out.println("Mqtt msg : " + message.toString());
-        
+
         insert(message.toString());   
     }
     
     
     
    
- public String insert(String message)  {
-	 		Readings nova = new Readings();
-	 		nova.setAttr("{\n\t\"content-spec\":\"urn:spec://eclipse.org/unide/measurement-message#v2\",\n\t\"device\":\n\t{\n\t\t\"deviceID\":\"1883957\"\n\t},\n\t\"sensor\":\n\t{\n\t\"humidity\":\"52.00\",\n\t\"motion\":\"motion detected\",\n\t\"ldr\":\"390\",\n\t\"temperature\":\"29.00\"\n\t},\n\t\"alarm\":\n\t{\n\t\"state\":\"ON\"\n\t},\n\t\"color\":\n\t{\"r\":255,\"g\":0}\n}");
-	 		db.insert(message);
+ public String insert(String message) throws ParseException, SQLException  {
+	 		String messageFormatted = StringEscapeUtils.escapeJava(message);
+	 		System.out.println(messageFormatted);
+	 		db.insert(messageFormatted);
+	 		
             return "shit";	
 	 
  }
