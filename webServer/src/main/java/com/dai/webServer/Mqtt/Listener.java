@@ -51,9 +51,7 @@ public class Listener  implements MqttCallback {
 	
 	
 	@Autowired
-	private ReadingsRepository leituraRepository;
 
-	private ReadingsResouces o = new ReadingsResouces();
     /** The broker url. */
     private static final String brokerUrl = "tcp://alvesvitor.ddns.net:80";
 
@@ -64,7 +62,7 @@ public class Listener  implements MqttCallback {
     public static final String topic = "#";
     private Database db = new Database();
     private DataSource dataSource;
-    
+    private MemoryPersistence hey = new MemoryPersistence() ; 
     
 
     
