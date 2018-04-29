@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.dai.webServer.Mqtt.Listener;
 import com.dai.webServer.Objects.Readings;
 import com.dai.webServer.Repos.ReadingsRepository;
 
@@ -20,7 +21,7 @@ import com.dai.webServer.Repos.ReadingsRepository;
 @RequestMapping("/")
 @RestController
 public class ReadingsResouces {
-	
+
 	@Autowired
 	private ReadingsRepository leituraRepository;
 	

@@ -7,7 +7,7 @@ import com.dai.webServer.Mqtt.Listener;
 
 
 @SpringBootApplication
-public class WebServerApplication extends Listener {
+public class WebServerApplication {
 
 
 	public void startServer() {

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+import com.dai.db.Database;
 import com.dai.webServer.Objects.Readings;
 import com.dai.webServer.Repos.ReadingsRepository;
 import com.dai.webServer.Resources.ReadingsResouces;
@@ -47,7 +48,8 @@ import org.json.simple.JSONObject;
  * 
  * @author Yasith Lokuge
  */
-public class Listener implements MqttCallback {
+public class Listener  implements MqttCallback {
+	
 	
 	@Autowired
 	private ReadingsRepository leituraRepository;
@@ -61,8 +63,12 @@ public class Listener implements MqttCallback {
 
     /** The topic. */
     public static final String topic = "#";
-    
+    private Database db = new Database();
     private DataSource dataSource;
+    
+    
+
+    
     
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -164,13 +170,9 @@ public class Listener implements MqttCallback {
     
    
  public String insert(String message)  {
-	 
-	        System.out.println( "shit");
-			JSONObject obj = new JSONObject();
-            obj.put("attr", "{\n\t\"content-spec\":\"urn:spec://eclipse.org/unide/measurement-message#v2\",\n\t\"device\":\n\t{\n\t\t\"deviceID\":\"1883957\"\n\t},\n\t\"sensor\":\n\t{\n\t\"humidity\":\"52.00\",\n\t\"motion\":\"motion detected\",\n\t\"ldr\":\"390\",\n\t\"temperature\":\"29.00\"\n\t},\n\t\"alarm\":\n\t{\n\t\"state\":\"ON\"\n\t},\n\t\"color\":\n\t{\"r\":255,\"g\":0}\n}");
-            Timestamp d = new Timestamp(System.currentTimeMillis());
-	        Readings b = new Readings(101, "faksdfj", d);
-	        o.criarNaoEstatico(o, b);
+	 		Readings nova = new Readings();
+	 		nova.setAttr("{\n\t\"content-spec\":\"urn:spec://eclipse.org/unide/measurement-message#v2\",\n\t\"device\":\n\t{\n\t\t\"deviceID\":\"1883957\"\n\t},\n\t\"sensor\":\n\t{\n\t\"humidity\":\"52.00\",\n\t\"motion\":\"motion detected\",\n\t\"ldr\":\"390\",\n\t\"temperature\":\"29.00\"\n\t},\n\t\"alarm\":\n\t{\n\t\"state\":\"ON\"\n\t},\n\t\"color\":\n\t{\"r\":255,\"g\":0}\n}");
+	 		db.insert(message);
             return "shit";	
 	 
  }
