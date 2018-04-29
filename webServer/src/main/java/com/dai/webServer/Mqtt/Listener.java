@@ -132,7 +132,7 @@ public class Listener  implements MqttCallback {
      * Throwable)
      */
     public void connectionLost(Throwable arg0) {
-
+      this.subscribe(topic);
     }
 
     /*
