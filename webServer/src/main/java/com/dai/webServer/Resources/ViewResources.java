@@ -35,7 +35,7 @@ public class ViewResources {
 	@GetMapping("/view/{email}")
 	public List<View> getViews(@PathVariable String email) {
 		
-		return ViewRepository.findThem(email);
+		return ViewRepository.findAll();
 	}
 	
 	/*
