@@ -8,6 +8,9 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import com.dai.webServer.Conexao.Conexao;
+import com.dai.webServer.Objects.Analytics;
+
 
 public class Database {
 
@@ -106,5 +109,4 @@ public class Database {
 		return new java.sql.Timestamp(today.getTime());
 
 	}
-
 }
