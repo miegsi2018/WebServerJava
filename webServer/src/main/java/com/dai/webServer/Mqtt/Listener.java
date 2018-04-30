@@ -10,7 +10,6 @@ import com.dai.webServer.Objects.Readings;
 import com.dai.webServer.Repos.ReadingsRepository;
 import com.dai.webServer.Resources.ReadingsResouces;
 
-
 import javax.sql.DataSource;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -97,6 +96,9 @@ public class Listener  implements MqttCallback {
     String a = generator.toString();
 	return a;
     }
+    
+    
+    
     public void subscribe(String clientId ) {
 	 
 
@@ -179,17 +181,24 @@ public class Listener  implements MqttCallback {
         System.out.println(db.getCurrentTimeStamp());
  
         System.out.println("Mqtt msg : " + message.toString());
-
-        insert(message.toString());   
+        byte[] hey = message.getPayload();
+       
+        String be = hey.toString();
+        String str = new String(hey, "UTF-8"); // for UTF-8 encoding
+        insert(str);   
     }
     
     
     
    
  public void insert(String message) throws ParseException, SQLException  {
-	 		String messageFormatted = StringEscapeUtils.escapeJava(message);
-	 		System.out.println(messageFormatted);
-	 		db.insert(messageFormatted);
+
+	 
+	 		String messsageFomatted = StringEscapeUtils.unescapeJson(message);
+
+	 		String messageFomatted = StringEscapeUtils.escapeJson(message);
+	 		System.out.println(messageFomatted);
+	 		db.insert(messageFomatted);
 	 		
        
  }
