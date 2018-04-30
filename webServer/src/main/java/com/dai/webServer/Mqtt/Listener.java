@@ -39,6 +39,7 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.JsonParser;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.json.simple.JSONObject;
@@ -62,10 +63,8 @@ public class Listener  implements MqttCallback {
     private static final String brokerUrl = "tcp://alvesvitor.ddns.net:80";
 
     /** The client id. */
-    private static final String clientId = "JavaSample";
     Random rand = new Random();
 
-    private int  n = rand.nextInt(8000) + 5;
     /** The topic. */
     public static final String topic = "#";
     private Database db = new Database();
@@ -149,7 +148,6 @@ public class Listener  implements MqttCallback {
     	try {
 			wait(1000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
       this.subscribe(topic);
@@ -182,8 +180,6 @@ public class Listener  implements MqttCallback {
  
         System.out.println("Mqtt msg : " + message.toString());
         byte[] hey = message.getPayload();
-       
-        String be = hey.toString();
         String str = new String(hey, "UTF-8"); // for UTF-8 encoding
         insert(str);   
     }
@@ -194,9 +190,9 @@ public class Listener  implements MqttCallback {
  public void insert(String message) throws ParseException, SQLException  {
 
 	 
-	 		String messsageFomatted = StringEscapeUtils.unescapeJson(message);
 
 	 		String messageFomatted = StringEscapeUtils.escapeJson(message);
+
 	 		System.out.println(messageFomatted);
 	 		db.insert(messageFomatted);
 	 		
