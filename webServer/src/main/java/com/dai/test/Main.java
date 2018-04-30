@@ -1,6 +1,8 @@
 package com.dai.test;
+import com.dai.db.AnalyticsDB;
 import com.dai.webServer.*;
 import com.dai.webServer.Mqtt.*;
+import com.dai.webServer.Objects.Analytics;
 
 public class Main extends Listener{
 
@@ -11,5 +13,12 @@ public class Main extends Listener{
 		listener.subscribe(topic);
 		WebServerApplication webServer = new WebServerApplication();
 		webServer.startServer();
+		
+		AnalyticsDB analytics = new AnalyticsDB();
+		
+		analytics.read();
+		
+		
 	}
+
 }
