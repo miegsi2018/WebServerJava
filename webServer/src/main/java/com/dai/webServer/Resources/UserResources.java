@@ -3,7 +3,8 @@ package com.dai.webServer.Resources;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
-
+import com.dai.webServer.Mqtt.*;
+import org.json.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -108,6 +109,25 @@ public User findUserByEmail(String email) {
 		
 	}
 	
+
+
+	@PostMapping("/changeLight")
+	public void createUser(@RequestBody String light) {
+		JSONObject a = new JSONObject();
+		
+		Publisher pub = new Publisher();	
+		pub.sendMessage("heyhey", "fds", "que bom");	
+
+
+
+	}
+	
+
+
+
+
+
+
 	@PutMapping("/utilizador/{id}")
 	public ResponseEntity<Object> updateUser(@RequestBody User utilizador, @PathVariable long id) {
 

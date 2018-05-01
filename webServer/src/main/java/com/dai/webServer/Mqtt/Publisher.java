@@ -32,27 +32,30 @@ public class Publisher {
      *
      * @param args the arguments
      */
-    public static void main(String[] args) {
-
-        String topic = "Temperature";
-        String content = "32";
+public static void sendMessage(String topic, String message, String id) {
+        String mqttTopic = topic;
+        String content = message;
         int qos = 2;
         String broker = "tcp://alvesvitor.ddns.net:80";
-        String clientId = "#";
+        String clientId = id;
         MemoryPersistence persistence = new MemoryPersistence();
 
         try {
             
             MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
             MqttConnectOptions connOpts = new MqttConnectOptions();
+    	    connOpts.setUserName("dai");
+    	    String password = "12345678";
+ 
+    	    connOpts.setPassword(password.toCharArray());
             connOpts.setCleanSession(true);
             System.out.println("Connecting to broker: " + broker);
             sampleClient.connect(connOpts);
             System.out.println("Connected");
             System.out.println("Publishing message: " + content);
-            MqttMessage message = new MqttMessage(content.getBytes());
-            message.setQos(qos);
-            sampleClient.publish(topic, message);
+            MqttMessage mqttMessage = new MqttMessage(content.getBytes());
+            mqttMessage.setQos(qos);
+            sampleClient.publish(mqttTopic, mqttMessage);
             System.out.println("Message published");
             sampleClient.disconnect();
             System.out.println("Disconnected");

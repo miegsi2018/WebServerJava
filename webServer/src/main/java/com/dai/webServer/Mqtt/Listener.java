@@ -1,21 +1,9 @@
 package com.dai.webServer.Mqtt;
-import java.net.URI;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 
 import com.dai.db.Database;
-import com.dai.webServer.Objects.Readings;
-import com.dai.webServer.Repos.ReadingsRepository;
-import com.dai.webServer.Resources.ReadingsResouces;
 
-import javax.sql.DataSource;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.json.*;
 import org.apache.commons.text.RandomStringGenerator;
 /*******************************************************************************
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,14 +25,8 @@ import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
-import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.json.JsonParser;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.json.simple.JSONObject;
 import java.util.Random;
-import static org.apache.commons.text.CharacterPredicates.DIGITS;
 import static org.apache.commons.text.CharacterPredicates.LETTERS;
 /**
  * The Class Listner.
@@ -195,11 +177,7 @@ public class Listener  implements MqttCallback {
 
 	 		System.out.println(messageFomatted);
 	 		db.insert(messageFomatted);
-	 		
-       
+ 		
+		       
  }
- 
- 
- 
-
 }
