@@ -1,5 +1,7 @@
 package com.dai.webServer.Resources;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,15 +16,23 @@ import com.dai.webServer.Objects.User;
 @RestController
 public class AnalyticsResources {
 	
-	@GetMapping("/media")
+	//IDK tho
+	@PostMapping("/mediaTemp")
 
-	public String getTemp(@RequestBody Analytics analytics) {
+		public int verifyTemp(@RequestBody Analytics analytics) {
 		
-		String temp = analytics.getTemperatura();
-	
-		return temp;
+		Timestamp dataI = analytics.getDataI();
+		Timestamp dataF = analytics.getDataF();
+		
+		
+		
+		
+			
+		
+		return analytics.getTemperatura();
 	
 	
 	}
+
 
 }

@@ -43,15 +43,15 @@ public class ReadingsResouces {
 	}
 	
 	
-public String criarNaoEstatico(ReadingsResouces o, Readings b) {
+	public String criarNaoEstatico(ReadingsResouces o, Readings b) {
+		
 	
-
-	o.createLeitura(b); 
-	 
-	
-return "shit";	
-	
-}
+		o.createLeitura(b); 
+		 
+		
+	return "shit";	
+		
+	}
 	
 	
 	
