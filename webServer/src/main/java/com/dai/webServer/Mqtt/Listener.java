@@ -48,7 +48,7 @@ public class Listener  implements MqttCallback {
     Random rand = new Random();
 
     /** The topic. */
-    public static final String topic = "#";
+    public static final String topic = "data/#";
     private Database db = new Database();
 
     
@@ -173,10 +173,9 @@ public class Listener  implements MqttCallback {
 
 	 
 
-	 		String messageFomatted = StringEscapeUtils.escapeJson(message);
 
-	 		System.out.println(messageFomatted);
-	 		db.insert(messageFomatted);
+	 		System.out.println(message);
+	 		db.insert(message);
  		
 		       
  }
