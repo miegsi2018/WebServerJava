@@ -24,7 +24,9 @@ public class AnalyticsDB {
     
     
     
-    public void read() {
+    public void read(Analytics analytics) {
+    	
+    	System.out.println("****entrou");
     	
 
         PreparedStatement stmt = null;
@@ -33,23 +35,22 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT * FROM readings WHERE data = ?");
-            stmt.setString(1, "2018-04-29 21:48:37");
+        	System.out.println("****try");
+        	
+            stmt = con.prepareStatement("select AVG(JSON_EXTRACT(attr, '$.sensor.temperature')) from readings where data between ? and ?");
+            stmt.setTimestamp(1, analytics.getDataI());
+            stmt.setTimestamp(2, analytics.getDataF());
             
             rs = stmt.executeQuery();
             
 
             while (rs.next()) {
             	
-            	Analytics analytics = new Analytics();
+            	Analytics a= new Analytics();
             	
-            	analytics.setTemperatura("22.5");
+            	a.setTemperatura(rs.getInt("AVG(JSON_EXTRACT(attr, '$.sensor.temperature'))"));
             	
-                 
-            	System.out.println(rs.getString("attr"));
-            	System.out.println(rs.getString("data"));
             }
-            
             
 
         } catch (SQLException ex) {

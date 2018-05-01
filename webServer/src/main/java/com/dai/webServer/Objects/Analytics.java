@@ -1,5 +1,7 @@
 package com.dai.webServer.Objects;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -11,18 +13,28 @@ public class Analytics {
 	
 	private String humidade;
 	
-	private String temperatura;
+	private int temperatura;
+	
+	private java.sql.Timestamp dataI;
+	
+	private java.sql.Timestamp dataF;
+	
 	
 	public Analytics() {
 		super();
 	}
+	
 
-	public Analytics(int id, String humidade, String temperatura) {
+	public Analytics(int id, String humidade, int temperatura, Timestamp dataI, Timestamp dataF) {
 		super();
 		this.id = id;
 		this.humidade = humidade;
 		this.temperatura = temperatura;
+		this.dataI = dataI;
+		this.dataF = dataF;
 	}
+
+
 
 	public int getId() {
 		return id;
@@ -40,13 +52,33 @@ public class Analytics {
 		this.humidade = humidade;
 	}
 
-	public String getTemperatura() {
+
+	public java.sql.Timestamp getDataI() {
+		return dataI;
+	}
+
+	public void setDataI(java.sql.Timestamp dataI) {
+		this.dataI = dataI;
+	}
+
+	public java.sql.Timestamp getDataF() {
+		return dataF;
+	}
+
+	public void setDataF(java.sql.Timestamp dataF) {
+		this.dataF = dataF;
+	}
+
+
+	public int getTemperatura() {
 		return temperatura;
 	}
 
-	public void setTemperatura(String temperatura) {
+
+	public void setTemperatura(int temperatura) {
 		this.temperatura = temperatura;
 	}
+	
 	
 
 }
