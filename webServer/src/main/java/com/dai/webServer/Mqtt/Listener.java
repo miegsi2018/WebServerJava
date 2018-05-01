@@ -48,7 +48,7 @@ public class Listener  implements MqttCallback {
     Random rand = new Random();
 
     /** The topic. */
-    public static final String topic = "data/#";
+    public static final String topic = "#";
     private Database db = new Database();
 
     
