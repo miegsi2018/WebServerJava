@@ -4,7 +4,9 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import com.dai.webServer.Mqtt.*;
-import org.json.*;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -112,11 +114,24 @@ public User findUserByEmail(String email) {
 
 
 	@PostMapping("/changeLight")
-	public void createUser(@RequestBody String light) {
-		JSONObject a = new JSONObject();
+	public void createUser(@RequestBody String light) throws ParseException {
+
 		
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parser.parse(light);
+	       /*   */
+		/* Object dataF = jsonObject.get("id"); */
+
+		String topic = (String) jsonObject.get("topic");
+		
+		String id = (String) jsonObject.get("id");
+		
+		String rgb = (String) jsonObject.get("rgb");	
+
 		Publisher pub = new Publisher();	
-		
+		System.out.println(topic);
+		System.out.println(id);
+		System.out.println(rgb);
 		pub.sendMessage("heyhey", "fds", "que bom");	
 
 
