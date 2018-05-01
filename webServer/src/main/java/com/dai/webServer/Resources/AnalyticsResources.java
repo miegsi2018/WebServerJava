@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dai.db.AnalyticsDB;
 import com.dai.webServer.Objects.Analytics;
 import com.dai.webServer.Objects.User;
 
@@ -24,9 +25,9 @@ public class AnalyticsResources {
 		Timestamp dataI = analytics.getDataI();
 		Timestamp dataF = analytics.getDataF();
 		
+		AnalyticsDB a = new AnalyticsDB();
 		
-		
-		
+		a.read(analytics);
 			
 		
 		return analytics.getTemperatura();

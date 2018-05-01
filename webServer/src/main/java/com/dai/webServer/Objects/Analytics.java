@@ -5,6 +5,8 @@ import java.sql.Timestamp;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Analytics {
 	
@@ -14,9 +16,9 @@ public class Analytics {
 	private String humidade;
 	
 	private int temperatura;
-	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
 	private java.sql.Timestamp dataI;
-	
+	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss.SSS")
 	private java.sql.Timestamp dataF;
 	
 	
