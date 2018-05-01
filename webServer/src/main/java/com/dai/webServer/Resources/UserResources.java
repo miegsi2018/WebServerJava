@@ -116,6 +116,7 @@ public User findUserByEmail(String email) {
 		JSONObject a = new JSONObject();
 		
 		Publisher pub = new Publisher();	
+		
 		pub.sendMessage("heyhey", "fds", "que bom");	
 
 

@@ -14,6 +14,8 @@ import ch.qos.logback.classic.Logger;
 
 public class AnalyticsDB {
 	
+	private String value;
+	
 	java.sql.Connection con;
 	
 	Analytics a = new Analytics();
@@ -23,8 +25,9 @@ public class AnalyticsDB {
     }
     
     
-    
-    public void read(Analytics analytics) {
+    public String read(String dataI, String dataF) {
+    	
+
     	
     	System.out.println("****entrou");
     	
@@ -38,19 +41,13 @@ public class AnalyticsDB {
         	System.out.println("****try");
         	
             stmt = con.prepareStatement("select AVG(JSON_EXTRACT(attr, '$.sensor.temperature')) from readings where data between ? and ?");
-            stmt.setTimestamp(1, analytics.getDataI());
-            stmt.setTimestamp(2, analytics.getDataF());
+            stmt.setString(1, dataI);
+            stmt.setString(2, dataF);
             
             rs = stmt.executeQuery();
             
-
-            while (rs.next()) {
-            	
-            	Analytics a= new Analytics();
-            	
-            	a.setTemperatura(rs.getInt("AVG(JSON_EXTRACT(attr, '$.sensor.temperature'))"));
-            	
-            }
+            value = rs.getString("AVG(JSON_EXTRACT(attr, '$.sensor.temperature'))");
+            return value;
             
 
         } catch (SQLException ex) {
@@ -58,6 +55,7 @@ public class AnalyticsDB {
         } finally {
             Conexao.fechaConexao(con, stmt, rs);
         }
+		return value;
 
     }
     
