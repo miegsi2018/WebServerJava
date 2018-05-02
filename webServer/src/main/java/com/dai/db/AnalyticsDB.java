@@ -24,7 +24,8 @@ public class AnalyticsDB {
     
     
     public String read(String dataI, String dataF) {
-    	
+    System.out.println(dataI);	    
+    System.out.println(dataF);
     	String value = null;
     	
     	System.out.println("****entrou");
@@ -36,10 +37,10 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) FROM readings");
-        	
-            //stmt.setString(1, dataI);
-            //stmt.setString(2, dataF);
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) FROM readings WHERE data BETWEEN ? and ? and (data is not null or data != 0)");
+	     
+        	stmt.setString(1, dataI);
+		stmt.setString(2, dataF);
         	
         	rs = stmt.executeQuery();
         	
@@ -50,9 +51,11 @@ public class AnalyticsDB {
                 System.out.println(rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.temperature'))"));
                 
                 value = rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.temperature'))");
+		System.out.println(value);
             }
-           
-            return value;
+          
+	   return value;
+            /* return value; */
             
 
         } catch (SQLException ex) {

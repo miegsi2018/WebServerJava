@@ -23,7 +23,6 @@ import com.dai.webServer.Objects.User;
 @RestController
 public class AnalyticsResources {
 	
-	//IDK tho
 	@PostMapping("/mediaTemp")
 	public String verifyTemp(@RequestBody String analytics) throws ParseException {
 		
@@ -36,7 +35,6 @@ public class AnalyticsResources {
 		String dataIn = (String) jsonObject.get("dataI");
 		
 		String dataFi = (String) jsonObject.get("dataF");
-		
 		AnalyticsDB a = new AnalyticsDB();
 		
 		System.out.println(dataIn);
