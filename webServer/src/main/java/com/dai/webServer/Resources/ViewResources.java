@@ -20,8 +20,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.dai.webServer.Objects.View;
 import com.dai.webServer.Repos.ViewRepository;
 
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 
 @CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
 @RequestMapping("/")
@@ -37,7 +35,10 @@ public class ViewResources {
 		
 		return ViewRepository.findAll();
 	}
-	
+
+
+
+		
 	/*
 	//IDK tho
 	@PostMapping("/login")

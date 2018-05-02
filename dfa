@@ -1,0 +1,340 @@
+[33mcommit e239f4fe1ba0c55d5c5f5bd9c0e961ffe4ef766b[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Wed May 2 01:05:23 2018 +0100
+
+    asd
+
+[33mcommit 36275e9f321fc044d609b6295b5746d0bc3b7d09[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue May 1 04:22:16 2018 +0100
+
+    esta quase tiago
+
+[33mcommit c93c48b01ce75f4e80ca367523560f77fe9eff40[m
+Merge: fedae0e 63dca6e
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue May 1 04:02:14 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit fedae0ebd003ec545c25cffd0ad16e8c6450f4a7[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue May 1 04:02:08 2018 +0100
+
+    fds
+
+[33mcommit 63dca6e2c84a43ea0b269995e0f775105ba99b86[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Tue May 1 03:29:39 2018 +0100
+
+    temp
+
+[33mcommit 97210588504cf8d6217413e1677ed5736e677eeb[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Tue May 1 01:49:10 2018 +0100
+
+    nbmn
+
+[33mcommit 29375021e82ee7382b0477a1381fe3231b43905a[m
+Merge: 1c4e480 7df5104
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue May 1 01:46:12 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit 1c4e480937b65bc313faf03733d049f7542061a8[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue May 1 01:46:01 2018 +0100
+
+    fix
+
+[33mcommit 7df51048304c5147d3c459f23ff3c188885fd0a9[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Tue May 1 01:40:38 2018 +0100
+
+    medTemperatur
+
+[33mcommit dca2e78a6456838001de54d54000e74b043e5037[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue May 1 01:38:52 2018 +0100
+
+    Lots
+
+[33mcommit 556336c655cd1c79595045c72e3c7a13b25a2212[m
+Merge: a6b5e10 1376f9b
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 20:22:38 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit a6b5e10893db04094a290e61d438d8171715721a[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 20:22:27 2018 +0100
+
+    a lot
+
+[33mcommit 1376f9b2141b05e7980ad46b1711e3186f2d6a10[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Mon Apr 30 19:05:47 2018 +0100
+
+    lot of shit
+
+[33mcommit 29e9da31e82937c18a039fd814937eb774bf0552[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 03:44:28 2018 +0100
+
+    falta json goddanm
+
+[33mcommit 25adbff046509dce02458cc607a37e829dc06853[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 01:36:56 2018 +0100
+
+    ea
+
+[33mcommit d6b2708a3ebf19dd2c9eab802cddce6ff4bd1e28[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 00:56:59 2018 +0100
+
+    database again
+
+[33mcommit 3fc0003ffd6e44df8d653e060df7f4102ff33e96[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 00:16:15 2018 +0100
+
+    another
+
+[33mcommit e79c70b59bd1ad83af6d1720aafbfb8a234816c8[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Mon Apr 30 00:14:19 2018 +0100
+
+    new
+
+[33mcommit 401623bb07c769ac76cd9781a6ee537a0871673f[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sun Apr 29 22:20:01 2018 +0100
+
+    na
+
+[33mcommit ccf8a738436d3efb70b54c7b3e324a4b4adf9996[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sun Apr 29 21:40:37 2018 +0100
+
+    database shit
+
+[33mcommit 8d3d8a4c26d408956a4879f62c3b7e1e1dc28995[m
+Merge: bf9da60 b420eec
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sun Apr 29 21:09:42 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit bf9da60c45f6902948e6ba760fcd21d8673bd75d[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sun Apr 29 21:09:15 2018 +0100
+
+    db working!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+[33mcommit b420eec3ce4d917ae9f099e28a7bce16dbc5ce6e[m
+Merge: 192c5f1 4d53f03
+Author: naishes <32779815+naishes@users.noreply.github.com>
+Date:   Sun Apr 29 04:19:33 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit 4d53f03c8e47a46a7569d451b1a8883da1b99c93[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sat Apr 28 18:36:43 2018 +0100
+
+    Falta acabar o camel
+
+[33mcommit 192c5f13cadf742070b0f0f74248cc8cc8947150[m
+Author: naishes <32779815+naishes@users.noreply.github.com>
+Date:   Sat Apr 28 12:43:21 2018 +0100
+
+    I did something
+
+[33mcommit b772ce1daebb61f415166d089385a74c9fc02b35[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sat Apr 28 09:32:29 2018 +0100
+
+    Muita coisa
+
+[33mcommit d9db42047f6bfa22c8e1bf8a680301ee08dbfbce[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 19:40:36 2018 +0100
+
+    tiago esta quase
+
+[33mcommit cd9a43b91e6bc8ddb73a9ceef4d143d524b9cc7e[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 02:43:07 2018 +0100
+
+    hey hey baby
+
+[33mcommit 325998fad909380f2a8e01cca67624faa7587337[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 02:19:03 2018 +0100
+
+    this
+
+[33mcommit 984c62cb0adb6761532feb4f7f75550ed5bda279[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 02:14:02 2018 +0100
+
+    dude
+
+[33mcommit c35c4c38b845356e2646db824ec8c79073510cd0[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 01:01:43 2018 +0100
+
+    working again
+
+[33mcommit 09c91d72ff5d12722b1bd8541bb14627e8085547[m
+Merge: c834f53 c2e9b6f
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 00:48:21 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit c834f53b6ab6b817b756b22bf0c73628517a991e[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 27 00:47:23 2018 +0100
+
+    Base de dados
+
+[33mcommit c2e9b6f504d661711a5540fde3f89201701c59de[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Thu Apr 26 23:29:15 2018 +0100
+
+    fuck
+
+[33mcommit 4e8e7d27d7784d35a32bc263b688d8750041300e[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Tue Apr 24 23:28:54 2018 +0100
+
+    leituras
+
+[33mcommit 7b394a070df803c00b157e9b3b8563f9e83108ae[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue Apr 24 20:41:37 2018 +0100
+
+    final
+
+[33mcommit 54db4aa7e3670d46e39d39bf4d008a026751ef7b[m
+Merge: c4fd8c0 def6d4c
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue Apr 24 19:36:21 2018 +0100
+
+    fuck
+
+[33mcommit c4fd8c0046e6b455f9288680b0da0e7bab29961e[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Tue Apr 24 19:32:34 2018 +0100
+
+    Novxx package
+
+[33mcommit def6d4c2b7726c4a963e9ceac5aa5ba7c894e0fc[m
+Merge: 97a01c9 876a556
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Sat Apr 21 12:35:52 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit 97a01c9f6eb2e41a994854d79b871353e5a8720c[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Sat Apr 21 12:35:37 2018 +0100
+
+    registo Utilizadores
+
+[33mcommit 876a5561730270732262e13838d3f09c5207b6e4[m
+Merge: 61ce6a8 4c7bf29
+Author: Rui Marques <a.marques1967@gmail.com>
+Date:   Sat Apr 21 10:39:16 2018 +0100
+
+    Merge branch 'master' of https://github.com/miegsi2018/WebServerJava
+
+[33mcommit 61ce6a8b5070daf5994566f741fd37b38b25e44a[m
+Author: Rui Marques <a.marques1967@gmail.com>
+Date:   Sat Apr 21 10:39:07 2018 +0100
+
+    I've lost my Java virginity now
+    
+    Descansem filhos o pai chegou para resolver os vossos problemas. Éder resolve no prolongamneto confiem!
+
+[33mcommit 4c7bf294b3856334681e609ff29d65cd9cb2e128[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Sat Apr 21 10:07:51 2018 +0100
+
+    atualização de pakages
+
+[33mcommit c45c4d979b12e4f540228d201b96b7d23faeb5b6[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Thu Apr 19 23:18:04 2018 +0100
+
+    listener
+
+[33mcommit c64fea867846b3abf5ab3c8ec58a9f11323ba094[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Thu Apr 19 23:02:27 2018 +0100
+
+    Mudanca nos packages
+
+[33mcommit 55097ff295ce09143d598f977bb5717e605ebe8a[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Thu Apr 19 03:30:38 2018 +0100
+
+    alot
+
+[33mcommit c7b42d973e814fc44bfc05d9a660cb149bbdf78d[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Thu Apr 19 03:02:42 2018 +0100
+
+    mais uma classe meus putos
+
+[33mcommit 7fce855bc93f7510af35f1a1565b3e5be31153c5[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Wed Apr 18 19:20:10 2018 +0100
+
+    Funciona post
+
+[33mcommit 564fd7f723c1a84ccc39f33d7a7cc495a079eee4[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sat Apr 14 12:10:01 2018 +0100
+
+    q:wq
+
+[33mcommit 62c0133ea61ceafb5ed602a2ea76830af77f7489[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sat Apr 14 11:23:37 2018 +0100
+
+    Login crap
+
+[33mcommit be175a19703a733c0fc2b25e30962cb9207c604a[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sat Apr 14 09:42:41 2018 +0100
+
+    Thongs
+
+[33mcommit b110ffb34e7e6ffb52a01596398b124a4d2fb934[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Sat Apr 14 09:21:09 2018 +0100
+
+    Implementação:
+
+[33mcommit eca34770238bf4aa5f4e334eadc8bbbed91908d9[m
+Author: vitormiegsi <vhoa1995@hotmail.com>
+Date:   Fri Apr 13 18:37:06 2018 +0100
+
+    Implementação Listener mqtt
+
+[33mcommit 38d4040563578a86cda06672016c5c8ee2529963[m
+Author: miegsi2018 <36776735+miegsi2018@users.noreply.github.com>
+Date:   Fri Apr 13 16:12:37 2018 +0100
+
+    Add files via upload
+
+[33mcommit 6e22bbe507567445d3be6443f02bdcdba8371b72[m
+Author: Tiagoacb <33163740+Tiagoacb@users.noreply.github.com>
+Date:   Fri Apr 13 16:10:24 2018 +0100
+
+    Initial commit

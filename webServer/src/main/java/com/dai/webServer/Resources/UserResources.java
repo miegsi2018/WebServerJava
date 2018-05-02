@@ -126,13 +126,15 @@ public User findUserByEmail(String email) {
 		
 		String id = (String) jsonObject.get("id");
 		
-		String rgb = (String) jsonObject.get("rgb");	
+
+		JSONObject rgsJson = (JSONObject) jsonObject.get("rgb");
+		String rgb = (String) rgsJson.toJSONString();
 
 		Publisher pub = new Publisher();	
 		System.out.println(topic);
 		System.out.println(id);
 		System.out.println(rgb);
-		pub.sendMessage("heyhey", "fds", "que bom");	
+		pub.sendMessage(topic, rgb, id);	
 
 
 
