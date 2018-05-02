@@ -14,8 +14,6 @@ import ch.qos.logback.classic.Logger;
 
 public class AnalyticsDB {
 	
-	private String value;
-	
 	java.sql.Connection con;
 	
 	Analytics a = new Analytics();
@@ -27,7 +25,7 @@ public class AnalyticsDB {
     
     public String read(String dataI, String dataF) {
     	
-
+    	String value = null;
     	
     	System.out.println("****entrou");
     	
@@ -38,15 +36,22 @@ public class AnalyticsDB {
 
         try {
         	
-        	System.out.println("****try");
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) FROM readings");
         	
-            stmt = con.prepareStatement("select AVG(JSON_EXTRACT(attr, '$.sensor.temperature')) from readings where data between ? and ?");
-            stmt.setString(1, dataI);
-            stmt.setString(2, dataF);
-            
-            rs = stmt.executeQuery();
-            
-            value = rs.getString("AVG(JSON_EXTRACT(attr, '$.sensor.temperature'))");
+            //stmt.setString(1, dataI);
+            //stmt.setString(2, dataF);
+        	
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.temperature'))"));
+                
+                value = rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.temperature'))");
+            }
+           
             return value;
             
 
@@ -54,8 +59,48 @@ public class AnalyticsDB {
             
         } finally {
             Conexao.fechaConexao(con, stmt, rs);
+            return value;
         }
-		return value;
+		
+
+    }
+    
+ public String readHumidade(String dataI, String dataF) {
+    	
+    	String value = null;
+    	    	
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.humidity')) FROM readings");
+        	
+            //stmt.setString(1, dataI);
+            //stmt.setString(2, dataF);
+        	
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.humidity'))"));
+                
+                value = rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.humidity'))");
+            }
+           
+            return value;
+            
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
 
     }
     
