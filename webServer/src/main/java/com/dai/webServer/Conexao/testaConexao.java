@@ -12,12 +12,12 @@ import com.dai.webServer.Objects.Analytics;
  * @author Tiago Bento
  */
 public class testaConexao {
-    
-   public static void main(String[] args) throws SQLException {
-         Connection connection = new Conexao().fazConexao();
-         System.out.println("Conexão aberta!");
-
-         connection.close();
-     }
-    
+/*      */
+   /* public static void main(String[] args) throws SQLException { */
+   /*       Connection connection = new Conexao().fazConexao(); */
+   /*       System.out.println("Conexão aberta!"); */
+   /*  */
+   /*       connection.close(); */
+   /*   } */
+   /*   */
 }
