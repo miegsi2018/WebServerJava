@@ -23,14 +23,11 @@ import com.dai.webServer.Objects.User;
 @RestController
 public class AnalyticsResources {
 	
-	@PostMapping("/mediaTemp")
+	@PostMapping("/avgTemp")
 	public String verifyTemp(@RequestBody String analytics) throws ParseException {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
-		
-		Object dataI = jsonObject.get("dataI");
-		Object dataF = jsonObject.get("dataF");
 		
 		String dataIn = (String) jsonObject.get("dataI");
 		
@@ -39,13 +36,32 @@ public class AnalyticsResources {
 		
 		System.out.println(dataIn);
 		System.out.println(dataFi);
-		
-		String fim = a.read(dataIn, dataFi);
+		String fim = a.read( dataIn, dataFi);
 		
 		return fim;
 	
 	
 	}
 
+	
+	@PostMapping("/avgHum")
+	public String verifyHum(@RequestBody String analytics) throws ParseException {
+		
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
+		
+		String dataIn = (String) jsonObject.get("dataI");
+		
+		String dataFi = (String) jsonObject.get("dataF");
+		AnalyticsDB a = new AnalyticsDB();
+		
+		System.out.println(dataIn);
+		System.out.println(dataFi);
+		String fim = a.readHumidade( dataIn, dataFi);
+		
+		return fim;
+	
+	
+	}
 
 }
