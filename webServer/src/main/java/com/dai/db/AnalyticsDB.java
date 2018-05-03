@@ -8,9 +8,6 @@ import java.sql.SQLException;
 import com.dai.webServer.Conexao.Conexao;
 import com.dai.webServer.Objects.Analytics;
 
-import ch.qos.logback.classic.Level;
-import ch.qos.logback.classic.Logger;
-
 
 public class AnalyticsDB {
 	

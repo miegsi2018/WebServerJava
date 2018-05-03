@@ -1,23 +1,14 @@
 package com.dai.webServer.Resources;
 
-import java.sql.Timestamp;
-import java.util.Map;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dai.db.AnalyticsDB;
-import com.dai.webServer.Objects.Analytics;
-import com.dai.webServer.Objects.User;
-
 
 
 @RestController
