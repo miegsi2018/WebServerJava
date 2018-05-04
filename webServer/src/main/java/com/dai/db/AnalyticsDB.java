@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import com.dai.webServer.Conexao.Conexao;
 import com.dai.webServer.Objects.Analytics;
 
+import org.json.simple.JSONObject;
 
 public class AnalyticsDB {
 	
@@ -101,14 +102,13 @@ public class AnalyticsDB {
     }
     
     
-    public String returnGraph(String dataI, String dataF) {
-    	String value = null;
-    	
- 	StringBuilder mensagem = new StringBuilder();
+    public JSONObject returnGraph(String dataI, String dataF) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-
+        
+        JSONObject fim = new JSONObject();
+        
 
         try {
         	
@@ -119,24 +119,24 @@ public class AnalyticsDB {
         	
         	rs = stmt.executeQuery();
         	
-        	System.out.println(rs);
         	while (rs.next()) {
+        		
+        		fim.put("temp", rs.getString("temp"));
+        		        		
 
-                System.out.println(rs.getString("temp, data"));
             }
           
-	   return value;
-            /* return value; */
+        	//return value;
             
 
         } catch (SQLException ex) {
             
         } finally {
             Conexao.fechaConexao(con, stmt, rs);
-            return value;
+            
+            return fim;
         }
 		
-
     }
  
 

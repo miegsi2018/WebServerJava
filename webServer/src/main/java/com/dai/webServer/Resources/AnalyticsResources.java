@@ -1,6 +1,9 @@
 package com.dai.webServer.Resources;
 
 
+import java.util.List;
+
+import org.json.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -71,7 +74,7 @@ public class AnalyticsResources {
 	}
 	
 	@PostMapping("/returnGraph")
-	public String returnGraph(@RequestBody String analytics) throws ParseException {
+	public JSONObject returnGraph(@RequestBody String analytics) throws ParseException {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
@@ -83,8 +86,8 @@ public class AnalyticsResources {
 		
 		System.out.println(dataIn);
 		System.out.println(dataFi);
-		String fim = a.returnGraph( dataIn, dataFi);
 		
+		JSONObject fim = a.returnGraph( dataIn, dataFi);
 		return fim;
 	
 	

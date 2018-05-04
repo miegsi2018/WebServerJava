@@ -28,16 +28,11 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.Random;
 import static org.apache.commons.text.CharacterPredicates.LETTERS;
-/**
- * The Class Listner.
- * 
- * @author Yasith Lokuge
- */
+
 
 
 
 public class Listener  implements MqttCallback {
-	
 	
 	@Autowired
 
@@ -51,23 +46,6 @@ public class Listener  implements MqttCallback {
     public static final String topic = "#";
     private Database db = new Database();
 
-    
-   
-
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
- 
-
-    /**
-     * Subscribe.
-     *
-     * @param topic
-     *            the topic
-     */
     
     public String random() {
     RandomStringGenerator generator = new RandomStringGenerator.Builder()
@@ -116,16 +94,6 @@ public class Listener  implements MqttCallback {
         }
     }
 
-    
-    
-  
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.eclipse.paho.client.mqttv3.MqttCallback#connectionLost(java.lang.
-     * Throwable)
-     */
     public void connectionLost(Throwable arg0) {
     	try {
 			wait(1000);
@@ -135,28 +103,12 @@ public class Listener  implements MqttCallback {
       this.subscribe(topic);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.eclipse.paho.client.mqttv3.MqttCallback#deliveryComplete(org.eclipse.
-     * paho.client.mqttv3.IMqttDeliveryToken)
-     */
     public void deliveryComplete(IMqttDeliveryToken arg0) {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.eclipse.paho.client.mqttv3.MqttCallback#messageArrived(java.lang.
-     * String, org.eclipse.paho.client.mqttv3.MqttMessage)
-     */
     public void messageArrived(String topic, MqttMessage message) throws Exception  {
     	
-    	
-
         System.out.println("Mqtt topic : " + topic);
         System.out.println(db.getCurrentTimeStamp());
  
@@ -166,17 +118,11 @@ public class Listener  implements MqttCallback {
         insert(str);   
     }
     
-    
-    
-   
- public void insert(String message) throws ParseException, SQLException  {
-
-	 
-
-
-	 		System.out.println(message);
-	 		db.insert(message);
- 		
-		       
- }
+	 public void insert(String message) throws ParseException, SQLException  {
+		 
+		 		System.out.println(message);
+		 		db.insert(message);
+	 		
+			       
+	 }
 }

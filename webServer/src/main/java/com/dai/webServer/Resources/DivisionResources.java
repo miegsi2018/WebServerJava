@@ -17,7 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
 import com.dai.webServer.Objects.Division;
 import com.dai.webServer.Repos.DivisionRepository;
-
+import com.dai.webServer.Repos.UtilizadorRepository;
 
 
 @RequestMapping("/")
