@@ -64,8 +64,6 @@ public class ReadingsResouces {
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
 				.buildAndExpand(savedLeitura.getId()).toUri();
 		return ResponseEntity.created(location).build();
-		
-		
 
     	
     	

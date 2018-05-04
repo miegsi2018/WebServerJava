@@ -21,10 +21,6 @@ import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
 
-/**
- * The Class Publisher.
- * @author Yasith Lokuge
- */
 public class Publisher {
 
     /**
