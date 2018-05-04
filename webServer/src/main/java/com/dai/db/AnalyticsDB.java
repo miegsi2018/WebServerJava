@@ -29,7 +29,7 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) FROM readings WHERE data BETWEEN ? and ? and (data is not null or data != 0)");
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp FROM readings WHERE data BETWEEN ? and ? and (data is not null or data != 0)");
 	     
         	stmt.setString(1, dataI);
         	stmt.setString(2, dataF);
@@ -40,9 +40,9 @@ public class AnalyticsDB {
         	
         	while (rs.next()) {
 
-                System.out.println(rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.temperature'))"));
+                System.out.println(rs.getString("temp"));
                 
-                value = rs.getString("AVG(JSON_EXTRACT(attr, '$.measurements.temperature'))");
+                value = rs.getString("temp");
 		System.out.println(value);
             }
           

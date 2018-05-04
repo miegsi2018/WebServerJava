@@ -39,10 +39,10 @@ public class AnalyticsResources {
 		
 		String dataFi = (String) jsonObject.get("dataF");
 		AnalyticsDB a = new AnalyticsDB();
-		
 		System.out.println(dataIn);
 		System.out.println(dataFi);
 		String fim = a.read( dataIn, dataFi);
+
 		
 		return fim;
 	
