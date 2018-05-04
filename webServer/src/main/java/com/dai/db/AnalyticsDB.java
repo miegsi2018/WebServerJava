@@ -120,10 +120,10 @@ public class AnalyticsDB {
         	rs = stmt.executeQuery();
         	
         	while (rs.next()) {
-        		
-        		fim.put("temp", rs.getString("temp"));
+              		fim.put("temp", rs.getString("temp"));
         		        		
 
+			System.out.println(rs.getString("temp"));
             }
           
         	//return value;
