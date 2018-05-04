@@ -55,5 +55,26 @@ public class AnalyticsResources {
 	
 	
 	}
+	
+	@PostMapping("/returnGraph")
+	public String returnGraph(@RequestBody String analytics) throws ParseException {
+		
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
+		
+		String dataIn = (String) jsonObject.get("dataI");
+		
+		String dataFi = (String) jsonObject.get("dataF");
+		AnalyticsDB a = new AnalyticsDB();
+		
+		System.out.println(dataIn);
+		System.out.println(dataFi);
+		String fim = a.returnGraph( dataIn, dataFi);
+		
+		return fim;
+	
+	
+	}
+
 
 }
