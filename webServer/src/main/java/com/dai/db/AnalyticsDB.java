@@ -1,6 +1,7 @@
 package com.dai.db;
 
 
+import org.json.simple.JSONArray;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -106,13 +107,15 @@ public class AnalyticsDB {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        
-        JSONObject fim = new JSONObject();
-        
+        JSONObject end = new JSONObject(); 
+        JSONArray temp = new JSONArray();
+	
+        JSONArray data = new JSONArray();
+       	Integer i = 0; 
 
         try {
         	
-            stmt = con.prepareStatement("SELECT JSON_EXTRACT(attr, '$.measurements.temperature') temp FROM readings WHERE (JSON_EXTRACT(attr, '$.measurements.temperature') != 'nan'  or JSON_EXTRACT(attr, '$.measurements.temperature') != 0.00)and data BETWEEN ? and ? and (data is not null or data != 0)");
+            stmt = con.prepareStatement("SELECT JSON_EXTRACT(attr, '$.measurements.temperature') temp, data data FROM readings WHERE (JSON_EXTRACT(attr, '$.measurements.temperature') != 'nan'  or JSON_EXTRACT(attr, '$.measurements.temperature') != 0.00)and data BETWEEN ? and ? and (data is not null or data != 0)");
 	     
         	stmt.setString(1, dataI);
         	stmt.setString(2, dataF);
@@ -120,13 +123,15 @@ public class AnalyticsDB {
         	rs = stmt.executeQuery();
         	
         	while (rs.next()) {
-              		fim.put("temp", rs.getString("temp"));
-        		        		
+              		temp.add(i, rs.getString("temp"));
 
+              		data.add(i, rs.getString("data"));
 			System.out.println(rs.getString("temp"));
             }
-          
-        	//return value;
+        end.put("temp" , temp);	
+
+        end.put("data" , data);	
+	    //return onalue;
             
 
         } catch (SQLException ex) {
@@ -134,10 +139,10 @@ public class AnalyticsDB {
         } finally {
             Conexao.fechaConexao(con, stmt, rs);
             
-            return fim;
+            return end;
         }
 		
     }
- 
+
 
 }
