@@ -22,7 +22,7 @@ public class AnalyticsDB {
     }
     
     
-    public String read(String dataI, String dataF) {
+    public String read(String device, String dataI, String dataF) {
     	String value = null;
     	
 
@@ -31,11 +31,13 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp FROM readings WHERE data BETWEEN ? and ? and (data is not null or data != 0)");
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp FROM readings WHERE JSON_EXTRACT(attr, '$.device.deviceID') = ? and  data BETWEEN ? and ? and (data is not null or data != 0)");
 	     
-        	stmt.setString(1, dataI);
-        	stmt.setString(2, dataF);
-        	
+        	stmt.setString(1, device);
+        	stmt.setString(2, dataI);
+        	stmt.setString(3, dataF);
+
+
         	rs = stmt.executeQuery();
         	
         	System.out.println(rs);
@@ -62,7 +64,7 @@ public class AnalyticsDB {
 
     }
     
- public String readHumidade(String dataI, String dataF) {
+ public String readHumidade(String device, String dataI, String dataF) {
     	
     	String value = null;
     	    	
@@ -72,11 +74,12 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.humidity')) FROM readings WHERE data BETWEEN ? and ? and (data is not null or data != 0)");
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.humidity')) FROM readings WHERE  JSON_EXTRACT(attr, '$.device.deviceID') = ?  and data BETWEEN ? and ? and (data is not null or data != 0)");
 	     
-        	stmt.setString(1, dataI);
-        	stmt.setString(2, dataF);
-        	
+        	stmt.setString(1, device);
+        	stmt.setString(2, dataI);
+        	stmt.setString(3, dataF);
+
         	rs = stmt.executeQuery();
         	
         	System.out.println(rs);
@@ -103,7 +106,7 @@ public class AnalyticsDB {
     }
     
     
-    public JSONObject returnGraph(String dataI, String dataF) {
+    public JSONObject returnGraph(String device, String dataI, String dataF) {
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -115,10 +118,11 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT JSON_EXTRACT(attr, '$.measurements.temperature') temp, data data FROM readings WHERE (JSON_EXTRACT(attr, '$.measurements.temperature') != 'nan'  or JSON_EXTRACT(attr, '$.measurements.temperature') != 0.00)and data BETWEEN ? and ? and (data is not null or data != 0)");
+            stmt = con.prepareStatement("SELECT JSON_EXTRACT(attr, '$.measurements.temperature') temp, data data FROM readings WHERE JSON_EXTRACT(attr, '$.device.deviceID') = ? and (JSON_EXTRACT(attr, '$.measurements.temperature') != 'nan'  or JSON_EXTRACT(attr, '$.measurements.temperature') != 0.00)and data BETWEEN ? and ? and (data is not null or data != 0)");
 	     
-        	stmt.setString(1, dataI);
-        	stmt.setString(2, dataF);
+        	stmt.setString(1, device);
+        	stmt.setString(2, dataI);
+        	stmt.setString(3, dataF);
         	
         	rs = stmt.executeQuery();
         	

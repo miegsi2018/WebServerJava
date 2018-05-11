@@ -37,12 +37,14 @@ public class AnalyticsResources {
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
 		
 		String dataIn = (String) jsonObject.get("dataI");
-		
+		String device = (String) jsonObject.get("device");		
 		String dataFi = (String) jsonObject.get("dataF");
 		AnalyticsDB a = new AnalyticsDB();
 		System.out.println(dataIn);
 		System.out.println(dataFi);
-		String fim = a.read( dataIn, dataFi);
+		
+		System.out.println(device);
+		String fim = a.read(device,  dataIn, dataFi);
 
 		
 		return fim;
@@ -59,12 +61,13 @@ public class AnalyticsResources {
 		
 		String dataIn = (String) jsonObject.get("dataI");
 		
+		String device = (String) jsonObject.get("device");		
 		String dataFi = (String) jsonObject.get("dataF");
 		AnalyticsDB a = new AnalyticsDB();
 		
 		System.out.println(dataIn);
 		System.out.println(dataFi);
-		String fim = a.readHumidade( dataIn, dataFi);
+		String fim = a.readHumidade(device, dataIn, dataFi);
 		
 		return fim;
 	
@@ -79,13 +82,14 @@ public class AnalyticsResources {
 		
 		String dataIn = (String) jsonObject.get("dataI");
 		
+		String device = (String) jsonObject.get("device");		
 		String dataFi = (String) jsonObject.get("dataF");
 		AnalyticsDB a = new AnalyticsDB();
 		
 		System.out.println(dataIn);
 		System.out.println(dataFi);
 		
-		JSONObject fim = a.returnGraph( dataIn, dataFi);
+		JSONObject fim = a.returnGraph(device,  dataIn, dataFi);
 		return fim;
 	
 	

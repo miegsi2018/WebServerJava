@@ -92,9 +92,7 @@ public class Listener  implements MqttCallback {
             System.out.println("Mqtt cause " + me.getCause());
             System.out.println("Mqtt excep " + me);
         }
-    }
-
-    public void connectionLost(Throwable arg0) {
+    } public void connectionLost(Throwable arg0) {
     	try {
 			wait(1000);
 		} catch (InterruptedException e) {
