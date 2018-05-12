@@ -3,8 +3,13 @@ package com.dai.webServer.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
+
+@NamedQuery(name = "House.findById", query = "SELECT p FROM House p WHERE p.id_house = ?1")
+@Table(name = "house")
 public class House {
 	
 	@Id
