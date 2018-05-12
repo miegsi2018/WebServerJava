@@ -30,7 +30,7 @@ public class HouseResources {
 	private HouseRepository houseRepository;
 
 	//listar todas as casas
-	@GetMapping("house")
+	@GetMapping("/house")
 	public List<House> retrieveAllHouse() {
 		return houseRepository.findAll();
 	}
