@@ -63,7 +63,7 @@ public class DivisionResources {
 	
 	//Alterar dados da divisao
 	@PutMapping("/division/{id}")
-	public ResponseEntity<Object> updateDivisao(@RequestBody Division division, @PathVariable long id) {
+	public ResponseEntity<Object> updateDivision(@RequestBody Division division, @PathVariable long id) {
 
 		Optional<Division> divisionOptional = divisionRepository.findById(id);
 
