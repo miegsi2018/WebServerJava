@@ -43,7 +43,7 @@ public class AnalyticsResources {
 		System.out.println(dataIn);
 		System.out.println(dataFi);
 		
-		System.out.println(device);
+		System.out.println(dataFi);
 		String fim = a.read(device,  dataIn, dataFi);
 
 		

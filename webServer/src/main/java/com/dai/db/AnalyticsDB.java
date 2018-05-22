@@ -1,6 +1,7 @@
 package com.dai.db;
 
 
+
 import org.json.simple.JSONArray;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,7 +22,45 @@ public class AnalyticsDB {
         con = Conexao.fazConexao();
     }
     
-    
+    public String approve(String message, String topic){
+    	String value = null;
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT email from v_contas where sensor_id =? and id_card = ? ");
+	     
+        	stmt.setString(1, topic);
+
+        	stmt.setString(2, message);
+
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("email"));
+                
+                value = rs.getString("email");
+		System.out.println(value);
+            }
+          
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
     public String read(String device, String dataI, String dataF) {
     	String value = null;
     	
@@ -49,7 +88,6 @@ public class AnalyticsDB {
                 value = rs.getString("temp");
 		System.out.println(value);
             }
-          
 	   return value;
             /* return value; */
             

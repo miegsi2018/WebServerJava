@@ -35,6 +35,8 @@ public class Database {
 
 	}
 
+
+    
 	public static void insert(String passed) throws SQLException {
 
 		Connection dbConnection = null;

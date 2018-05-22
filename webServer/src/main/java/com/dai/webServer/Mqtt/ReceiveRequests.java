@@ -1,8 +1,8 @@
 package com.dai.webServer.Mqtt;
 import java.sql.SQLException;
 
-import com.dai.db.Database;
-
+import com.dai.db.AnalyticsDB;
+import com.dai.webServer.Mqtt.*;
 import org.json.simple.parser.ParseException;
 import org.apache.commons.text.RandomStringGenerator;
 /*******************************************************************************
@@ -18,7 +18,6 @@ import org.apache.commons.text.RandomStringGenerator;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ******************************************************************************/
-import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttClient;
@@ -32,7 +31,7 @@ import static org.apache.commons.text.CharacterPredicates.LETTERS;
 
 
 
-public class Listener  implements MqttCallback {
+public class ReceiveRequests  implements MqttCallback {
 	
 	@Autowired
 
@@ -43,9 +42,9 @@ public class Listener  implements MqttCallback {
     Random rand = new Random();
 
     /** The topic. */
-    public static final String topic = "data/#";
-    private Database db = new Database();
-
+    public static final String topic = "request/#";
+    //private AnalyticsDB db = new AnalyticsDB();
+    private ApproveRequests ap = new ApproveRequests();
     
     public String random() {
     RandomStringGenerator generator = new RandomStringGenerator.Builder()
@@ -91,7 +90,13 @@ public class Listener  implements MqttCallback {
             System.out.println("Mqtt cause " + me.getCause());
             System.out.println("Mqtt excep " + me);
         }
-    } public void connectionLost(Throwable arg0) {
+    } 
+    
+    
+    
+    
+    
+    public void connectionLost(Throwable arg0) {
     	try {
 			wait(1000);
 		} catch (InterruptedException e) {
@@ -107,19 +112,42 @@ public class Listener  implements MqttCallback {
     public void messageArrived(String topic, MqttMessage message) throws Exception  {
     	
         System.out.println("Mqtt topic : " + topic);
-        System.out.println(db.getCurrentTimeStamp());
  
         System.out.println("Mqtt msg : " + message.toString());
         byte[] hey = message.getPayload();
         String str = new String(hey, "UTF-8"); // for UTF-8 encoding
-        insert(str);   
+        insert(str, topic);   
     }
     
-	 public void insert(String message) throws ParseException, SQLException  {
+	 public void insert(String message , String topic) throws ParseException, SQLException  {
 		 
 		 		System.out.println(message);
-		 		db.insert(message);
-	 		
-			       
+
+		 		String correctedTopic = topic.replaceAll("[^0-9]","");
+				AnalyticsDB db = new AnalyticsDB();
+
+				
+				System.out.println("It's here now");
+				System.out.println(correctedTopic);
+				String outcome = db.approve(message, correctedTopic); 
+				System.out.println(outcome);
+				String responseTopic = "response/" + correctedTopic;
+				String approved = "Bem vindo a casa" + outcome;
+
+				String denied = "Por favor tente de novo";
+				if (outcome != null){
+
+
+					ap.sendMessage(responseTopic, approved, message);
+
+
+				}else{
+
+					ap.sendMessage(responseTopic, denied, message);
+
+					System.out.println("You fucked up boy");
+
+						       
 	 }
+}
 }
