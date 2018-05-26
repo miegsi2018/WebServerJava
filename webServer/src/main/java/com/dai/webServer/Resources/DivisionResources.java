@@ -81,7 +81,7 @@ public class DivisionResources {
 	@PostMapping("/rfidAdd")
 	public String addRFID(@RequestBody JSONObject json) {
 
-		
+
 		return "fds já está";
 		
 	}
