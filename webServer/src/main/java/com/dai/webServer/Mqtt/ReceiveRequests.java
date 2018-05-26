@@ -1,9 +1,7 @@
 package com.dai.webServer.Mqtt;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 import com.dai.db.AnalyticsDB;
-import com.dai.webServer.Conexao.Conexao;
 import com.dai.webServer.Mqtt.*;
 import org.json.simple.parser.ParseException;
 import org.apache.commons.text.RandomStringGenerator;
@@ -126,7 +124,8 @@ public class ReceiveRequests  implements MqttCallback {
 		 		System.out.println(message);
 				String test = topic.substring(topic.lastIndexOf('/')+1);
 
-		 		String correctedTopic = topic.replaceAll("[^0-9]","");
+
+		 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
 				AnalyticsDB db = new AnalyticsDB();
 
 				System.out.println(test);
@@ -147,26 +146,6 @@ public class ReceiveRequests  implements MqttCallback {
 
 
 					ap.sendMessage(responseTopic, approved, message);
-					
-					java.sql.Connection con;
-					con = Conexao.fazConexao();
-					
-			        PreparedStatement stmt = null;
-
-			        try {
-			            stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
-			            
-			        	stmt.setString(1, topic);
-			        	stmt.setString(2, outcome);
-
-
-			            stmt.executeUpdate();
-			            
-			        } catch (SQLException ex) {
-			            System.out.println(ex);
-			        } finally {
-			            Conexao.fechaConexao(con, stmt);
-			        }
 
 
 				}else{

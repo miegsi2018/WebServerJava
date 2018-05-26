@@ -22,12 +22,18 @@ import com.dai.webServer.Objects.Division;
 import com.dai.webServer.Objects.House;
 import com.dai.webServer.Repos.DivisionRepository;
 
+import com.dai.db.AnalyticsDB;
 
 @RequestMapping("/")
 @RestController
 @CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
+
+
+
 public class DivisionResources {
 	
+
+	private AnalyticsDB  db = new AnalyticsDB();
 	@Autowired
 	private DivisionRepository divisionRepository;
 	
@@ -80,7 +86,8 @@ public class DivisionResources {
 	
 	@PostMapping("/rfidAdd")
 	public String addRFID(@RequestBody JSONObject json) {
-
+		
+		String sensor = json.par
 
 		return "fds já está";
 		
