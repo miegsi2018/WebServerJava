@@ -169,6 +169,28 @@ public class ReceiveRequests  implements MqttCallback {
 				}else{
 
 					ap.sendMessage(responseTopic, denied, message);
+					
+					java.sql.Connection con;
+					con = Conexao.fazConexao();
+					
+			        PreparedStatement stmt = null;
+			        
+			        System.out.println(tag);
+
+			        try {
+			            stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
+			            
+			        	stmt.setString(1, tag);
+			        	stmt.setString(2, "Conta não autorizada");
+
+
+			            stmt.executeUpdate();
+			            
+			        } catch (SQLException ex) {
+			            System.out.println(ex);
+			        } finally {
+			            Conexao.fechaConexao(con, stmt);
+			        }
 
 					System.out.println("You fucked up boy");
 
