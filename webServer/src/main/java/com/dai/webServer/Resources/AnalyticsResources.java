@@ -2,6 +2,8 @@ package com.dai.webServer.Resources;
 
 
 import java.util.List;
+import java.util.Optional;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -21,6 +23,8 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
 import com.dai.db.AnalyticsDB;
+import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
+import com.dai.webServer.Objects.User;
 
 
 
@@ -94,6 +98,6 @@ public class AnalyticsResources {
 	
 	
 	}
-
+	
 
 }
