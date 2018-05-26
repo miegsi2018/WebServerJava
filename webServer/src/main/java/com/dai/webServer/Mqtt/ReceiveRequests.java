@@ -126,12 +126,6 @@ public class ReceiveRequests  implements MqttCallback {
 		 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
 				AnalyticsDB db = new AnalyticsDB();
 
-				System.out.println(test);
-				
-				System.out.println(test);
-				System.out.println(test);
-				System.out.println(test);
-				System.out.println(test);
 				System.out.println("It's here now");
 				System.out.println(correctedTopic);
 				String outcome = db.approve(message, correctedTopic); 
