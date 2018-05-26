@@ -122,11 +122,17 @@ public class ReceiveRequests  implements MqttCallback {
 	 public void insert(String message , String topic) throws ParseException, SQLException  {
 		 
 		 		System.out.println(message);
+				String test = topic.substring(topic.lastIndexOf('/')+1);
 
 		 		String correctedTopic = topic.replaceAll("[^0-9]","");
 				AnalyticsDB db = new AnalyticsDB();
 
+				System.out.println(test);
 				
+				System.out.println(test);
+				System.out.println(test);
+				System.out.println(test);
+				System.out.println(test);
 				System.out.println("It's here now");
 				System.out.println(correctedTopic);
 				String outcome = db.approve(message, correctedTopic); 
