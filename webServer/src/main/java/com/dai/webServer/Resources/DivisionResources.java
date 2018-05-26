@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import org.json.simple.JSONObject;
 import com.dai.webServer.Exceptions.DivisionNotFoundException;
 import com.dai.webServer.Objects.Division;
 import com.dai.webServer.Objects.House;
@@ -75,5 +76,13 @@ public class DivisionResources {
 		divisionRepository.save(division);
 
 		return ResponseEntity.noContent().build();
+	}
+	
+	@PostMapping("/rfidAdd")
+	public String addRFID(@RequestBody JSONObject json) {
+
+		
+		return "fds já está";
+		
 	}
 }

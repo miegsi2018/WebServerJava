@@ -7,11 +7,13 @@ import com.dai.webServer.Mqtt.*;
 public class Main extends Listener{
 	
 	public static void main(String[] args) {
-	        Listener listener = new Listener();
+	       
+		Listener listener = new Listener();
 	        listener.subscribe("data/fds");
+	
 		ReceiveRequests requests = new ReceiveRequests();
 	        requests.subscribe("requestString");
-
+		
 		WebServerApplication webServer = new WebServerApplication();
 		webServer.startServer();
 		

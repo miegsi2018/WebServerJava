@@ -30,7 +30,7 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT email from v_contas where sensor_id =? and id_card = ? ");
+            stmt = con.prepareStatement("SELECT email from v_contas where sensor_id =? and id_card = ?");
 	     
         	stmt.setString(1, topic);
 
