@@ -122,8 +122,6 @@ public class ReceiveRequests  implements MqttCallback {
 	 public void insert(String message , String topic) throws ParseException, SQLException  {
 		 
 		 		System.out.println(message);
-				String test = topic.substring(topic.lastIndexOf('/')+1);
-
 
 		 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
 				AnalyticsDB db = new AnalyticsDB();
