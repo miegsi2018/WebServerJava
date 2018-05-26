@@ -126,7 +126,8 @@ public class ReceiveRequests  implements MqttCallback {
 		 		System.out.println(message);
 				String tag = topic.substring(topic.lastIndexOf('/')+1);
 
-		 		String correctedTopic = topic.replaceAll("[^0-9]","");
+
+		 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
 				AnalyticsDB db = new AnalyticsDB();
 
 				System.out.println("It's here now");
