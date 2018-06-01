@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import com.dai.db.AnalyticsDB;
 import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
 import com.dai.webServer.Objects.User;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
