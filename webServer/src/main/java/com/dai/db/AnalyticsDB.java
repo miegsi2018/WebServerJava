@@ -188,43 +188,43 @@ public class AnalyticsDB {
     
     //visualizar entradas
     
- public JSONObject readEntradas(String id_card) {
-    	
-    	String value = null;
-    	    	
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        
-        JSONObject end = new JSONObject(); 
-        JSONArray user = new JSONArray();
-        Integer i = 0; 
-
-
-        try {
-        	
-            stmt = con.prepareStatement("SELECT a.id_card, u.username from account as a, users as u where a.id_card = ? and a.id_user = u.id_user");
-	     
-        	stmt.setString(1, id_card);
-        	rs = stmt.executeQuery();
-        	
-        	System.out.println(rs);
-        	
-        	while (rs.next()) {
-                
-        		user.add(i, rs.getString("username"));
-            }
-        	
-        	end.put("username" , user);	
-          
-            
-
-        } catch (SQLException ex) {
-        } finally {
-            Conexao.fechaConexao(con, stmt, rs);
-            return end;
-        }
-		
-
-    }
+	 public JSONObject readEntradas(String id_card) {
+	    	
+	    	String value = null;
+	    	    	
+	        PreparedStatement stmt = null;
+	        ResultSet rs = null;
+	        
+	        JSONObject end = new JSONObject(); 
+	        JSONArray user = new JSONArray();
+	        Integer i = 0; 
+	
+	
+	        try {
+	        	
+	            stmt = con.prepareStatement("SELECT a.id_card, u.username from account as a, users as u where a.id_card = ? and a.id_user = u.id_user");
+		     
+	        	stmt.setString(1, id_card);
+	        	rs = stmt.executeQuery();
+	        	
+	        	System.out.println(rs);
+	        	
+	        	while (rs.next()) {
+	                
+	        		user.add(i, rs.getString("username"));
+	            }
+	        	
+	        	end.put("username" , user);	
+	          
+	            
+	
+	        } catch (SQLException ex) {
+	        } finally {
+	            Conexao.fechaConexao(con, stmt, rs);
+	            return end;
+	        }
+			
+	
+	    }
     
 }
