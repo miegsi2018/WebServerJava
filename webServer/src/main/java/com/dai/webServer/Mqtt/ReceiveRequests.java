@@ -146,7 +146,7 @@ public class ReceiveRequests  implements MqttCallback {
 			ap.sendMessage(responseTopic, approved, message);
 				
 			AnalyticsDB insert = new AnalyticsDB();
-			insert.insertDB(tag, outcome);
+			insert.insertDB(message, outcome);
 
 		}else{
 
@@ -159,7 +159,7 @@ public class ReceiveRequests  implements MqttCallback {
 			a.sendEmail(email, "tada");
 				
 			AnalyticsDB insert = new AnalyticsDB();
-			insert.insertDBNot(tag, outcome);
+			insert.insertDBNot(message, outcome);
 			ap.sendMessage(responseTopic, denied, message);
 						       
 		}

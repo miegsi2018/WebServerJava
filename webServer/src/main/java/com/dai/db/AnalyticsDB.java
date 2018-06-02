@@ -226,14 +226,14 @@ public class AnalyticsDB {
     
     //Gravar entradas em casa na BD
     
-    public void insertDB(String tag , String outcome){
+    public void insertDB(String message , String outcome){
 		
 	    PreparedStatement stmt = null;
 		
 		    try {
-		        stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
+		        stmt = con.prepareStatement("INSERT INTO entrance (tag,account_id)VALUES(?,?)");
 		        
-		    	stmt.setString(1, tag);
+		    	stmt.setString(1, message);
 		    	stmt.setString(2, outcome);
 		
 		
@@ -248,14 +248,14 @@ public class AnalyticsDB {
     }
     
     //Gravar entradas NÃO AUTORIZADAS em casa na BD
-    public void insertDBNot(String tag , String outcome){
+    public void insertDBNot(String message , String outcome){
     	
     	PreparedStatement stmt = null;
     	
     	try {
-            stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
+            stmt = con.prepareStatement("INSERT INTO entrance (tag,account_id)VALUES(?,?)");
             
-        	stmt.setString(1, tag);
+        	stmt.setString(1, message);
         	stmt.setString(2, "Conta não autorizada");
 
 
@@ -318,7 +318,9 @@ public class AnalyticsDB {
         ResultSet rs = null;
         
         JSONObject end = new JSONObject(); 
-        JSONArray user = new JSONArray();
+        JSONArray id = new JSONArray();
+        JSONArray type = new JSONArray();
+        JSONArray activ = new JSONArray();
         Integer i = 0; 
 
 
@@ -330,12 +332,14 @@ public class AnalyticsDB {
         	
         	while (rs.next()) {
                 
-        		user.add(0, rs.getString("id_sensor"));
-        		user.add(1, rs.getString("type"));
-        		user.add(2, rs.getString("activ"));
+        		id.add(i, rs.getString("id_sensor"));
+        		type.add(i, rs.getString("type"));
+        		activ.add(i, rs.getString("activ"));
             }
-        	
-        	end.put("sensor" , user);	
+        
+        	end.put("id_sensor" , id);
+        	end.put("type" , type);
+        	end.put("activ" , activ);
           
             
         } catch (SQLException ex) {
