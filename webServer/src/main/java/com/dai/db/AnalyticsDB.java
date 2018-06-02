@@ -309,5 +309,42 @@ public class AnalyticsDB {
 			
 	
 	    }
+	
+	public JSONObject readSensor() {
+    	
+    	String value = null;
+    	    	
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        JSONObject end = new JSONObject(); 
+        JSONArray user = new JSONArray();
+        Integer i = 0; 
+
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT * from sensor");
+	     
+        	rs = stmt.executeQuery();
+        	
+        	while (rs.next()) {
+                
+        		user.add(0, rs.getString("id_sensor"));
+        		user.add(1, rs.getString("type"));
+        		user.add(2, rs.getString("activ"));
+            }
+        	
+        	end.put("sensor" , user);	
+          
+            
+        } catch (SQLException ex) {
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return end;
+        }
+		
+
+    }
     
 }

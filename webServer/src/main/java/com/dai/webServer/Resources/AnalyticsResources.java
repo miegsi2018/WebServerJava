@@ -1,6 +1,8 @@
 package com.dai.webServer.Resources;
 
 
+import java.util.List;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -8,8 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import com.dai.db.AnalyticsDB;
 import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
+import com.dai.webServer.Objects.House;
 import com.dai.webServer.Objects.User;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -103,6 +108,18 @@ public class AnalyticsResources {
 		
 		return fim;
 	
+	
+	}
+	
+
+	@GetMapping("/sensor")
+	public JSONObject readSensor() throws ParseException {
+		
+		AnalyticsDB a = new AnalyticsDB();
+		
+		JSONObject fim = a.readSensor();
+		
+		return fim;
 	
 	}
 	
