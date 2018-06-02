@@ -146,9 +146,14 @@ public class ReceiveRequests  implements MqttCallback {
 					db.insertDB(tag, outcome);
 
 				}else{
+       /*                          String email = db.readEmail(correctedTopic); */
+				/* System.out.println(email); */
+/*  */
 
-				String mail = sendEmail(correctedTopic);			
-				System.out.println(mail);
+					Email a = new Email();
+					
+					a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
+					
 					
 					
 					ap.sendMessage(responseTopic, denied, message);
@@ -179,17 +184,5 @@ public class ReceiveRequests  implements MqttCallback {
 
 						       
 	 }
-}
-public String sendEmail( String topic){
-				String email = db.readEmail(topic);
-				System.out.println(email);
-
-
-					Email a = new Email();
-					
-					a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
-	
-
-	return "done boy";
 }
 }
