@@ -124,6 +124,7 @@ public class ReceiveRequests  implements MqttCallback {
     
 	 public void insert(String message , String topic) throws ParseException, SQLException  {
 		 
+<<<<<<< HEAD
  		System.out.println(message);
 		String tag = topic.substring(topic.lastIndexOf('/')+1);
 
@@ -149,6 +150,39 @@ public class ReceiveRequests  implements MqttCallback {
 		}else{
 
 			db.insertDBNot(tag, outcome);
+=======
+		 		System.out.println(message);
+				String tag = topic.substring(topic.lastIndexOf('/')+1);
+
+
+		 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
+				AnalyticsDB db = new AnalyticsDB();
+
+				System.out.println("It's here now");
+				System.out.println(correctedTopic);
+				String outcome = db.approve(message, correctedTopic); 
+				String email = db.readEmail(correctedTopic);
+				System.out.println(email);
+
+				System.out.println(email);
+				System.out.println(email);
+				String responseTopic = "response/" + correctedTopic;
+				String approved = "Bem vindo a casa" + outcome;
+
+				String denied = "Por favor tente de novo";
+				if (outcome != null){
+
+
+					ap.sendMessage(responseTopic, approved, message);
+					
+					db.insertDB(tag, outcome);
+
+				}else{
+
+					Email a = new Email();
+					
+					a.sendEmail(email, "Estão a tentar entrar em tua casa boi");
+>>>>>>> 8b8045cd7a892103d0bda9f366cb3515e2efbbfd
 					
 			Email a = new Email();
 					

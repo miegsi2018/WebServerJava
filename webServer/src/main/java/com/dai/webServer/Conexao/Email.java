@@ -6,7 +6,6 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class Email{
-
     private static String USER_NAME = "dai2018pl";  // GMail user name (just the part before "@gmail.com")
     private static String PASSWORD = "Dai20porcento"; // GMail password
 
@@ -14,8 +13,8 @@ public class Email{
         String from = USER_NAME;
         String pass = PASSWORD;
         String[] to = { recipient }; // list of recipient email addresses
-        String subject = "Java send mail example";
-        String body = message;
+        String subject = "Alerta de Intrusão";
+        String body = "<h1>Tentaram entrar em sua casa</h1><h3>Uma pessoa não autorizada tentou entrar na sua casa</h3>";
 
         sendFromGMail(from, pass, to, subject, body);
     }
@@ -47,7 +46,7 @@ public class Email{
             }
 
             message.setSubject(subject);
-            message.setText(body);
+            message.setContent(body, "text/html");
             Transport transport = session.getTransport("smtp");
             transport.connect(host, from, pass);
             transport.sendMessage(message, message.getAllRecipients());
