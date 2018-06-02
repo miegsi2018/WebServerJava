@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import com.dai.db.AnalyticsDB;
 import com.dai.webServer.Conexao.Conexao;
+import com.dai.webServer.Conexao.Email;
 import com.dai.webServer.Mqtt.*;
 import org.json.simple.parser.ParseException;
 import org.apache.commons.text.RandomStringGenerator;
@@ -168,6 +169,12 @@ public class ReceiveRequests  implements MqttCallback {
 
 				}else{
 
+					Email a = new Email();
+					
+					a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
+					
+					
+					
 					ap.sendMessage(responseTopic, denied, message);
 					
 					java.sql.Connection con;
