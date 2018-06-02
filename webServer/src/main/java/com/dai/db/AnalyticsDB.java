@@ -186,9 +186,34 @@ public class AnalyticsDB {
 		
     }
     
+    //Gravar entradas em casa na BD
+    
+    public void insertDB(String tag , String outcome){
+		
+	    PreparedStatement stmt = null;
+	    
+	    System.out.println(tag);
+	
+	    try {
+	        stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
+	        
+	    	stmt.setString(1, tag);
+	    	stmt.setString(2, outcome);
+	
+	
+	        stmt.executeUpdate();
+	        
+	    } catch (SQLException ex) {
+	        System.out.println(ex);
+	    } finally {
+	        Conexao.fechaConexao(con, stmt);
+	    }
+    }
+    
     //visualizar entradas
     
-	 public JSONObject readEntradas(String id_card) {
+    
+	public JSONObject readEntradas(String idHouse) {
 	    	
 	    	String value = null;
 	    	    	
@@ -204,20 +229,19 @@ public class AnalyticsDB {
 	        	
 	            stmt = con.prepareStatement("SELECT a.id_card, u.username from account as a, users as u where a.id_card = ? and a.id_user = u.id_user");
 		     
-	        	stmt.setString(1, id_card);
+	        	stmt.setString(1, idHouse);
 	        	rs = stmt.executeQuery();
 	        	
 	        	System.out.println(rs);
 	        	
 	        	while (rs.next()) {
 	                
-	        		user.add(i, rs.getString("username"));
+	        		user.add(1, rs.getString("username"));
 	            }
 	        	
 	        	end.put("username" , user);	
 	          
 	            
-	
 	        } catch (SQLException ex) {
 	        } finally {
 	            Conexao.fechaConexao(con, stmt, rs);

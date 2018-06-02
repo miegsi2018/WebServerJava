@@ -144,28 +144,7 @@ public class ReceiveRequests  implements MqttCallback {
 
 					ap.sendMessage(responseTopic, approved, message);
 					
-					java.sql.Connection con;
-					con = Conexao.fazConexao();
-					
-			        PreparedStatement stmt = null;
-			        
-			        System.out.println(tag);
-
-			        try {
-			            stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
-			            
-			        	stmt.setString(1, tag);
-			        	stmt.setString(2, outcome);
-
-
-			            stmt.executeUpdate();
-			            
-			        } catch (SQLException ex) {
-			            System.out.println(ex);
-			        } finally {
-			            Conexao.fechaConexao(con, stmt);
-			        }
-
+					db.insertDB(tag, outcome);
 
 				}else{
 
