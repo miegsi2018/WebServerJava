@@ -137,6 +137,10 @@ public class ReceiveRequests  implements MqttCallback {
 		String outcome = db.approve(message, correctedTopic); 
 		System.out.println(outcome);
 		String responseTopic = "response/" + correctedTopic;
+
+		String openDoor = "relay/" + correctedTopic + "/rele1";
+
+		String payLoad = "3";
 		String approved = "Bem vindo a casa" + outcome;
 
 		String denied = "Por favor tente de novo";
@@ -144,7 +148,7 @@ public class ReceiveRequests  implements MqttCallback {
 		if (outcome != null){
 			
 			ap.sendMessage(responseTopic, approved, message);
-				
+			ap.sendMessage(openDoor, payLoad, message);		
 			AnalyticsDB insert = new AnalyticsDB();
 			insert.insertDB(tag, outcome);
 

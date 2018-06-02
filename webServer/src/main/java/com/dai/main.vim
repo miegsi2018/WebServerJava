@@ -10,7 +10,7 @@ set shortmess=aoO
 badd +3 db/AnalyticsDB.java
 badd +1 webServer/Mqtt/ReceiveRequests.java
 badd +1 webServer/Mqtt/ApproveRequests.java
-badd +0 webServer/Conexao/Email.java
+badd +1 webServer/Conexao/Email.java
 argglobal
 silent! argdel *
 edit db/AnalyticsDB.java
@@ -29,12 +29,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 49 - ((22 * winheight(0) + 13) / 26)
+let s:l = 49 - ((20 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 49
-normal! 08|
+normal! 0
 tabedit webServer/Mqtt/ReceiveRequests.java
 set splitbelow splitright
 set nosplitbelow
@@ -51,12 +51,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 155 - ((13 * winheight(0) + 12) / 24)
+let s:l = 131 - ((22 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-155
-normal! 040|
+131
+normal! 016|
 tabedit webServer/Conexao/Email.java
 set splitbelow splitright
 set nosplitbelow
@@ -73,12 +73,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((16 * winheight(0) + 12) / 24)
+let s:l = 23 - ((15 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-17
-normal! 0110|
+23
+normal! 050|
 tabedit webServer/Mqtt/ApproveRequests.java
 set splitbelow splitright
 set nosplitbelow
@@ -101,7 +101,7 @@ exe s:l
 normal! zt
 50
 normal! 036|
-tabnext 3
+tabnext 2
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
