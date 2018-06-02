@@ -131,6 +131,7 @@ public class ReceiveRequests  implements MqttCallback {
 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
 		AnalyticsDB db = new AnalyticsDB();
 
+		AnalyticsDB mail = new AnalyticsDB();
 		System.out.println("It's here now");
 		System.out.println(correctedTopic);
 		String outcome = db.approve(message, correctedTopic); 
@@ -144,20 +145,21 @@ public class ReceiveRequests  implements MqttCallback {
 			
 			ap.sendMessage(responseTopic, approved, message);
 				
-			db.insertDB(tag, outcome);
+			AnalyticsDB insert = new AnalyticsDB();
+			insert.insertDB(tag, outcome);
 
 		}else{
 
-		 		       /*                          String email = db.readEmail(correctedTopic); */
-				/* System.out.println(email); */
-/*  */
+			 String email = mail.readEmail(correctedTopic);
+				System.out.println(email);
+
 					
 			Email a = new Email();
 					
-			a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
-					
+			a.sendEmail(email, "tada");
 				
-			db.insertDBNot(tag, outcome);
+			AnalyticsDB insert = new AnalyticsDB();
+			insert.insertDBNot(tag, outcome);
 			ap.sendMessage(responseTopic, denied, message);
 						       
 		}
