@@ -134,7 +134,11 @@ public class ReceiveRequests  implements MqttCallback {
 				System.out.println("It's here now");
 				System.out.println(correctedTopic);
 				String outcome = db.approve(message, correctedTopic); 
-				System.out.println(outcome);
+				String email = db.readEmail(correctedTopic);
+				System.out.println(email);
+
+				System.out.println(email);
+				System.out.println(email);
 				String responseTopic = "response/" + correctedTopic;
 				String approved = "Bem vindo a casa" + outcome;
 
@@ -171,7 +175,7 @@ public class ReceiveRequests  implements MqttCallback {
 
 					Email a = new Email();
 					
-					a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
+					a.sendEmail(email, "Estão a tentar entrar em tua casa boi");
 					
 					
 					

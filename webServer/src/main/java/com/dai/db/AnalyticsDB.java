@@ -21,7 +21,45 @@ public class AnalyticsDB {
     public AnalyticsDB() {
         con = Conexao.fazConexao();
     }
-    
+     public String readEmail(String topic){
+    	String value = null;
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT email from v_contas where sensor_id =?");
+	     
+        	stmt.setString(1, topic);
+
+
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("email"));
+                
+                value = rs.getString("email");
+		System.out.println(value);
+            }
+          
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
+
     public String approve(String message, String topic){
     	String value = null;
 
