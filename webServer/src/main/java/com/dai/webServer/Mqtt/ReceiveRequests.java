@@ -124,65 +124,42 @@ public class ReceiveRequests  implements MqttCallback {
     
 	 public void insert(String message , String topic) throws ParseException, SQLException  {
 		 
-		 		System.out.println(message);
-				String tag = topic.substring(topic.lastIndexOf('/')+1);
+ 		System.out.println(message);
+		String tag = topic.substring(topic.lastIndexOf('/')+1);
 
+		
+		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
+		AnalyticsDB db = new AnalyticsDB();
 
-		 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
-				AnalyticsDB db = new AnalyticsDB();
+		System.out.println("It's here now");
+		System.out.println(correctedTopic);
+		String outcome = db.approve(message, correctedTopic); 
+		System.out.println(outcome);
+		String responseTopic = "response/" + correctedTopic;
+		String approved = "Bem vindo a casa" + outcome;
 
-				System.out.println("It's here now");
-				System.out.println(correctedTopic);
-				String outcome = db.approve(message, correctedTopic); 
-				String responseTopic = "response/" + correctedTopic;
-				String approved = "Bem vindo a casa" + outcome;
+		String denied = "Por favor tente de novo";
+		
+		if (outcome != null){
+			
+			ap.sendMessage(responseTopic, approved, message);
+				
+			db.insertDB(tag, outcome);
 
-				String denied = "Por favor tente de novo";
-				if (outcome != null){
+		}else{
 
-
-					ap.sendMessage(responseTopic, approved, message);
-					
-					db.insertDB(tag, outcome);
-
-				}else{
-       /*                          String email = db.readEmail(correctedTopic); */
+		 		       /*                          String email = db.readEmail(correctedTopic); */
 				/* System.out.println(email); */
 /*  */
-
-					Email a = new Email();
 					
-					a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
+			Email a = new Email();
 					
+			a.sendEmail("pregador.desgraca@gmail.com", "Estão a tentar entrar em tua casa boi");
 					
-					
-					ap.sendMessage(responseTopic, denied, message);
-					
-					java.sql.Connection con;
-					con = Conexao.fazConexao();
-					
-			        PreparedStatement stmt = null;
-			        
-			        System.out.println(tag);
-
-			        try {
-			            stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
-			            
-			        	stmt.setString(1, tag);
-			        	stmt.setString(2, "Conta não autorizada");
-
-
-			            stmt.executeUpdate();
-			            
-			        } catch (SQLException ex) {
-			            System.out.println(ex);
-			        } finally {
-			            Conexao.fechaConexao(con, stmt);
-			        }
-
-					System.out.println("You fucked up boy");
-
+				
+			db.insertDBNot(tag, outcome);
+			ap.sendMessage(responseTopic, denied, message);
 						       
+		}
 	 }
-}
 }
