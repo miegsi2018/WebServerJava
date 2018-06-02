@@ -65,6 +65,7 @@ public class AnalyticsResources {
 	
 	}
 	
+	
 	@PostMapping("/returnGraph")
 	public JSONObject returnGraph(@RequestBody String analytics) throws ParseException {
 		
@@ -86,13 +87,15 @@ public class AnalyticsResources {
 	
 	}
 	
+	// Rota para visualizar entradas em casa
+	
 	@PostMapping("/Entradas")
 	public JSONObject verifyEntrada(@RequestBody String analytics) throws ParseException {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
 		
-		String idEntrada = (String) jsonObject.get("id_card");
+		String idEntrada = (String) jsonObject.get("idHouse");
 		
 		AnalyticsDB a = new AnalyticsDB();
 		
