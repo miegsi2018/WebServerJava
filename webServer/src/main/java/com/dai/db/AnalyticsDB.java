@@ -191,23 +191,44 @@ public class AnalyticsDB {
     public void insertDB(String tag , String outcome){
 		
 	    PreparedStatement stmt = null;
-	    
-	    System.out.println(tag);
-	
-	    try {
-	        stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
-	        
-	    	stmt.setString(1, tag);
-	    	stmt.setString(2, outcome);
-	
-	
-	        stmt.executeUpdate();
-	        
-	    } catch (SQLException ex) {
-	        System.out.println(ex);
-	    } finally {
-	        Conexao.fechaConexao(con, stmt);
-	    }
+		
+		    try {
+		        stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
+		        
+		    	stmt.setString(1, tag);
+		    	stmt.setString(2, outcome);
+		
+		
+		        stmt.executeUpdate();
+		        
+		    } catch (SQLException ex) {
+		        System.out.println(ex);
+		    } finally {
+		        Conexao.fechaConexao(con, stmt);
+		    }
+		
+    }
+    
+    //Gravar entradas NÃO AUTORIZADAS em casa na BD
+    public void insertDBNot(String tag , String outcome){
+    	
+    	PreparedStatement stmt = null;
+    	
+    	try {
+            stmt = con.prepareStatement("INSERT INTO entrance (tag,accont_id)VALUES(?,?)");
+            
+        	stmt.setString(1, tag);
+        	stmt.setString(2, "Conta não autorizada");
+
+
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexao.fechaConexao(con, stmt);
+        }
+    	
     }
     
     //visualizar entradas
