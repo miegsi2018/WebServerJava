@@ -17,18 +17,29 @@ public class Division {
 	private Long id_house;
 	private String name;
 	private Long sensor_id;
+	private Integer path;
 	
-	public Division() {
-		super();
-	}
-
-	public Division(Long id_division, Long id_house, String name, Long sensor_id) {
+	public Division(Long id_division, Long id_house, String name, Long sensor_id, Integer path) {
 		super();
 		this.id_division = id_division;
 		this.id_house = id_house;
 		this.name = name;
 		this.sensor_id = sensor_id;
+		this.path = path;
 	}
+
+	public Integer getPath() {
+		return path;
+	}
+
+	public void setPath(Integer path) {
+		this.path = path;
+	}
+
+	public Division() {
+		super();
+	}
+
 
 	public Long getId_division() {
 		return id_division;

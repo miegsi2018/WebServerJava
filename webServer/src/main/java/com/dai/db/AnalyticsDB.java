@@ -269,8 +269,7 @@ public class AnalyticsDB {
     	
     }
     
-    //visualizar entradas
-    
+    //visualizar entradas NAO ESTA COMPLETAMENTE A FUNCIONAL(ENVIAR DADOS NUM ARRAY CORRETO)
     
 	public JSONObject readEntradas(String idHouse) {
 	    	
@@ -286,7 +285,7 @@ public class AnalyticsDB {
 	
 	        try {
 	        	
-	            stmt = con.prepareStatement("SELECT a.id_card, u.username from account as a, users as u where a.id_card = ? and a.id_user = u.id_user");
+	            stmt = con.prepareStatement("SELECT * FROM v_entrance where ID_HOUSE= ?");
 		     
 	        	stmt.setString(1, idHouse);
 	        	rs = stmt.executeQuery();
@@ -310,6 +309,7 @@ public class AnalyticsDB {
 	
 	    }
 	
+	// NAO ESTA A FUNCIONAR, ENVIA TODOS OS SENSORES (ENVIAR DADOS NUM ARRAY CORRETO)
 	public JSONObject readSensor() {
     	
     	String value = null;
@@ -318,6 +318,7 @@ public class AnalyticsDB {
         ResultSet rs = null;
         
         JSONObject end = new JSONObject(); 
+        JSONArray teste = new JSONArray();
         JSONArray id = new JSONArray();
         JSONArray type = new JSONArray();
         JSONArray activ = new JSONArray();
