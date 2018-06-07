@@ -7,13 +7,12 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +3 db/AnalyticsDB.java
-badd +1 webServer/Mqtt/ReceiveRequests.java
-badd +1 webServer/Mqtt/ApproveRequests.java
-badd +1 webServer/Conexao/Email.java
+badd +1 webServer/Resources/UserResources.java
+badd +5 webServer/Exceptions/UtilizadorNotFoundException.java
+badd +0 webServer/Exceptions/PasswordErrorException.java
 argglobal
 silent! argdel *
-edit db/AnalyticsDB.java
+edit webServer/Resources/UserResources.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -29,13 +28,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 49 - ((20 * winheight(0) + 12) / 24)
+let s:l = 72 - ((13 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-49
-normal! 0
-tabedit webServer/Mqtt/ReceiveRequests.java
+72
+normal! 053|
+tabedit webServer/Exceptions/UtilizadorNotFoundException.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -51,13 +50,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 131 - ((22 * winheight(0) + 12) / 25)
+let s:l = 3 - ((2 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-131
-normal! 016|
-tabedit webServer/Conexao/Email.java
+3
+normal! 037|
+tabedit webServer/Exceptions/PasswordErrorException.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -73,35 +72,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 23 - ((15 * winheight(0) + 12) / 25)
+let s:l = 8 - ((7 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-23
-normal! 050|
-tabedit webServer/Mqtt/ApproveRequests.java
-set splitbelow splitright
-set nosplitbelow
-set nosplitright
-wincmd t
-set winminheight=1 winminwidth=1 winheight=1 winwidth=1
-argglobal
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 50 - ((23 * winheight(0) + 12) / 24)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-50
-normal! 036|
-tabnext 2
+8
+normal! 039|
+tabnext 3
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

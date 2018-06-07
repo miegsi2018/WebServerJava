@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.dai.webServer.Exceptions.PasswordErrorException;
 import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
 import com.dai.webServer.Objects.User;
 import com.dai.webServer.Repos.UtilizadorRepository;
@@ -68,7 +69,7 @@ public class UserResources {
 		return returned;	
 	}else{
 	
-		throw new UtilizadorNotFoundException("401");
+		throw new PasswordErrorException("401"); 
 	}	
 	
 	}
