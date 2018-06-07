@@ -8,6 +8,7 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,7 +50,6 @@ public class UserResources {
 	}
 	//IDK tho
 	@PostMapping("/login")
-
 	public User verifyUser(@RequestBody User utilizador) {
 		
 	String email = utilizador.getEmail();
@@ -57,10 +57,19 @@ public class UserResources {
 	
 	
 	User returned = findUserByEmail(email);
-	String passBase = returned.getPassword();
+
+	String emailBase = returned.getEmail();
+	String passBase  = returned.getPassword();
+
+	System.out.println("Email que vem: " + email + "\n" + "Password que vem: " + password + "\n" + "Email do gajo:" + emailBase + "Pass do gajo: " + passBase);
+
+	if(password.equals(passBase)){
+
+		return returned;	
+	}else{
 	
-	return returned;	
-	
+		throw new UtilizadorNotFoundException("401");
+	}	
 	
 	}
 
