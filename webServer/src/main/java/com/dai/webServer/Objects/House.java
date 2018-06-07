@@ -17,16 +17,18 @@ public class House {
 	private Long id_house;
 	private String name;
 	private Long account_id;
+	private Integer path;
 	
 	public House() {
 		super();
 	}
 
-	public House(Long id_house, String name, Long account_id) {
+	public House(Long id_house, String name, Long account_id, Integer path) {
 		super();
 		this.id_house = id_house;
 		this.name = name;
 		this.account_id = account_id;
+		this.path = path;
 	}
 
 	public Long getId_house() {
@@ -52,6 +54,13 @@ public class House {
 	public void setAccount_id(Long account_id) {
 		this.account_id = account_id;
 	}
-	
-	
+
+	public Integer getPath() {
+		return path;
+	}
+
+	public void setPath(Integer path) {
+		this.path = path;
+	}
+		
 }
