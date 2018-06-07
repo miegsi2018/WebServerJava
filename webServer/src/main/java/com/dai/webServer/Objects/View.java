@@ -18,7 +18,7 @@ public class View {
 @Email
 @Id
 @GeneratedValue	
-	
+private int id_account;	
 private int id_division;
 private int id_house;
 private String email;
@@ -37,9 +37,13 @@ public View() {
 }
 
 
-public View(@Email int id_division, int id_house, String email, String type, int main, String house,
+
+
+
+public View(@Email int id_account, int id_division, int id_house, String email, String type, Integer main, String house,
 		String division, Long sensor_id) {
 	super();
+	this.id_account = id_account;
 	this.id_division = id_division;
 	this.id_house = id_house;
 	this.email = email;
@@ -49,6 +53,9 @@ public View(@Email int id_division, int id_house, String email, String type, int
 	this.division = division;
 	this.sensor_id = sensor_id;
 }
+
+
+
 
 
 public int getId_division() {
@@ -128,6 +135,30 @@ public Long getSensor_id() {
 
 public void setSensor_id(Long sensor_id) {
 	this.sensor_id = sensor_id;
+}
+
+
+
+
+
+public int getId_account() {
+	return id_account;
+}
+
+
+
+
+
+public void setId_account(int id_account) {
+	this.id_account = id_account;
+}
+
+
+
+
+
+public void setMain(Integer main) {
+	this.main = main;
 }
 
 
