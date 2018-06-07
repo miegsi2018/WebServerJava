@@ -123,7 +123,7 @@ public class ReceiveRequests  implements MqttCallback {
     }
     
 	 public void insert(String message , String topic) throws ParseException, SQLException  {
-		 
+
  		System.out.println(message);
 		String tag = topic.substring(topic.lastIndexOf('/')+1);
 
