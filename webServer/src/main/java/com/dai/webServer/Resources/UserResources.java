@@ -62,8 +62,6 @@ public class UserResources {
 	String emailBase = returned.getEmail();
 	String passBase  = returned.getPassword();
 
-	System.out.println("Email que vem: " + email + "\n" + "Password que vem: " + password + "\n" + "Email do gajo:" + emailBase + "Pass do gajo: " + passBase);
-
 	if(password.equals(passBase)){
 
 		return returned;	
@@ -112,6 +110,21 @@ public User findUserByEmail(String email) {
 	@PostMapping("/utilizador")
 	public ResponseEntity<Object> createUser(@RequestBody User utilizador) {
 		
+
+		String mailReturned = utilizador.getEmail();
+		User exists = findUserByEmail(mailReturned);
+		String mailExist = exists.getEmail();
+		if (mailExist != null) {	
+
+			System.out.println("shit it did work!"  + mailExist);
+
+
+
+		}
+
+		
+			System.out.println("shit it did nope!"  + mailExist);
+
 		User savedUser = utilizadorRepository.save(utilizador);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
