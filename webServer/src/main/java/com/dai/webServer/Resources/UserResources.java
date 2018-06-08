@@ -86,7 +86,7 @@ public class UserResources {
 	
 	
 	}	
-	
+
 	
 	
 	
@@ -110,20 +110,25 @@ public User findUserByEmail(String email) {
 	@PostMapping("/utilizador")
 	public ResponseEntity<Object> createUser(@RequestBody User utilizador) {
 		
-
 		String mailReturned = utilizador.getEmail();
-		User exists = findUserByEmail(mailReturned);
-		String mailExist = exists.getEmail();
-		if (mailExist != null) {	
-
-			System.out.println("shit it did work!"  + mailExist);
 
 
-
-		}
+		Optional<User> exist = utilizadorRepository.findByEmail(mailReturned);
+		if (exist.isPresent()){
 
 		
-			System.out.println("shit it did nope!"  + mailExist);
+
+
+
+		System.out.println("crap shit");
+
+
+
+		return  null;
+		}else{	
+			System.out.println("shit it did nope!"  );
+
+		}
 
 		User savedUser = utilizadorRepository.save(utilizador);
 		
@@ -132,6 +137,7 @@ public User findUserByEmail(String email) {
 		
 		return ResponseEntity.created(location).build();
 		
+	
 	}
 	
 

@@ -10,7 +10,8 @@ set shortmess=aoO
 badd +16 webServer/Objects/House.java
 badd +50 webServer/Objects/View.java
 badd +1 webServer/Repos/ViewRepository.java
-badd +0 webServer/Resources/ViewResources.java
+badd +29 webServer/Resources/ViewResources.java
+badd +1 webServer/Resources/UserResources.java
 argglobal
 silent! argdel *
 edit webServer/Objects/View.java
@@ -35,7 +36,7 @@ exe s:l
 normal! zt
 35
 normal! 0
-tabedit webServer/Resources/ViewResources.java
+tabedit webServer/Resources/UserResources.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -51,12 +52,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 12) / 24)
+let s:l = 113 - ((7 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+113
+normal! 039|
 tabnext 2
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
