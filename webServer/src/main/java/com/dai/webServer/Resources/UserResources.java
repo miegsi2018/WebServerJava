@@ -166,11 +166,6 @@ public User findUserByEmail(String email) {
 
 
 	}
-	
-
-
-
-
 
 
 	@PutMapping("/utilizador/{id}")
