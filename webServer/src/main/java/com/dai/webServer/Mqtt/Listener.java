@@ -107,7 +107,6 @@ public class Listener  implements MqttCallback {
     public void messageArrived(String topic, MqttMessage message) throws Exception  {
     	
         System.out.println("Mqtt topic : " + topic);
-        System.out.println(db.getCurrentTimeStamp());
  
         System.out.println("Mqtt msg : " + message.toString());
         byte[] hey = message.getPayload();

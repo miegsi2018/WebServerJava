@@ -140,7 +140,9 @@ public class ReceiveRequests  implements MqttCallback {
 
 		String openDoor = "relay/" + correctedTopic + "/rele1";
 
-		String payLoad = "3";
+
+		
+		String payLoadOpen = "3";
 		String approved = "Bem vindo a casa" + outcome;
 
 		String denied = "Por favor tente de novo";
@@ -148,7 +150,12 @@ public class ReceiveRequests  implements MqttCallback {
 		if (outcome != null){
 			
 			ap.sendMessage(responseTopic, approved, message);
-			ap.sendMessage(openDoor, payLoad, message);		
+			
+			ap.sendMessage(openDoor, payLoadOpen, message);		
+			System.out.println("door opened");
+			closeDoor(openDoor, message);
+
+
 			AnalyticsDB insert = new AnalyticsDB();
 			insert.insertDB(message, outcome);
 
@@ -168,4 +175,15 @@ public class ReceiveRequests  implements MqttCallback {
 						       
 		}
 	 }
+
+	 public void closeDoor(String openDoor, String message){
+
+		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+
+
+		ap.sendMessage(openDoor, "2", message);		
+		System.out.println("door closed");
+
+	 }
+
 }

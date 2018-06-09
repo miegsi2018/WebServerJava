@@ -8,7 +8,6 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -62,8 +61,6 @@ public class UserResources {
 	String emailBase = returned.getEmail();
 	String passBase  = returned.getPassword();
 
-	System.out.println("Email que vem: " + email + "\n" + "Password que vem: " + password + "\n" + "Email do gajo:" + emailBase + "Pass do gajo: " + passBase);
-
 	if(password.equals(passBase)){
 
 		return returned;	
@@ -88,7 +85,7 @@ public class UserResources {
 	
 	
 	}	
-	
+
 	
 	
 	
@@ -112,6 +109,22 @@ public User findUserByEmail(String email) {
 	@PostMapping("/utilizador")
 	public ResponseEntity<Object> createUser(@RequestBody User utilizador) {
 		
+		String mailReturned = utilizador.getEmail();
+
+
+		Optional<User> exist = utilizadorRepository.findByEmail(mailReturned);
+		if (exist.isPresent()){
+
+		
+
+
+
+
+
+		return  null;
+
+		}
+
 		User savedUser = utilizadorRepository.save(utilizador);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -119,6 +132,7 @@ public User findUserByEmail(String email) {
 		
 		return ResponseEntity.created(location).build();
 		
+	
 	}
 	
 
