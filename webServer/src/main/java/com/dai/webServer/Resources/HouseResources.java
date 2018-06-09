@@ -60,7 +60,7 @@ public class HouseResources {
 	}
 	
 	//Alterar dados da casa
-	@PutMapping("/house/{id}")
+	@PostMapping("/house/{id}")
 	public ResponseEntity<Object> updateHouse(@RequestBody House house, @PathVariable long id) {
 
 		Optional<House> houseOptional = houseRepository.findById(id);
@@ -74,4 +74,5 @@ public class HouseResources {
 
 		return ResponseEntity.noContent().build();
 	}
+	
 }
