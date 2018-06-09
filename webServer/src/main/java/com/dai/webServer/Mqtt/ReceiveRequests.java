@@ -182,6 +182,13 @@ public class ReceiveRequests  implements MqttCallback {
 
 
 		ap.sendMessage(openDoor, "2", message);		
+		ap.sendMessage(openDoor, "1", message);
+
+		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+		
+		
+		ap.sendMessage(openDoor, "2", message);		
+
 		System.out.println("door closed");
 
 	 }
