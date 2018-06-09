@@ -60,6 +60,45 @@ public class AnalyticsDB {
 
     }
 
+    public String armed(String topic){
+    	String value = null;
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT armed from division where sensor_id =?");
+	     
+        	stmt.setString(1, topic);
+
+
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("armed"));
+                
+                value = rs.getString("armed");
+		System.out.println(value);
+            }
+          
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
+ 
     public String approve(String message, String topic){
     	String value = null;
 

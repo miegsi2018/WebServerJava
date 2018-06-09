@@ -14,7 +14,7 @@ public class Email{
         String pass = PASSWORD;
         String[] to = { recipient }; // list of recipient email addresses
         String subject = "Alerta de Intrusão";
-        String body = "<img src='https://i.imgur.com/dbsHhsJ.png' alt='deu merda a carregar a imagem' height='42' width='100'><h1>Tentaram entrar em sua casa</h1><h3>Uma pessoa não autorizada tentou entrar na sua casa</h3>";
+        String body = message;
 
         sendFromGMail(from, pass, to, subject, body);
     }

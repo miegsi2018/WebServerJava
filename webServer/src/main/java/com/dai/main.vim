@@ -7,14 +7,15 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +16 webServer/Objects/House.java
-badd +50 webServer/Objects/View.java
-badd +1 webServer/Repos/ViewRepository.java
-badd +29 webServer/Resources/ViewResources.java
-badd +1 webServer/Resources/UserResources.java
+badd +149 webServer/Mqtt/AlarmReceive.java
+badd +0 db/AnalyticsDB.java
+badd +0 test/Main.java
+badd +0 webServer/Mqtt/ReceiveRequests.java
+badd +1 webServer/Conexao/Conexao.java
+badd +0 webServer/Conexao/Email.java
 argglobal
 silent! argdel *
-edit webServer/Objects/View.java
+edit test/Main.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -30,13 +31,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 35 - ((0 * winheight(0) + 12) / 24)
+let s:l = 8 - ((1 * winheight(0) + 12) / 25)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-35
-normal! 0
-tabedit webServer/Resources/UserResources.java
+8
+normal! 044|
+tabedit webServer/Mqtt/ReceiveRequests.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -52,13 +53,79 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 113 - ((7 * winheight(0) + 12) / 24)
+let s:l = 173 - ((10 * winheight(0) + 13) / 26)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-113
-normal! 039|
-tabnext 2
+173
+normal! 0243|
+tabedit webServer/Conexao/Email.java
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 19 - ((18 * winheight(0) + 13) / 26)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+19
+normal! 029|
+tabedit webServer/Mqtt/AlarmReceive.java
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 136 - ((5 * winheight(0) + 12) / 25)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+136
+normal! 068|
+tabedit db/AnalyticsDB.java
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winminwidth=1 winheight=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 45 - ((12 * winheight(0) + 13) / 26)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+45
+normal! 020|
+tabnext 4
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

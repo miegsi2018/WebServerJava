@@ -2,7 +2,6 @@ package com.dai.test;
 
 import com.dai.webServer.*;
 import com.dai.webServer.Mqtt.*;
-import com.dai.webServer.Conexao.*;
 
 public class Main extends Listener{
 	
@@ -10,6 +9,9 @@ public class Main extends Listener{
 	       
 		//Listener listener = new Listener();
 	        //listener.subscribe("data/fds");
+			
+		AlarmReceive alarm = new AlarmReceive();
+	        alarm.subscribe("requestTHis");
 	
 		
 		ReceiveRequests requests = new ReceiveRequests();

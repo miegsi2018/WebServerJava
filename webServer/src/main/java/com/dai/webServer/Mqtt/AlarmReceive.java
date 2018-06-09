@@ -34,7 +34,7 @@ import static org.apache.commons.text.CharacterPredicates.LETTERS;
 
 
 
-public class ReceiveRequests  implements MqttCallback {
+public class AlarmReceive  implements MqttCallback {
 	
 	@Autowired
 
@@ -45,14 +45,12 @@ public class ReceiveRequests  implements MqttCallback {
     Random rand = new Random();
 
     /** The topic. */
-    public static final String topic = "request/#";
+    public static final String topic = "alarm/#";
     //private AnalyticsDB db = new AnalyticsDB();
-    private ApproveRequests ap = new ApproveRequests();
     
     public String random() {
     RandomStringGenerator generator = new RandomStringGenerator.Builder()
-    		.withinRange('0', 'z')
-    		.filteredBy(LETTERS)
+    		.withinRange('0', 'z') .filteredBy(LETTERS)
     		.build();
     String a = generator.toString();
 	return a;
@@ -63,7 +61,7 @@ public class ReceiveRequests  implements MqttCallback {
 	 
 
         try {
-        	String a = random();
+	String a = random();
             MqttClient sampleClient = new MqttClient(brokerUrl, a);
             MqttConnectOptions connOpts = new MqttConnectOptions();
             connOpts.setMqttVersion(MqttConnectOptions.MQTT_VERSION_3_1_1);
@@ -122,78 +120,49 @@ public class ReceiveRequests  implements MqttCallback {
         insert(str, topic);   
     }
     
-	 public void insert(String message , String topic) throws ParseException, SQLException  {
+
+    public void insert(String message , String topic) throws ParseException, SQLException  {
 
  		System.out.println(message);
-		String tag = topic.substring(topic.lastIndexOf('/')+1);
-
-
 
 		
-
 		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
-		AnalyticsDB db = new AnalyticsDB();
+		AnalyticsDB db2 = new AnalyticsDB();
 
-		AnalyticsDB mail = new AnalyticsDB();
+		AnalyticsDB email2 = new AnalyticsDB();
 		System.out.println("It's here now");
 		System.out.println(correctedTopic);
-		String outcome = db.approve(message, correctedTopic); 
-		System.out.println(outcome);
+		String outcome = db2.armed(correctedTopic);
+		
+
+		System.out.println("outcome" + outcome);
 		String responseTopic = "response/" + correctedTopic;
 
-		String openDoor = "relay/" + correctedTopic + "/rele1";
 
 
 		
-		String payLoadOpen = "3";
-		String approved = "Bem vindo a casa" + outcome;
-
-		String denied = "Por favor tente de novo";
 		
-		if (outcome != null){
+		if (outcome != null && outcome.equals("false")){
+		}else if(outcome != null && outcome.equals("true")){
+
+
 			
-			ap.sendMessage(responseTopic, approved, message);
-			
-			ap.sendMessage(openDoor, payLoadOpen, message);		
-			System.out.println("door opened");
-			closeDoor(openDoor, message);
 
+			String email = email2.readEmail(correctedTopic);
+			System.out.println(email);
 
-			AnalyticsDB insert = new AnalyticsDB();
-			insert.insertDB(message, outcome);
-
-		}else{
-
-			 String email = mail.readEmail(correctedTopic);
-				System.out.println(email);
-
-					
-			Email a = new Email();
-					
-			a.sendEmail(email, "<img src='https://i.imgur.com/dbsHhsJ.png' alt='deu merda a carregar a imagem' height='42' width='100'><h1>Tentaram entrar em sua casa</h1><h3>Uma pessoa não autorizada tentou entrar na sua casa</h3>");
 				
-			AnalyticsDB insert = new AnalyticsDB();
-			insert.insertDBNot(message, outcome);
-			ap.sendMessage(responseTopic, denied, message);
-						       
-		}
-	 }
+			Email b = new Email();
+					
+			b.sendEmail(email, "<img src='https://i.imgur.com/dbsHhsJ.png' alt='Por favor faça refresh' height='42' width='100'><h1>Foi detetado movimento na sua casa!</h1><h3>Existe movimento numa divisão armada de sua casa!</h3>");
+			
 
-	 public void closeDoor(String openDoor, String message){
-
-		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
-
-
-		ap.sendMessage(openDoor, "2", message);
-		ap.sendMessage(openDoor, "1", message);
-
-		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+	       
+		}else{
 		
-		
-		ap.sendMessage(openDoor, "2", message);		
-
-		System.out.println("door closed");
-
-	 }
+		System.out.println("fodeu");
+		} 
+ }
 
 }
+
