@@ -16,10 +16,10 @@ public class Division {
 	private Long id_division;
 	private Long id_house;
 	private String name;
-	private Long sensor_id;
+	private String sensor_id;
 	private Integer path;
 	
-	public Division(Long id_division, Long id_house, String name, Long sensor_id, Integer path) {
+	public Division(Long id_division, Long id_house, String name, String sensor_id, Integer path) {
 		super();
 		this.id_division = id_division;
 		this.id_house = id_house;
@@ -57,11 +57,11 @@ public class Division {
 		this.name = name;
 	}
 
-	public Long getSensor_id() {
+	public String getSensor_id() {
 		return sensor_id;
 	}
 
-	public void setSensor_id(Long sensor_id) {
+	public void setSensor_id(String sensor_id) {
 		this.sensor_id = sensor_id;
 	}
 

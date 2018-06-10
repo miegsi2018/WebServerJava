@@ -9,6 +9,6 @@ import com.dai.webServer.Objects.House;
 
 public interface HouseRepository extends JpaRepository<House, Long>{
 	
-	public Optional<House> findById(String id_house);
+	public Optional<House> findById(Long id_house);
 
 }

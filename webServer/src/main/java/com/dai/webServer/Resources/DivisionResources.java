@@ -72,18 +72,14 @@ public class DivisionResources {
 	
 	//Alterar dados da divisao
 	@PutMapping("/division/{id}")
-	public ResponseEntity<Object> updateDivision(@RequestBody Division division, @PathVariable long id) {
+	public ResponseEntity<Object> updateDivision(@RequestBody Division division, @PathVariable String id) {
 
-		Optional<Division> divisionOptional = divisionRepository.findById(id);
-
-		if (!divisionOptional.isPresent())
-			return ResponseEntity.notFound().build();
-
-		division.setId_division(id);
-		
-		divisionRepository.save(division);
-
-		return ResponseEntity.noContent().build();
+				String newId = '"' + id + '"';
+				db.updateDivision(division.getSensor_id(), id );
+				System.out.println("done");
+	
+	
+				return ResponseEntity.noContent().build();
 	}
 	
 	@PostMapping("/rfidAdd")

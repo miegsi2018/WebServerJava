@@ -59,7 +59,42 @@ public class AnalyticsDB {
 		
 
     }
+    public String updateDivision(String id_sensor, String id_division){
+    	String value = null;
+    	System.out.println(id_sensor);
 
+    	System.out.println(id_division);
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("UPDATE division  SET sensor_id=?  where id_division = ?");
+	     
+        	stmt.setString(1, id_sensor);
+
+        	stmt.setString(2, id_division);
+
+            System.out.println(stmt);
+        	stmt.executeUpdate();
+        	
+        	
+        
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            System.out.println("deu erro caralho"+ ex);
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
+ 
     public String armed(String topic){
     	String value = null;
 
