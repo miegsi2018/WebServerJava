@@ -7,12 +7,19 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +149 webServer/Mqtt/AlarmReceive.java
-badd +0 db/AnalyticsDB.java
-badd +0 test/Main.java
-badd +0 webServer/Mqtt/ReceiveRequests.java
+badd +136 webServer/Mqtt/AlarmReceive.java
+badd +45 db/AnalyticsDB.java
+badd +1 test/Main.java
+badd +173 webServer/Mqtt/ReceiveRequests.java
 badd +1 webServer/Conexao/Conexao.java
-badd +0 webServer/Conexao/Email.java
+badd +19 webServer/Conexao/Email.java
+badd +0 webServer/Resources/ViewResources.java
+badd +0 webServer/Repos/ViewRepository.java
+badd +14 webServer/Repos/UtilizadorRepository.java
+badd +1 webServer/Repos/ReadingsRepository.java
+badd +12 webServer/Repos/HouseRepository.java
+badd +15 webServer/Repos/DivisionRepository.java
+badd +1 webServer/Repos/AnalyticsRepository.java
 argglobal
 silent! argdel *
 edit test/Main.java
@@ -31,13 +38,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 8 - ((1 * winheight(0) + 12) / 25)
+let s:l = 8 - ((1 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 8
 normal! 044|
-tabedit webServer/Mqtt/ReceiveRequests.java
+tabedit webServer/Resources/ViewResources.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -53,13 +60,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 173 - ((10 * winheight(0) + 13) / 26)
+let s:l = 35 - ((18 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-173
-normal! 0243|
-tabedit webServer/Conexao/Email.java
+35
+normal! 016|
+tabedit webServer/Repos/ViewRepository.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -75,13 +82,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 13) / 26)
+let s:l = 17 - ((16 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 029|
-tabedit webServer/Mqtt/AlarmReceive.java
+17
+normal! 0
+tabedit webServer/Repos/DivisionRepository.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -97,13 +104,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 136 - ((5 * winheight(0) + 12) / 25)
+let s:l = 13 - ((12 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-136
-normal! 068|
-tabedit db/AnalyticsDB.java
+13
+normal! 0
+tabedit webServer/Repos/UtilizadorRepository.java
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -119,13 +126,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 45 - ((12 * winheight(0) + 13) / 26)
+let s:l = 11 - ((10 * winheight(0) + 12) / 24)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-45
-normal! 020|
-tabnext 4
+11
+normal! 0
+tabnext 2
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

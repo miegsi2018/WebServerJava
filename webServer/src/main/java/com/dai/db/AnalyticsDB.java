@@ -309,7 +309,83 @@ public class AnalyticsDB {
     }
     
     //visualizar entradas NAO ESTA COMPLETAMENTE A FUNCIONAL(ENVIAR DADOS NUM ARRAY CORRETO)
+
+
     
+	public JSONObject findDivision(String email) {
+	    	
+	    	String value = null;
+	    	    	
+	        PreparedStatement stmt = null;
+	        ResultSet rs = null;
+	        
+	        JSONObject end = new JSONObject(); 
+	        
+		JSONObject end2 = new JSONObject();
+		
+		JSONArray id_house = new JSONArray();
+		JSONArray id_division = new JSONArray();
+
+		JSONArray division = new JSONArray();
+
+		JSONArray house = new JSONArray();
+
+	        Integer i = 0; 
+	
+	
+	        try {
+	        	
+	            stmt = con.prepareStatement("SELECT * FROM v_contas where email= ?");
+		     
+	        	stmt.setString(1, email);
+	        	rs = stmt.executeQuery();
+	        	
+	        	System.out.println(rs);
+	        	
+	        	while (rs.next()) {
+	               
+
+                            id_house.add(i, rs.getString("id_house"));
+                            id_division.add(i, rs.getString("id_division"));
+                                     
+                            division.add(i,rs.getString("division"));
+                                     
+                            house.add(i, rs.getString("house")); 
+	            }
+	        	
+	        	end.put("id_house" , id_house);	
+			
+	        	end.put("id_division" , id_division);	
+
+        		end.put("division" , division);	
+			
+        		end.put("house" , house);	
+			end2.put("array", end);
+
+
+
+			
+	          
+	            
+	        } catch (SQLException ex) {
+	        } finally {
+	            Conexao.fechaConexao(con, stmt, rs);
+	            return end;
+	        }
+			
+	
+	    }
+	
+
+
+
+
+
+
+
+
+
+
 	public JSONObject readEntradas(String idHouse) {
 	    	
 	    	String value = null;

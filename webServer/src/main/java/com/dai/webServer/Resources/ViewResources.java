@@ -2,12 +2,14 @@ package com.dai.webServer.Resources;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
+
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,7 +22,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.dai.webServer.Objects.View;
 import com.dai.webServer.Repos.ViewRepository;
 
-
+import com.dai.db.AnalyticsDB;
 @CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
 @RequestMapping("/")
 @RestController
@@ -29,12 +31,32 @@ public class ViewResources {
 	@Autowired
 	private ViewRepository ViewRepository;
 
+	@GetMapping("/view2/{email}")
+	public JSONObject getViews2 (@PathVariable String email) {
 	
+
+		AnalyticsDB a = new AnalyticsDB();
+
+		
+		JSONObject fim =  a.findDivision(email);	
+
+
+
+
+		return fim;
+		
+	};
+
+
 	@GetMapping("/view/{email}")
 	public List<View> getViews(@PathVariable String email) {
 		
+
+
+
 		return ViewRepository.findThem(email);
-	}
+
+	};
 
 	
-}
+};
