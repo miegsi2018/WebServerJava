@@ -429,11 +429,15 @@ public class AnalyticsDB {
 	        ResultSet rs = null;
 	        
 	        JSONObject end = new JSONObject(); 
-	        JSONArray user = new JSONArray();
+	        JSONArray idcasa = new JSONArray();
+	        JSONArray idaccount = new JSONArray();
+	        JSONArray data = new JSONArray();
 	        Integer i = 0; 
 	
 	
 	        try {
+	        	
+	        	System.out.println(idHouse);
 	        	
 	            stmt = con.prepareStatement("SELECT * FROM v_entrance where ID_HOUSE= ?");
 		     
@@ -444,10 +448,15 @@ public class AnalyticsDB {
 	        	
 	        	while (rs.next()) {
 	                
-	        		user.add(1, rs.getString("username"));
+	        		idcasa.add(i, rs.getString("ID_HOUSE"));
+	        		idaccount.add(i, rs.getString("id_account"));
+	        		data.add(i, rs.getString("reg_date"));
+	        		
 	            }
 	        	
-	        	end.put("username" , user);	
+	        	end.put("id_House" , idcasa);
+	        	end.put("id_account" , idaccount);
+	        	end.put("reg_date" , data);
 	          
 	            
 	        } catch (SQLException ex) {

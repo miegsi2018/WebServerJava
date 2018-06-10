@@ -100,7 +100,7 @@ public class AnalyticsResources {
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
 		
-		String idEntrada = (String) jsonObject.get("idHouse");
+		String idEntrada = String.valueOf(jsonObject.get("id_house"));
 		
 		AnalyticsDB a = new AnalyticsDB();
 		
