@@ -419,7 +419,7 @@ public class AnalyticsDB {
 
 
 
-
+//Envia o regesto de todas as entradas
 
 	public JSONObject readEntradas(String idHouse) {
 	    	
