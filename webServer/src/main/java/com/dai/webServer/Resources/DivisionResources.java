@@ -77,6 +77,10 @@ public class DivisionResources {
 	return "done";
 	}
 
+	
+
+
+
 	@PostMapping("/division/name")
 	public String updateName(@RequestBody Division division) {
 
@@ -100,14 +104,21 @@ public class DivisionResources {
 	
 	@PostMapping("/rfidAdd")
 	public String addRFID(@RequestBody String json) throws  ParseException {
-			
+
+
+		AnalyticsDB newDb = new AnalyticsDB();
+
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(json);
+	
+
 		
 		String user = (String) jsonObject.get("user_id");
 		
 		String tag = (String) jsonObject.get("tag");		
 	
+		newDb.addCard(user, tag);
+
 		
 	
 		

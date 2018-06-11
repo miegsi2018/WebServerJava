@@ -3,6 +3,8 @@ package com.dai.webServer.Resources;
 
 import java.util.List;
 
+
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -96,12 +98,15 @@ public class AnalyticsResources {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
+	        JSONObject finalArray = new JSONObject(); 
+	
 		
 		String idEntrada = String.valueOf(jsonObject.get("id_house"));
 		
 		AnalyticsDB a = new AnalyticsDB();
 		
 		JSONObject fim = a.readEntradas(idEntrada);
+		finalArray.put("data", fim);
 		
 		return fim;
 	

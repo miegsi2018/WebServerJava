@@ -406,6 +406,29 @@ public class AnalyticsDB {
 		    }
 		
     }
+     public void addCard(String id_user , String tag){
+    	
+	System.out.println(id_user);
+
+	System.out.println(tag);
+    	PreparedStatement stmt = null;
+    	
+    	try {
+            stmt = con.prepareStatement("UPDATE  account set  id_card = ? where id_user= ?");
+            
+        	stmt.setString(1, tag);
+        	stmt.setString(2, id_user);
+
+
+            stmt.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        } finally {
+            Conexao.fechaConexao(con, stmt);
+        }
+    	
+    }
     
     //Gravar entradas NÃO AUTORIZADAS em casa na BD
     public void insertDBNot(String message , String outcome){
@@ -601,7 +624,6 @@ public class AnalyticsDB {
 	        ResultSet rs = null;
 	        
 	        JSONObject end = new JSONObject(); 
-	        JSONArray idcasa = new JSONArray();
 	        JSONArray idaccount = new JSONArray();
 	        JSONArray data = new JSONArray();
 	        Integer i = 0; 
@@ -620,13 +642,11 @@ public class AnalyticsDB {
 	        	
 	        	while (rs.next()) {
 	                
-	        		idcasa.add(i, rs.getString("ID_HOUSE"));
 	        		idaccount.add(i, rs.getString("id_account"));
 	        		data.add(i, rs.getString("reg_date"));
 	        		
 	            }
 	        	
-	        	end.put("id_House" , idcasa);
 	        	end.put("id_account" , idaccount);
 	        	end.put("reg_date" , data);
 	          
