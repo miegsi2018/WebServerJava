@@ -38,6 +38,9 @@ public class UserResources {
 	public List<User> retrieveAllUsers() {
 		return utilizadorRepository.findAll();
 	}
+	
+	/* Metodo get invocado pelo web site onde o mesmo envia o id do utilizador 
+	 * e o java devolve todos os dados do utilizador com esse id */
 
 	@GetMapping("/utilizador/{id}")
 	public User retrieveUser(@PathVariable long id) {
@@ -48,7 +51,11 @@ public class UserResources {
 
 		return utilizador.get();
 	}
-	//IDK tho
+	
+	/* Metodo post invocado pelo web site onde o mesmo envia o o email e password do utilizador 
+	 * e o java verifica se o email e pass correspondem a user valido e envia para o 
+	 * web site a respota ao pedido de login */
+	
 	@PostMapping("/login")
 	public User verifyUser(@RequestBody User utilizador) {
 		
@@ -71,6 +78,8 @@ public class UserResources {
 	
 	}
 
+	/* Metodo post invocado pelo web site onde o mesmo envia o email do utilizador 
+	 * e o java devolve todos os dados do utilizador associados a esse email */
 	
 	@PostMapping("/mail")
 
@@ -85,27 +94,30 @@ public class UserResources {
 	
 	
 	}	
-
 	
+	public User findUserByEmail(String email) {
+			
+			Optional<User> utilizador = utilizadorRepository.findByEmail(email);
 	
+			if (!utilizador.isPresent())
+				throw new UtilizadorNotFoundException("id-" + email);
 	
-public User findUserByEmail(String email) {
+			return utilizador.get();
 		
-		Optional<User> utilizador = utilizadorRepository.findByEmail(email);
-
-		if (!utilizador.isPresent())
-			throw new UtilizadorNotFoundException("id-" + email);
-
-		return utilizador.get();
+	}
 	
-
-
-}
+	
+	/* Metodo delete invocado pelo web site onde o mesmo envia o id do utilizador 
+	 * e o java apaga o utilizador associados a esse id */
+	
 	@DeleteMapping("/utilizador/{id}")
 	public void deleteUser(@PathVariable long id) {
 		utilizadorRepository.deleteById(id);
 	}
 
+	/* Metodo post invocado pelo web site onde o mesmo envia todos os daddos do utilizador 
+	 * e o java adicionar o utilizador associados a bd */
+	
 	@PostMapping("/utilizador")
 	public ResponseEntity<Object> createUser(@RequestBody User utilizador) {
 		
@@ -114,11 +126,6 @@ public User findUserByEmail(String email) {
 
 		Optional<User> exist = utilizadorRepository.findByEmail(mailReturned);
 		if (exist.isPresent()){
-
-		
-
-
-
 
 		System.out.println("not");
 
@@ -133,12 +140,14 @@ public User findUserByEmail(String email) {
 				.buildAndExpand(savedUser.getId_user()).toUri();
 		
 		return ResponseEntity.created(location).build();
-		
 	
 	}
 	
 
-
+	/* Metodo post invocado pelo web site onde o mesmo envia a cor da luz pretendida 
+	 * e o java faz parser a mensagem recebida invoca o metodo sendMessage enviado para ele
+	 * o topic, rgb e id e altera a luz via mqtt */
+	
 	@PostMapping("/changeLight")
 	public void createUser(@RequestBody String light) throws ParseException {
 
@@ -165,11 +174,12 @@ public User findUserByEmail(String email) {
 		/* System.out.println(state); */
 		pub.sendMessage(topic, rgb, id);	
 
-
-
 	}
 
 
+	/* Metodo put invocado pelo web site onde o mesmo envia os dados do utilizador que serão
+	 * alterados e o java faz a alteração na bd*/
+	
 	@PutMapping("/utilizador/{id}")
 	public ResponseEntity<Object> updateUser(@RequestBody User utilizador, @PathVariable long id) {
 

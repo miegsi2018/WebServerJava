@@ -43,8 +43,6 @@ public class ViewResources {
 		JSONObject houses = b.findHouse(account);
 		fim.put("array2", houses);
 
-
-
 		return fim;
 		
 	};
@@ -52,9 +50,6 @@ public class ViewResources {
 
 	@GetMapping("/view/{email}")
 	public List<View> getViews(@PathVariable String email) {
-		
-
-
 
 		return ViewRepository.findThem(email);
 
