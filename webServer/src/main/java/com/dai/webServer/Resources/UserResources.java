@@ -150,20 +150,14 @@ public User findUserByEmail(String email) {
 
 		String topic = (String) jsonObject.get("topic");
 		
-		String id = (String) jsonObject.get("id");
+		String message = (String) jsonObject.get("message");
 		
-		JSONObject rgsJson = (JSONObject) jsonObject.get("rgb");
-		String rgb = (String) rgsJson.toJSONString();
-		/* String state = (String) jsonObject.get("state");  */
 		Publisher pub = new Publisher();	
 		System.out.println(topic);
-		System.out.println(id);
-		System.out.println(rgb);
+		System.out.println(message);
 		
-		/* System.out.println(state); */
-		/* String mensagem = new StringBuilder().append(state).append(rgb).toString(); */
-		/* System.out.println(state); */
-		pub.sendMessage(topic, rgb, id);	
+		String correctedTopic = "request/"  + topic;
+		pub.sendMessage(correctedTopic , message ,"lightChange");	
 
 
 

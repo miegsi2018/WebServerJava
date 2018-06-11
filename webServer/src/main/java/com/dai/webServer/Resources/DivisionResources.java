@@ -28,7 +28,7 @@ import com.dai.db.AnalyticsDB;
 
 @RequestMapping("/")
 @RestController
-@CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:5000", maxAge = 1728000)
 
 
 
