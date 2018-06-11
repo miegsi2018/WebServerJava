@@ -116,7 +116,7 @@ public class DivisionResources {
 	
 	//Apagar divisao
 	@DeleteMapping("/division/{id}")
-	public void deleteUser(@PathVariable long id) {
+	public void deleteDivision(@PathVariable long id) {
 		divisionRepository.deleteById(id);
 	}
 }

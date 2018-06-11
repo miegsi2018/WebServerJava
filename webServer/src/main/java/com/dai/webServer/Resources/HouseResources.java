@@ -78,7 +78,7 @@ public class HouseResources {
 	
 	//apagar casa
 	@DeleteMapping("/house/{id}")
-	public void deleteUser(@PathVariable long id) {
+	public void deleteHouse(@PathVariable long id) {
 		houseRepository.deleteById(id);
 	}
 	
