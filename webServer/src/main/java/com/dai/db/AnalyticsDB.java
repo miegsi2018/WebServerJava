@@ -432,12 +432,90 @@ public class AnalyticsDB {
     //visualizar entradas NAO ESTA COMPLETAMENTE A FUNCIONAL(ENVIAR DADOS NUM ARRAY CORRETO)
 
 
-    
-	public JSONObject findDivision(String email) {
-	    	
+    	public JSONObject findHouse(Long account) {
+	    System.out.println(account);	
 	    	String value = null;
 	    	    	
 	        PreparedStatement stmt = null;
+
+	        ResultSet rs = null;
+	        
+	        JSONObject end = new JSONObject(); 
+	        
+		JSONArray id_houses = new JSONArray();
+
+		JSONArray houses = new JSONArray();
+
+	        Integer i = 0; 
+	
+	
+	        try {
+	        	
+	            stmt = con.prepareStatement("SELECT * FROM house where account_id= ?");
+		     
+	        	
+	            
+
+	            stmt.setLong(1, account);
+
+
+	        
+
+	        	rs = stmt.executeQuery();
+	        	
+	        	System.out.println(rs);
+        	
+
+	        	while (rs.next()) {
+	               
+                            id_houses.add(i, rs.getString("id_house"));
+
+                                     
+                            houses.add(i, rs.getString("name")); 
+	            }
+	        	
+	        	end.put("id_houses" , id_houses);	
+			
+
+			
+        		end.put("houses" , houses);	
+
+
+
+			
+	          
+	            
+	        } catch (SQLException ex) {
+	        } finally {
+	            Conexao.fechaConexao(con, stmt, rs);
+	            return end;
+	        }
+			
+	
+	    }
+	
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    public JSONObject findDivision(String email) {
+	    	String value = null;
+	    	    	
+	        PreparedStatement stmt = null;
+
 	        ResultSet rs = null;
 	        
 	        JSONObject end = new JSONObject(); 
@@ -458,15 +536,23 @@ public class AnalyticsDB {
 	        	
 	            stmt = con.prepareStatement("SELECT * FROM v_contas where email= ?");
 		     
-	        	stmt.setString(1, email);
+	        	
+	            
+
+	            stmt.setString(1, email);
+
+
+	        
+
 	        	rs = stmt.executeQuery();
 	        	
 	        	System.out.println(rs);
-	        	
+        	
+
 	        	while (rs.next()) {
 	               
-
                             id_house.add(i, rs.getString("id_house"));
+
                             id_division.add(i, rs.getString("id_division"));
                                      
                             division.add(i,rs.getString("division"));

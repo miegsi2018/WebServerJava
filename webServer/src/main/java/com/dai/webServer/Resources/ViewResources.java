@@ -31,15 +31,17 @@ public class ViewResources {
 	@Autowired
 	private ViewRepository ViewRepository;
 
-	@GetMapping("/view2/{email}")
-	public JSONObject getViews2 (@PathVariable String email) {
+	@GetMapping("/view2/{email}/{account}")
+	public JSONObject getViews2 (@PathVariable String email, @PathVariable Long account) {
 	
 
 		AnalyticsDB a = new AnalyticsDB();
 
+		AnalyticsDB b = new AnalyticsDB();
 		
 		JSONObject fim =  a.findDivision(email);	
-
+		JSONObject houses = b.findHouse(account);
+		fim.put("array2", houses);
 
 
 
