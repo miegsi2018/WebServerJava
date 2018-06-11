@@ -24,12 +24,10 @@ private int id_house;
 private String email;
 private  String type;
 
-@Column(nullable = true)
-private Integer main;
 
 private String house;
 private String division;
-private Long sensor_id;
+private String sensor_id;
 
 
 public View() {
@@ -40,15 +38,14 @@ public View() {
 
 
 
-public View(@Email int id_account, int id_division, int id_house, String email, String type, Integer main, String house,
-		String division, Long sensor_id) {
+public View(@Email int id_account, int id_division, int id_house, String email, String type,  String house,
+String division, String sensor_id) {
 	super();
 	this.id_account = id_account;
 	this.id_division = id_division;
 	this.id_house = id_house;
 	this.email = email;
 	this.type = type;
-	this.main = main;
 	this.house = house;
 	this.division = division;
 	this.sensor_id = sensor_id;
@@ -98,16 +95,6 @@ public void setType(String type) {
 }
 
 
-public int getMain() {
-	return main;
-}
-
-
-public void setMain(int main) {
-	this.main = main;
-}
-
-
 public String getHouse() {
 	return house;
 }
@@ -128,12 +115,12 @@ public void setDivision(String division) {
 }
 
 
-public Long getSensor_id() {
+public String getSensor_id() {
 	return sensor_id;
 }
 
 
-public void setSensor_id(Long sensor_id) {
+public void setSensor_id(String sensor_id) {
 	this.sensor_id = sensor_id;
 }
 
@@ -156,10 +143,6 @@ public void setId_account(int id_account) {
 
 
 
-
-public void setMain(Integer main) {
-	this.main = main;
-}
 
 
 }

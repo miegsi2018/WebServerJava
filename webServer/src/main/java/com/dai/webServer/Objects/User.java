@@ -28,7 +28,6 @@ public class User {
 	private String nif;
 	private String email;
 	private String regdate;
-	private String main;
 	private String password;
 	private String type;
 	private String active;
@@ -37,8 +36,7 @@ public class User {
 		super();
 	}
 
-	public User(Long id_user, String username, String address, String contact, String nif, String email, String regdate,
-			String main, String password, String type, String active) {
+	public User(Long id_user, String username, String address, String contact, String nif, String email, String regdate, String password, String type, String active) {
 		super();
 		this.id_user = id_user;
 		this.username = username;
@@ -47,7 +45,6 @@ public class User {
 		this.nif = nif;
 		this.email = email;
 		this.regdate = regdate;
-		this.main = main;
 		this.password = password;
 		this.type = type;
 		this.active = active;
@@ -109,13 +106,7 @@ public class User {
 		this.regdate = regdate;
 	}
 
-	public String getMain() {
-		return main;
-	}
 
-	public void setMain(String main) {
-		this.main = main;
-	}
 
 	public String getPassword() {
 		return password;

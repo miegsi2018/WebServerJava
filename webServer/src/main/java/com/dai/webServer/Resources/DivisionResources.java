@@ -89,9 +89,9 @@ public class DivisionResources {
 	//Alterar dados da divisao
 	@PostMapping("/division/{id}")
 	public String updateDivision(@RequestBody Division division, @PathVariable String id) {
-
+	System.out.println("I'm here boye");
 	AnalyticsDB  newDb = new AnalyticsDB();
-				String newId = '"' + id + '"';
+
 				newDb.updateDivision(division.getSensor_id(), id );
 				System.out.println("done");
 	
