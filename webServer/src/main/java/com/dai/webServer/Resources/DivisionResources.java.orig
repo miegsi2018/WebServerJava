@@ -117,14 +117,21 @@ public class DivisionResources {
 		String user = (String) jsonObject.get("user_id");
 		
 		String tag = (String) jsonObject.get("tag");		
+<<<<<<< HEAD
 	
 		newDb.addCard(user, tag);
 
 		
 	
 		
+||||||| merged common ancestors
 	
 		
+	
+		
+=======
+>>>>>>> f8143c89a71cb7bb6e8c89670845163fb43a6ed5
+
 		return "done";
 		
 	}

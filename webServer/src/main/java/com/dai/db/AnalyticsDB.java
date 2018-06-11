@@ -6,11 +6,11 @@ import org.json.simple.JSONArray;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.dai.webServer.Conexao.Conexao;
 import com.dai.webServer.Objects.Analytics;
 
 import org.json.simple.JSONObject;
+
 
 public class AnalyticsDB {
 	
@@ -625,6 +625,7 @@ public class AnalyticsDB {
 	        
 	        JSONObject end = new JSONObject(); 
 	        JSONArray idaccount = new JSONArray();
+	        JSONArray nome = new JSONArray();
 	        JSONArray data = new JSONArray();
 	        Integer i = 0; 
 	
@@ -644,11 +645,13 @@ public class AnalyticsDB {
 	                
 	        		idaccount.add(i, rs.getString("id_account"));
 	        		data.add(i, rs.getString("reg_date"));
+	        		nome.add(i, rs.getString("name"));
 	        		
 	            }
 	        	
 	        	end.put("id_account" , idaccount);
 	        	end.put("reg_date" , data);
+	        	end.put("name" , nome);
 	          
 	            
 	        } catch (SQLException ex) {

@@ -110,7 +110,6 @@ public class AnalyticsResources {
 		
 		return fim;
 	
-	
 	}
 	
 
