@@ -114,7 +114,7 @@ public class DivisionResources {
 	
 
 		
-		String user = (String) jsonObject.get("user_id");
+		Long user = (Long) jsonObject.get("user_id");
 		
 		String tag = (String) jsonObject.get("tag");		
 	

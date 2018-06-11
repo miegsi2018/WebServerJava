@@ -406,7 +406,7 @@ public class AnalyticsDB {
 		    }
 		
     }
-     public void addCard(String id_user , String tag){
+     public void addCard(Long id_user , String tag){
     	
 	System.out.println(id_user);
 
@@ -417,7 +417,7 @@ public class AnalyticsDB {
             stmt = con.prepareStatement("UPDATE  account set  id_card = ? where id_user= ?");
             
         	stmt.setString(1, tag);
-        	stmt.setString(2, id_user);
+        	stmt.setLong(2, id_user);
 
 
             stmt.executeUpdate();
