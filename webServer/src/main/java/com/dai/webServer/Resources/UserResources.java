@@ -160,7 +160,7 @@ public User findUserByEmail(String email) {
 		pub.sendMessage(correctedTopic , message ,"lightChange");	
 
 		
-		return done;
+		return "done";
 
 	}
 
