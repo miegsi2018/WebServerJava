@@ -17,6 +17,7 @@ public class Division {
 	private Long id_house;
 	private String name;
 	private String sensor_id;
+	private String armed;
 	private Integer path;
 	
 	public Division(Long id_division, Long id_house, String name, String sensor_id, Integer path) {
@@ -35,6 +36,16 @@ public class Division {
 	public void setPath(Integer path) {
 		this.path = path;
 	}
+
+	public void setArmed(String armed) {
+		this.armed = armed;
+	}
+
+
+	public String getArmed() {
+		return armed;
+	}
+
 
 	public Division() {
 		super();

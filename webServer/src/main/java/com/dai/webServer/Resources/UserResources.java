@@ -120,10 +120,12 @@ public User findUserByEmail(String email) {
 
 
 
+		System.out.println("not");
 
 		return  null;
 
 		}
+		System.out.println("It kind of worked");
 
 		User savedUser = utilizadorRepository.save(utilizador);
 		

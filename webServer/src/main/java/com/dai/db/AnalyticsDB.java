@@ -59,6 +59,92 @@ public class AnalyticsDB {
 		
 
     }
+    public String updateName(String name, String sensor,  Long id_division){
+    	String value = null;
+    	System.out.println(name);
+
+    	System.out.println(id_division);
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("UPDATE division  SET name=? , sensor_id= ?  where id_division = ?");
+	     
+        	stmt.setString(1, name);
+        	stmt.setString(2, sensor);
+
+        	stmt.setLong(3, id_division);
+
+            System.out.println(stmt);
+        	stmt.executeUpdate();
+        	
+        	
+        
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            System.out.println("deu erro "+ ex);
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
+ 
+    public String updateArm(String armed, Long id_division){
+    	String value = null;
+    	System.out.println(armed);
+
+    	System.out.println(id_division);
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("UPDATE division  SET armed=?  where id_division = ?");
+	     
+        	stmt.setString(1, armed);
+
+        	stmt.setLong(2, id_division);
+
+            System.out.println(stmt);
+        	stmt.executeUpdate();
+        	
+        	
+        
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            System.out.println("deu erro caralho"+ ex);
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String updateDivision(String id_sensor, String id_division){
     	String value = null;
     	System.out.println(id_sensor);

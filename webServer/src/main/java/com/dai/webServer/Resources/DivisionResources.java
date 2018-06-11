@@ -48,7 +48,6 @@ public class DivisionResources {
 	//listar divisao por id
 	@GetMapping("/division/{id}")
 	public Division retrieveDivision(@PathVariable long id) {
-		System.out.println("shit");
 		Optional<Division> division = divisionRepository.findById(id);
 		
 		if (!division.isPresent())
@@ -69,7 +68,24 @@ public class DivisionResources {
 		return ResponseEntity.created(location).build();
 		
 	}
+	@PostMapping("/division/arm")
+	public String updateDivision(@RequestBody Division division) {
+
+	AnalyticsDB  newDb = new AnalyticsDB();
+		newDb.updateArm(division.getArmed(), division.getId_division());
 	
+	return "done";
+	}
+
+	@PostMapping("/division/name")
+	public String updateName(@RequestBody Division division) {
+
+	AnalyticsDB  newDb = new AnalyticsDB();
+		newDb.updateName(division.getName(), division.getSensor_id(),division.getId_division());
+	
+	return "done";
+	}
+
 	//Alterar dados da divisao
 	@PostMapping("/division/{id}")
 	public String updateDivision(@RequestBody Division division, @PathVariable String id) {
