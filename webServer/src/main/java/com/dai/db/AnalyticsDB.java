@@ -6,11 +6,11 @@ import org.json.simple.JSONArray;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import com.dai.webServer.Conexao.Conexao;
 import com.dai.webServer.Objects.Analytics;
 
 import org.json.simple.JSONObject;
+
 
 public class AnalyticsDB {
 	
