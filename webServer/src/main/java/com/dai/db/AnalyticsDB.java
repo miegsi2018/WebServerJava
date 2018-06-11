@@ -603,6 +603,7 @@ public class AnalyticsDB {
 	        JSONObject end = new JSONObject(); 
 	        JSONArray idcasa = new JSONArray();
 	        JSONArray idaccount = new JSONArray();
+	        JSONArray nome = new JSONArray();
 	        JSONArray data = new JSONArray();
 	        Integer i = 0; 
 	
@@ -623,12 +624,14 @@ public class AnalyticsDB {
 	        		idcasa.add(i, rs.getString("ID_HOUSE"));
 	        		idaccount.add(i, rs.getString("id_account"));
 	        		data.add(i, rs.getString("reg_date"));
+	        		nome.add(i, rs.getString("name"));
 	        		
 	            }
 	        	
 	        	end.put("id_House" , idcasa);
 	        	end.put("id_account" , idaccount);
 	        	end.put("reg_date" , data);
+	        	end.put("name" , nome);
 	          
 	            
 	        } catch (SQLException ex) {
