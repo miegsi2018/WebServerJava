@@ -7,8 +7,8 @@ public class Main extends Listener{
 	
 	public static void main(String[] args) {
 	       
-		Listener listener = new Listener();
-	        listener.subscribe("data/fds");
+		//Listener listener = new Listener();
+	        //listener.subscribe("data/fds");
 			
 		AlarmReceive alarm = new AlarmReceive();
 	        alarm.subscribe("requestTHis");

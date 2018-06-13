@@ -15,16 +15,19 @@ public class Division {
 	@GeneratedValue
 	private Long id_division;
 	private Long id_house;
+	private String type;
+
 	private String name;
 	private String sensor_id;
 	private String armed;
 	private Integer path;
 	
-	public Division(Long id_division, Long id_house, String name, String sensor_id, Integer path) {
+	public Division(Long id_division, Long id_house,String type, String name, String sensor_id, Integer path) {
 		super();
 		this.id_division = id_division;
 		this.id_house = id_house;
 		this.name = name;
+		this.type = type;
 		this.sensor_id = sensor_id;
 		this.path = path;
 	}
@@ -40,6 +43,20 @@ public class Division {
 	public void setArmed(String armed) {
 		this.armed = armed;
 	}
+
+
+	public String getType() {
+	
+	return type;
+}
+
+
+
+	public void setType(String type) {
+	
+	this.type = type;
+
+}
 
 
 	public String getArmed() {

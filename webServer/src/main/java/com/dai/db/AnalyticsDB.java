@@ -143,7 +143,7 @@ public class AnalyticsDB {
 
 
 
-    public String updateDivision(String id_sensor, String id_division){
+    public String updateDivision(String id_sensor,String type, String id_division){
     	String value = null;
     	System.out.println(id_sensor);
 
@@ -153,11 +153,12 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("UPDATE division  SET sensor_id=?  where id_division = ?");
+            stmt = con.prepareStatement("UPDATE division  SET sensor_id=?,   type=?  where id_division = ?");
 	     
         	stmt.setString(1, id_sensor);
+        	stmt.setString(2, type);
 
-        	stmt.setString(2, id_division);
+        	stmt.setString(3, id_division);
 
             System.out.println(stmt);
         	stmt.executeUpdate();
