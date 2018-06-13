@@ -60,7 +60,10 @@ public class DivisionResources {
 	//Criar Divisao
 	@PostMapping("/division")
 	public ResponseEntity<Object> createDivision(@RequestBody Division division) {
+                 		
 		
+		System.out.println("iddddddddddddddddddddddddddddddddddddddddd" + division.getName());
+		System.out.println("iddddddddddddddddddddddddddddddddddddddddd" + division.getType());
 		Division savedDivision = divisionRepository.save(division);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -97,7 +100,8 @@ public class DivisionResources {
 	System.out.println("I'm here boye");
 	AnalyticsDB  newDb = new AnalyticsDB();
 
-				newDb.updateDivision(division.getSensor_id(), id );
+				
+				newDb.updateDivision(division.getSensor_id(),division.getType(), id );
 				System.out.println("done");
 	
 	return "done";
