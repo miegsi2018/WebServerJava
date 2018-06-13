@@ -2,6 +2,6 @@
 sudo pkill java
 
 
-cd ~/eclipse-workspace/WebServerJava/WebServerJava/webServer &&  mvn install -DskipTests && mvn exec:java    
+cd ~/WebServerJava/webServer &&  mvn install -DskipTests && mvn exec:java    
 
 
