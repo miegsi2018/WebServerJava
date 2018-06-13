@@ -137,7 +137,6 @@ public class ReceiveRequests  implements MqttCallback {
 
 
 
-
 		System.out.println("is--------- Armed");
 	
 
@@ -163,7 +162,6 @@ public class ReceiveRequests  implements MqttCallback {
 
 		String denied = "Por favor tente de novo";
 		
-		System.out.println("heeeeeeeeeeeeeeeeeeeeeeeere" );
 		if (outcome != null){
 			
 			ap.sendMessage(responseTopic, approved, message);
@@ -177,10 +175,15 @@ public class ReceiveRequests  implements MqttCallback {
 			insert.insertDB(message, outcome);
 			
 				
+			Long id_division = armed.findIdDivision(correctedTopic);
+
+			AnalyticsDB updateArm = new AnalyticsDB();
+			
+			updateArm.updateArm("false", id_division);
+
 
 		}else{
 
-		System.out.println("heeeeeeeeeeeeeeeeeeeeeeeere");
 			 String email = mail.readEmail(correctedTopic);
 				System.out.println(email);
 

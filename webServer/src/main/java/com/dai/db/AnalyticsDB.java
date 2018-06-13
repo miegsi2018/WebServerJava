@@ -227,6 +227,60 @@ public class AnalyticsDB {
     }
  
  
+
+    
+    
+     
+    public Long findIdDivision(String topic){
+    	Long value = null;
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT id_division from v_contas where sensor_id = ?");
+	     
+        	stmt.setString(1, topic);
+
+
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getLong("id_division"));
+                
+                value = rs.getLong("id_division");
+		System.out.println(value);
+            }
+          
+	   return value;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+            return value;
+        }
+		
+
+    }
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public String armed(String armed){
     	String value = null;
 

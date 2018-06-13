@@ -49,7 +49,7 @@ public class ReadingsResouces {
 		o.createLeitura(b); 
 		 
 		
-	return "shit";	
+	return "done";	
 		
 	}
 	
