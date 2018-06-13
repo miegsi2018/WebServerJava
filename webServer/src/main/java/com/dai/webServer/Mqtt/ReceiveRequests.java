@@ -159,7 +159,7 @@ public class ReceiveRequests  implements MqttCallback {
 
 		
 		String payLoadOpen = "3";
-		String approved = "Bem vindo a casa" + outcome;
+		String approved = "Bem vindo a casa " + outcome;
 
 		String denied = "Por favor tente de novo";
 		

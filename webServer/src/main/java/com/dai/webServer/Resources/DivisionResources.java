@@ -129,10 +129,11 @@ public class DivisionResources {
 		
 	}
 	
-	
+		
 	//Apagar divisao
-	@DeleteMapping("/division/{id}")
-	public void deleteDivision(@PathVariable long id) {
+	@PostMapping("/division/delete/{id}")
+	public String deleteDivision(@PathVariable long id) {
 		divisionRepository.deleteById(id);
+		return "done";
 	}
 }

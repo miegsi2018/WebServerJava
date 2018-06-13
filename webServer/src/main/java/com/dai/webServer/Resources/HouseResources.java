@@ -77,9 +77,12 @@ public class HouseResources {
 	}
 	
 	//apagar casa
-	@DeleteMapping("/house/{id}")
-	public void deleteHouse(@PathVariable long id) {
+	@PostMapping("/house/delete/{id}")
+	public String deleteHouse(@PathVariable long id) {
+		System.out.print("funciona");
 		houseRepository.deleteById(id);
+		System.out.print("funciona");
+		return "done";
 	}
 	
 }

@@ -711,13 +711,13 @@ public class AnalyticsDB {
 	        	
 	        	while (rs.next()) {
 	                
-	        		idaccount.add(i, rs.getString("id_account"));
+	        		idaccount.add(i, rs.getString("username"));
 	        		data.add(i, rs.getString("reg_date"));
 	        		nome.add(i, rs.getString("name"));
 	        		
 	            }
 	        	
-	        	end.put("id_account" , idaccount);
+	        	end.put("username" , idaccount);
 	        	end.put("reg_date" , data);
 	        	end.put("name" , nome);
 	          
