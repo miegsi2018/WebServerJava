@@ -139,6 +139,8 @@ public User findUserByEmail(String email) {
 	
 
 
+
+@CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
 	@PostMapping("/changeLight")
 	public String createUser(@RequestBody String light) throws ParseException {
 
@@ -156,7 +158,7 @@ public User findUserByEmail(String email) {
 		System.out.println(topic);
 		System.out.println(message);
 		
-		String correctedTopic = "request/"  + topic;
+		String correctedTopic = "relay/"  + topic;
 		pub.sendMessage(correctedTopic , message ,"lightChange");	
 
 		
