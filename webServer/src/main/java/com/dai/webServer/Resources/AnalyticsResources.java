@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AnalyticsResources {
 	
 	@PostMapping("/avgTemp")
-	public String verifyTemp(@RequestBody String analytics) throws ParseException {
+	public JSONObject verifyTemp(@RequestBody String analytics) throws ParseException {
 		
 		JSONParser parser = new JSONParser();
 		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
@@ -35,11 +35,10 @@ public class AnalyticsResources {
 		String device = (String) jsonObject.get("device");		
 		String dataFi = (String) jsonObject.get("dataF");
 		AnalyticsDB a = new AnalyticsDB();
-		System.out.println(dataIn);
-		System.out.println(dataFi);
+		System.out.println("temp");
 		
 		System.out.println(dataFi);
-		String fim = a.read(device,  dataIn, dataFi);
+		JSONObject fim = a.read(device,  dataIn, dataFi);
 
 		
 		return fim;
@@ -64,6 +63,7 @@ public class AnalyticsResources {
 		System.out.println(dataFi);
 		String fim = a.readHumidade(device, dataIn, dataFi);
 		
+
 		return fim;
 	
 	
@@ -82,10 +82,14 @@ public class AnalyticsResources {
 		String dataFi = (String) jsonObject.get("dataF");
 		AnalyticsDB a = new AnalyticsDB();
 		
+		AnalyticsDB b = new AnalyticsDB();
 		System.out.println(dataIn);
 		System.out.println(dataFi);
 		
-		JSONObject fim = a.returnGraph(device,  dataIn, dataFi);
+		JSONObject tempHum = a.read(device,  dataIn, dataFi);
+		JSONObject fim = b.returnGraph(device,  dataIn, dataFi);
+
+		fim.put("tempHum", tempHum);	
 		return fim;
 	
 	

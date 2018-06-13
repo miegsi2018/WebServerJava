@@ -46,7 +46,6 @@ public class AnalyticsDB {
 		System.out.println(value);
             }
           
-	   return value;
             /* return value; */
             
 
@@ -81,7 +80,6 @@ public class AnalyticsDB {
         	
         	
         
-	   return value;
             /* return value; */
             
 
@@ -118,7 +116,6 @@ public class AnalyticsDB {
         	
         	
         
-	   return value;
             /* return value; */
             
 
@@ -167,7 +164,6 @@ public class AnalyticsDB {
         	
         	
         
-	   return value;
             /* return value; */
             
 
@@ -212,7 +208,6 @@ public class AnalyticsDB {
 
             }
           
-	   return end;
             /* return value; */
             
 
@@ -256,7 +251,6 @@ public class AnalyticsDB {
 		System.out.println(value);
             }
           
-	   return value;
             /* return value; */
             
 
@@ -306,7 +300,6 @@ public class AnalyticsDB {
 		System.out.println(value);
             }
           
-	   return value;
             /* return value; */
             
 
@@ -368,7 +361,6 @@ public class AnalyticsDB {
 		System.out.println(value);
             }
           
-	   return value;
             /* return value; */
             
 
@@ -381,16 +373,18 @@ public class AnalyticsDB {
 		
 
     }
-    public String read(String device, String dataI, String dataF) {
+    public JSONObject read(String device, String dataI, String dataF) {
     	String value = null;
     	
+        JSONObject end = new JSONObject(); 
+
 
         PreparedStatement stmt = null;
         ResultSet rs = null;
 
         try {
         	
-            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp FROM readings WHERE JSON_EXTRACT(attr, '$.device.deviceID') = ? and  data BETWEEN ? and ? and (data is not null or data != 0)");
+            stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp, AVG(JSON_EXTRACT(attr, '$.measurements.humidity')) hum FROM readings WHERE JSON_EXTRACT(attr, '$.device.deviceID') = ? and  data BETWEEN ? and ? and (data is not null or data != 0)");
 	     
         	stmt.setString(1, device);
         	stmt.setString(2, dataI);
@@ -405,18 +399,17 @@ public class AnalyticsDB {
 
                 System.out.println(rs.getString("temp"));
                 
-                value = rs.getString("temp");
+		end.put("temp", rs.getString("temp"));
+
+		end.put("hum", rs.getString("hum"));
 		System.out.println(value);
             }
-	   return value;
-            /* return value; */
-            
 
         } catch (SQLException ex) {
             
         } finally {
             Conexao.fechaConexao(con, stmt, rs);
-            return value;
+	    return end;
         }
 		
 
@@ -450,8 +443,6 @@ public class AnalyticsDB {
 		System.out.println(value);
             }
           
-	   return value;
-            /* return value; */
             
 
         } catch (SQLException ex) {
@@ -488,7 +479,6 @@ public class AnalyticsDB {
               		temp.add(i, rs.getString("temp"));
 
               		data.add(i, rs.getString("data"));
-			System.out.println(rs.getString("temp"));
             }
         end.put("temp" , temp);	
 
