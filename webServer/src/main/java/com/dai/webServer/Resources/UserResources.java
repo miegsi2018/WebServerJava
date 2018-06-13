@@ -155,7 +155,7 @@ public User findUserByEmail(String email) {
 		System.out.println(topic);
 		System.out.println(message);
 		
-		String correctedTopic = "request/"  + topic;
+		String correctedTopic = "relay/"  + topic;
 		pub.sendMessage(correctedTopic , message ,"lightChange");	
 
 		
