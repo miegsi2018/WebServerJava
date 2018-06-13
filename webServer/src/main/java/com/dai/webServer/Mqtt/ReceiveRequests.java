@@ -1,6 +1,9 @@
 package com.dai.webServer.Mqtt;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import com.dai.db.AnalyticsDB;
 import com.dai.webServer.Conexao.Conexao;
@@ -124,20 +127,30 @@ public class ReceiveRequests  implements MqttCallback {
     
 	 public void insert(String message , String topic) throws ParseException, SQLException  {
 
- 		System.out.println(message);
 		String tag = topic.substring(topic.lastIndexOf('/')+1);
 
+		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
+		
+		
+		AnalyticsDB armed = new AnalyticsDB();
 
+
+
+
+
+		System.out.println("is--------- Armed");
+	
 
 		
 
-		String correctedTopic = topic.substring(topic.lastIndexOf('/')+1);
 		AnalyticsDB db = new AnalyticsDB();
 
+		
 		AnalyticsDB mail = new AnalyticsDB();
 		System.out.println("It's here now");
 		System.out.println(correctedTopic);
-		String outcome = db.approve(message, correctedTopic); 
+				String outcome = db.approve(message, correctedTopic); 
+
 		System.out.println(outcome);
 		String responseTopic = "response/" + correctedTopic;
 
@@ -150,6 +163,7 @@ public class ReceiveRequests  implements MqttCallback {
 
 		String denied = "Por favor tente de novo";
 		
+		System.out.println("heeeeeeeeeeeeeeeeeeeeeeeere" );
 		if (outcome != null){
 			
 			ap.sendMessage(responseTopic, approved, message);
@@ -161,9 +175,12 @@ public class ReceiveRequests  implements MqttCallback {
 
 			AnalyticsDB insert = new AnalyticsDB();
 			insert.insertDB(message, outcome);
+			
+				
 
 		}else{
 
+		System.out.println("heeeeeeeeeeeeeeeeeeeeeeeere");
 			 String email = mail.readEmail(correctedTopic);
 				System.out.println(email);
 

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import com.dai.webServer.Exceptions.PasswordErrorException;
 import com.dai.webServer.Exceptions.UtilizadorNotFoundException;
 import com.dai.webServer.Objects.User;
@@ -140,7 +139,7 @@ public User findUserByEmail(String email) {
 
 
 	@PostMapping("/changeLight")
-	public String createUser(@RequestBody String light) throws ParseException {
+	public String changeLight(@RequestBody String light) throws ParseException {
 
 		
 		JSONParser parser = new JSONParser();

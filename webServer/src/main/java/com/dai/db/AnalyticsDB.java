@@ -95,8 +95,9 @@ public class AnalyticsDB {
 		
 
     }
- 
-    public String updateArm(String armed, Long id_division){
+
+
+   public String updateArm(String armed, Long id_division){
     	String value = null;
     	System.out.println(armed);
 
@@ -181,7 +182,52 @@ public class AnalyticsDB {
 
     }
  
-    public String armed(String topic){
+    public JSONObject isArmed(String topic){
+    	String value = null;
+	JSONObject end = new JSONObject(); 
+     
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        	
+            stmt = con.prepareStatement("SELECT * from division where sensor_id =?");
+	     
+        	stmt.setString(1, topic);
+
+
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("armed"));
+
+                System.out.println(rs.getString("id_division"));
+                
+               	end.put("armed",  rs.getString("armed"));
+
+               	end.put("id_division",  rs.getString("id_division"));
+
+            }
+          
+	   return end;
+            /* return value; */
+            
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+        }
+		return end;
+		
+
+    }
+ 
+ 
+    public String armed(String armed){
     	String value = null;
 
         PreparedStatement stmt = null;
@@ -189,9 +235,9 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT armed from division where sensor_id =?");
+            stmt = con.prepareStatement("SELECT armed from v_contas where sensor_id = ?");
 	     
-        	stmt.setString(1, topic);
+        	stmt.setString(1, armed);
 
 
         	rs = stmt.executeQuery();
@@ -219,7 +265,29 @@ public class AnalyticsDB {
 		
 
     }
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public String approve(String message, String topic){
     	String value = null;
 
@@ -228,7 +296,7 @@ public class AnalyticsDB {
 
         try {
         	
-            stmt = con.prepareStatement("SELECT email from v_contas where sensor_id =? and id_card = ?");
+            stmt = con.prepareStatement("SELECT username from v_contas where sensor_id =? and id_card = ?");
 	     
         	stmt.setString(1, topic);
 
@@ -240,9 +308,9 @@ public class AnalyticsDB {
         	
         	while (rs.next()) {
 
-                System.out.println(rs.getString("email"));
+                System.out.println(rs.getString("username"));
                 
-                value = rs.getString("email");
+                value = rs.getString("username");
 		System.out.println(value);
             }
           
