@@ -47,7 +47,7 @@ public class ViewResources {
 		
 	};
 
-	@PostMapping("/view/{email}")
+	@GetMapping("/view/new/{email}")
 	public JSONObject getViewsDiff(@PathVariable String email) {
 
 		AnalyticsDB b = new AnalyticsDB();
