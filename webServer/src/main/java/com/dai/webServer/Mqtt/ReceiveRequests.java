@@ -148,7 +148,7 @@ public class ReceiveRequests  implements MqttCallback {
 		AnalyticsDB mail = new AnalyticsDB();
 		System.out.println("It's here now");
 		System.out.println(correctedTopic);
-				String outcome = db.approve(message, correctedTopic); 
+		String outcome = db.approve(message, correctedTopic); 
 
 		System.out.println(outcome);
 		String responseTopic = "response/" + correctedTopic;
