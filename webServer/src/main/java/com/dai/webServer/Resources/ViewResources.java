@@ -55,12 +55,10 @@ public class ViewResources {
 
 
 
-		JSONObject end2 = new JSONObject();
 
 		JSONObject end = b.findDivisionView(email);
 
-		end2.put("leituras", end);
-		return end2;
+		return end;
 
 	};
 
