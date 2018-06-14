@@ -45,6 +45,27 @@ public class AnalyticsResources {
 	
 	
 	}
+	
+	@PostMapping("/avgHouse")
+	public JSONObject verifyHouse(@RequestBody String analytics) throws ParseException {
+		
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parser.parse(analytics);
+		
+		String dataIn = (String) jsonObject.get("dataI");
+		String email = (String) jsonObject.get("email");		
+		String dataFi = (String) jsonObject.get("dataF");
+		AnalyticsDB a = new AnalyticsDB();
+		
+		System.out.println(dataFi);
+		JSONObject fim = a.readHouse(email,  dataIn, dataFi);
+
+		
+		return fim;
+	
+	
+	}
+
 
 	
 	@PostMapping("/avgHum")
