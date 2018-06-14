@@ -23,7 +23,7 @@ private int id_division;
 private int id_house;
 private String email;
 private  String type;
-private Long stype;
+private String stype;
 
 
 
@@ -40,7 +40,7 @@ public View() {
 
 
 
-public View(@Email int id_account, int id_division, int id_house, String email, String type,Long stype,  String house,String division, String sensor_id) {
+public View(@Email int id_account, int id_division, int id_house, String email, String type,String stype,  String house,String division, String sensor_id) {
 	super();
 	this.id_account = id_account;
 	this.id_division = id_division;
@@ -77,12 +77,12 @@ public void setId_house(int id_house) {
 }
 
 
-public Long getSensorType() {
+public String getSType() {
 	return stype;
 }
 
 
-public void setSensorType(Long stype) {
+public void setSType(String stype) {
 	
 	this.stype = stype;
 }
