@@ -25,6 +25,9 @@ import com.dai.webServer.Exceptions.DivisionNotFoundException;
 import com.dai.webServer.Objects.Division;
 import com.dai.webServer.Repos.DivisionRepository;
 
+import com.dai.webServer.Mqtt.ApproveRequests;
+
+
 import com.dai.db.AnalyticsDB;
 
 @RequestMapping("/")
@@ -43,7 +46,9 @@ public class DivisionResources {
 	//listar todas as divisoes
 	@GetMapping("/division")
 	public List<Division> retrieveAllHouse() {
+
 		return divisionRepository.findAll();
+
 	}
 	
 	//listar divisao por id
@@ -62,8 +67,6 @@ public class DivisionResources {
 	public ResponseEntity<Object> createDivision(@RequestBody Division division) {
                  		
 		
-		System.out.println("iddddddddddddddddddddddddddddddddddddddddd" + division.getName());
-		System.out.println("iddddddddddddddddddddddddddddddddddddddddd" + division.getType());
 		Division savedDivision = divisionRepository.save(division);
 		
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
@@ -81,16 +84,63 @@ public class DivisionResources {
 	return "done";
 	}
 
+
 	
 
 
+	@PostMapping("/division/doorOpen")
+	public String openDoor(@RequestBody String json) throws  ParseException {
 
-	@PostMapping("/division/name")
-	public String updateName(@RequestBody Division division) {
 
-	AnalyticsDB  newDb = new AnalyticsDB();
-		newDb.updateName(division.getName(), division.getSensor_id(),division.getId_division());
+    		ApproveRequests ap = new ApproveRequests();
+
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parser.parse(json);
 	
+		String topic = (String) jsonObject.get("sensor_id");		
+
+
+		ap.sendMessage(topic, "3", "stopped");
+		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+
+
+		ap.sendMessage(topic, "2", "closed");
+
+
+	 
+
+
+
+	return "done";
+	}
+
+
+
+	@PostMapping("/division/doorClose")
+	public String closeDoor(@RequestBody String json) throws  ParseException {
+
+
+    		ApproveRequests ap = new ApproveRequests();
+
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObject = (JSONObject) parser.parse(json);
+	
+		String topic = (String) jsonObject.get("sensor_id");		
+
+
+
+		ap.sendMessage(topic, "1", "closed");
+
+		try { Thread.sleep (1000); } catch (InterruptedException ex) {}
+		
+		ap.sendMessage(topic, "2", "stopped");
+		
+		System.out.println("door closed");
+
+	 
+
+
+
 	return "done";
 	}
 

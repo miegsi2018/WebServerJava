@@ -47,9 +47,26 @@ public class ViewResources {
 		
 	};
 
+	@GetMapping("/view/new/{email}")
+	public JSONObject getViewsDiff(@PathVariable String email) {
+
+		AnalyticsDB b = new AnalyticsDB();
+			
+
+
+
+
+		JSONObject end = b.findDivisionView(email);
+
+		return end;
+
+	};
+
 
 	@GetMapping("/view/{email}")
 	public List<View> getViews(@PathVariable String email) {
+
+
 
 		return ViewRepository.findThem(email);
 
