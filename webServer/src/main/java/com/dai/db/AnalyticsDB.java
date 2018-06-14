@@ -633,6 +633,71 @@ public class AnalyticsDB {
 
 
 
+ 
+    public JSONObject findDivisionView(String email) {
+	    	String value = null;
+	    	    	
+	        PreparedStatement stmt = null;
+
+	        ResultSet rs = null;
+	        
+	        JSONObject end = new JSONObject(); 
+	        
+		JSONArray id_division = new JSONArray();
+		JSONArray sType = new JSONArray();
+
+		int i = 0;
+
+	
+	        try {
+	        	
+	            stmt = con.prepareStatement("SELECT * FROM v_contas where email= ?");
+		     
+	        	
+	            
+
+	            stmt.setString(1, email);
+
+
+	        
+
+	        	rs = stmt.executeQuery();
+	        	
+	        	System.out.println(rs);
+        	
+
+	        	while (rs.next()) {
+	               
+
+                            id_division.add(i, rs.getString("id_division"));
+                                     
+                            sType.add(i,rs.getString("stype"));
+	            }
+	        	
+			
+	        	end.put("id_division" , id_division);	
+
+        		end.put("stype" , sType);	
+			
+
+
+
+			
+	          
+	            
+	        } catch (SQLException ex) {
+	        } finally {
+	            Conexao.fechaConexao(con, stmt, rs);
+	            return end;
+	        }
+			
+	
+	    }
+	
+
+
+
+
 
 
     
