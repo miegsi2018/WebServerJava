@@ -374,6 +374,56 @@ public class AnalyticsDB {
 		
 
     }
+    
+ public JSONObject readHouse(String email, String dataI, String dataF) {
+    	String value = null;
+    	
+        JSONObject end = new JSONObject(); 
+
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+        
+stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp, AVG(JSON_EXTRACT(attr, '$.measurements.humidity')) hum FROM readings, (select sensor_id FROM dwpt_dai.v_contas where email = ? and stype = 1) as a WHERE JSON_EXTRACT(attr, '$.device.deviceID') = a.sensor_id and data BETWEEN ? and ? and (data is not null or data != 0)");
+
+
+
+/*  */
+            /* stmt = con.prepareStatement("SELECT AVG(JSON_EXTRACT(attr, '$.measurements.temperature')) temp, AVG(JSON_EXTRACT(attr, '$.measurements.humidity')) hum FROM readings WHERE JSON_EXTRACT(attr, '$.device.deviceID') = ? and  data BETWEEN ? and ? and (data is not null or data != 0)"); */
+	     
+        	stmt.setString(1, email);
+        	stmt.setString(2, dataI);
+        	stmt.setString(3, dataF);
+
+
+        	rs = stmt.executeQuery();
+        	
+        	System.out.println(rs);
+        	
+        	while (rs.next()) {
+
+                System.out.println(rs.getString("temp"));
+                
+		end.put("temp", rs.getString("temp"));
+
+		end.put("hum", rs.getString("hum"));
+		System.out.println(value);
+            }
+
+        } catch (SQLException ex) {
+            
+        } finally {
+            Conexao.fechaConexao(con, stmt, rs);
+	    return end;
+        }
+		
+
+    }
+    
+
+
     public JSONObject read(String device, String dataI, String dataF) {
     	String value = null;
     	
