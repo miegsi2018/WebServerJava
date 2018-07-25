@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 
-@CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3400", maxAge = 3600)
 @RequestMapping("/")
 
 @RestController
