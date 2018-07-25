@@ -39,7 +39,7 @@ public class AlarmReceive  implements MqttCallback {
 	@Autowired
 
     /** The broker url. */
-    private static final String brokerUrl = "tcp://alvesvitor.ddns.net:80";
+    private static final String brokerUrl = "tcp://alvesvitor.ddns.net:1883";
 
     /** The client id. */
     Random rand = new Random();
