@@ -42,7 +42,7 @@ public class ReceiveRequests  implements MqttCallback {
 	@Autowired
 
     /** The broker url. */
-    private static final String brokerUrl = "tcp://alvesvitor.ddns.net:80";
+    private static final String brokerUrl = "tcp://alvesvitor.ddns.net:8883";
 
     /** The client id. */
     Random rand = new Random();

@@ -36,7 +36,7 @@ public String sendMessage(String topic, String message, String id) {
         String mqttTopic = topic;
         String content = message;
         int qos = 2;
-        String broker = "tcp://alvesvitor.ddns.net:80";
+        String broker = "tcp://alvesvitor.ddns.net:8883";
         String clientId = id;
         MemoryPersistence persistence = new MemoryPersistence();
 

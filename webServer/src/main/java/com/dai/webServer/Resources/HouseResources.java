@@ -23,6 +23,7 @@ import com.dai.webServer.Objects.House;
 import com.dai.webServer.Objects.User;
 import com.dai.webServer.Repos.HouseRepository;
 
+@CrossOrigin(origins = "http://localhost:3400", maxAge = 3600)
 @RequestMapping("/")
 @RestController
 public class HouseResources {

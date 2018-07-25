@@ -25,7 +25,7 @@ import com.dai.webServer.Objects.User;
 import com.dai.webServer.Repos.UtilizadorRepository;
 
 
-@CrossOrigin(origins = "http://localhost:5000", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:3400", maxAge = 3600)
 @RequestMapping("/")
 @RestController
 public class UserResources {

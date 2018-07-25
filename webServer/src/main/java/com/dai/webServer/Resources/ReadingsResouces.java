@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,7 +18,7 @@ import com.dai.webServer.Mqtt.Listener;
 import com.dai.webServer.Objects.Readings;
 import com.dai.webServer.Repos.ReadingsRepository;
 
-
+@CrossOrigin(origins = "http://localhost:3400", maxAge = 3600)
 @RequestMapping("/")
 @RestController
 public class ReadingsResouces {
